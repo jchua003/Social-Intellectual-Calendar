@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -269,7 +269,7 @@
             <h3>📝 Quick Instructions:</h3>
             <ol>
                 <li>Click "Connect Google Calendar" button below</li>
-                <li>Sign in with your Google account</li>
+                <li>Sign in with your Google account and authorize calendar access</li>
                 <li>Select museums you're interested in</li>
                 <li>Click on events you want to add (they'll turn green)</li>
                 <li>Click "Add Selected Events to Calendar" at the bottom</li>
@@ -279,9 +279,9 @@
         <div class="auth-section">
             <h3>Google Calendar Connection</h3>
             <div id="statusMessage" class="status disconnected">
-                Error connecting to Google API
+                Initializing...
             </div>
-            <button id="authorizeButton" style="display: block;">Connect Google Calendar</button>
+            <button id="authorizeButton" style="display: none;">Connect Google Calendar</button>
             <button id="signoutButton" style="display: none;">Disconnect</button>
         </div>
         
@@ -331,20 +331,26 @@
         </div>
     </div>
     
-    <!-- Google API -->
-    <script src="https://apis.google.com/js/api.js"></script>
+    <!-- Google API and Identity Services -->
+    <script src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+    <script src="https://accounts.google.com/gsi/client"></script>
+    
     <script>
-        // Configuration
+        // Configuration - YOUR CREDENTIALS ARE ALREADY HERE!
         const CLIENT_ID = '830577253465-ujnennan301ioa0ero48f6fi8ql72ksa.apps.googleusercontent.com';
         const API_KEY = 'AIzaSyCMKp0u0fOLTwyjH_7WHu5hZfi7QlyNnuY';
-        const DISCOVERY_DOCS = ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'];
+        const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest';
         const SCOPES = 'https://www.googleapis.com/auth/calendar.events';
         
-        let authorizeButton = document.getElementById('authorizeButton');
-        let signoutButton = document.getElementById('signoutButton');
+        let tokenClient;
+        let gapiInited = false;
+        let gisInited = false;
+        let accessToken = null;
+        let authorizeButton;
+        let signoutButton;
         let selectedEvents = new Set();
         
-        // Sample museum events data (in real implementation, this would come from APIs)
+        // Sample museum events data
         const museumEvents = [
             {
                 id: 'moma-1',
@@ -438,38 +444,102 @@
             }
         ];
         
-        // Initialize Google API
-        function handleClientLoad() {
-            console.log('Loading Google API client...');
-            gapi.load('client:auth2', initClient);
+        // Initialize on page load
+        function gapiLoaded() {
+            // Check if gapi is defined
+            if (typeof gapi === 'undefined') {
+                console.error('Google API not loaded yet');
+                setTimeout(gapiLoaded, 1000); // Retry after 1 second
+                return;
+            }
+            gapi.load('client', initializeGapiClient);
         }
         
-        function initClient() {
-            console.log('Initializing Google API client...');
-            document.getElementById('statusMessage').textContent = 'Initializing...';
-            
-            gapi.client.init({
-                apiKey: API_KEY,
-                clientId: CLIENT_ID,
-                discoveryDocs: DISCOVERY_DOCS,
-                scope: SCOPES
-            }).then(function () {
-                console.log('Google API initialized successfully!');
-                // Listen for sign-in state changes
-                gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+        async function initializeGapiClient() {
+            try {
+                await gapi.client.init({
+                    apiKey: API_KEY,
+                    discoveryDocs: [DISCOVERY_DOC],
+                });
+                gapiInited = true;
+                console.log('Google API client initialized');
                 
-                // Handle initial sign-in state
-                updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-                authorizeButton.onclick = handleAuthClick;
-                signoutButton.onclick = handleSignoutClick;
-            }, function(error) {
-                console.error('Error initializing Google API:', error);
-                document.getElementById('statusMessage').textContent = 'Error: ' + (error.details || error.error || 'Failed to initialize');
-                document.getElementById('statusMessage').className = 'status disconnected';
-            });
+                // Now initialize Google Identity Services
+                gisLoaded();
+            } catch (error) {
+                console.error('Error initializing GAPI client:', error);
+                document.getElementById('statusMessage').textContent = 'Error: Failed to initialize Google API';
+            }
         }
         
-        function updateSigninStatus(isSignedIn) {
+        function gisLoaded() {
+            // Check if google is defined
+            if (typeof google === 'undefined') {
+                console.error('Google Identity Services not loaded yet');
+                setTimeout(gisLoaded, 1000); // Retry after 1 second
+                return;
+            }
+            
+            tokenClient = google.accounts.oauth2.initTokenClient({
+                client_id: CLIENT_ID,
+                scope: SCOPES,
+                callback: (response) => {
+                    if (response.error) {
+                        console.error('Token error:', response);
+                        updateUI(false);
+                        return;
+                    }
+                    accessToken = response.access_token;
+                    updateUI(true);
+                },
+            });
+            gisInited = true;
+            console.log('Google Identity Services initialized');
+            
+            // Both services are now loaded
+            // Check if we already have a valid token
+            if (gapi.client.getToken() === null) {
+                updateUI(false);
+            } else {
+                updateUI(true);
+            }
+        }
+        
+        function handleAuthClick() {
+            tokenClient.callback = async (resp) => {
+                if (resp.error !== undefined) {
+                    throw (resp);
+                }
+                accessToken = resp.access_token;
+                updateUI(true);
+            };
+            
+            if (gapi.client.getToken() === null) {
+                // Prompt the user to select a Google Account and ask for consent
+                tokenClient.requestAccessToken({prompt: 'consent'});
+            } else {
+                // Skip display of account chooser and consent dialog
+                tokenClient.requestAccessToken({prompt: ''});
+            }
+        }
+        
+        function handleSignoutClick() {
+            const token = gapi.client.getToken();
+            if (token !== null) {
+                google.accounts.oauth2.revoke(token.access_token);
+                gapi.client.setToken('');
+                accessToken = null;
+                updateUI(false);
+            }
+        }
+        
+        function updateUI(isSignedIn) {
+            // Make sure we have button references
+            if (!authorizeButton) {
+                authorizeButton = document.getElementById('authorizeButton');
+                signoutButton = document.getElementById('signoutButton');
+            }
+            
             if (isSignedIn) {
                 authorizeButton.style.display = 'none';
                 signoutButton.style.display = 'inline-block';
@@ -481,14 +551,6 @@
                 document.getElementById('statusMessage').className = 'status disconnected';
                 document.getElementById('statusMessage').textContent = 'Not connected to Google Calendar';
             }
-        }
-        
-        function handleAuthClick(event) {
-            gapi.auth2.getAuthInstance().signIn();
-        }
-        
-        function handleSignoutClick(event) {
-            gapi.auth2.getAuthInstance().signOut();
         }
         
         // Display events
@@ -541,7 +603,7 @@
         }
         
         function formatDate(dateString) {
-            const date = new Date(dateString);
+            const date = new Date(dateString + 'T00:00:00');
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             return date.toLocaleDateString('en-US', options);
         }
@@ -567,7 +629,7 @@
         
         // Add events to Google Calendar
         async function addEventsToCalendar() {
-            if (!gapi.auth2.getAuthInstance().isSignedIn.get()) {
+            if (!accessToken) {
                 alert('Please connect to Google Calendar first!');
                 return;
             }
@@ -605,7 +667,7 @@
             }
         }
         
-        function addSingleEvent(museumEvent) {
+        async function addSingleEvent(museumEvent) {
             const [startTime, endTime] = parseTimeRange(museumEvent.time);
             
             const event = {
@@ -629,14 +691,15 @@
                 }
             };
             
-            return gapi.client.calendar.events.insert({
+            const request = gapi.client.calendar.events.insert({
                 'calendarId': 'primary',
                 'resource': event
             });
+            
+            return request.execute();
         }
         
         function parseTimeRange(timeString) {
-            // Parse time ranges like "10:00 AM - 6:00 PM"
             const parts = timeString.split(' - ');
             return [parts[0], parts[1]];
         }
@@ -644,13 +707,16 @@
         function convertTo24Hour(time12h) {
             const [time, modifier] = time12h.split(' ');
             let [hours, minutes] = time.split(':');
+            hours = parseInt(hours, 10);
             
-            if (hours === '12') {
-                hours = '00';
-            }
-            
-            if (modifier === 'PM') {
-                hours = parseInt(hours, 10) + 12;
+            if (modifier === 'AM') {
+                if (hours === 12) {
+                    hours = 0;
+                }
+            } else if (modifier === 'PM') {
+                if (hours !== 12) {
+                    hours += 12;
+                }
             }
             
             return `${hours.toString().padStart(2, '0')}:${minutes}`;
@@ -658,6 +724,14 @@
         
         // Event listeners
         document.addEventListener('DOMContentLoaded', () => {
+            // Get button references
+            authorizeButton = document.getElementById('authorizeButton');
+            signoutButton = document.getElementById('signoutButton');
+            
+            // Set button handlers
+            authorizeButton.onclick = handleAuthClick;
+            signoutButton.onclick = handleSignoutClick;
+            
             // Museum filter checkboxes
             const checkboxes = document.querySelectorAll('.museum-checkbox input');
             checkboxes.forEach(checkbox => {
@@ -670,13 +744,8 @@
             // Initial display
             displayEvents();
             
-            // Load Google API
-            if (typeof gapi !== 'undefined') {
-                handleClientLoad();
-            } else {
-                console.error('Google API script failed to load');
-                document.getElementById('statusMessage').textContent = 'Failed to load Google API';
-            }
+            // Update status
+            document.getElementById('statusMessage').textContent = 'Loading Google APIs...';
         });
     </script>
 </body>
