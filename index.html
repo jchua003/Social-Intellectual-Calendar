@@ -269,83 +269,6 @@
             display: none;
         }
     </style>
-</head>
-<body>
-    <div class="container">
-        <h1>NYC Museum Events Calendar</h1>
-        <p class="subtitle">Select events from top NYC museums and add them to your Google Calendar</p>
-        
-        <div class="instructions">
-            <h3>📝 Quick Instructions:</h3>
-            <ol>
-                <li>Click "Connect Google Calendar" button below</li>
-                <li>Sign in with your Google account and authorize calendar access</li>
-                <li>Select museums you're interested in</li>
-                <li>Click on events you want to add (they'll turn green)</li>
-                <li>Click "Add Selected Events to Calendar" at the bottom</li>
-            </ol>
-        </div>
-
-        <div class="error-message" id="errorMessage"></div>
-        
-        <div class="auth-section">
-            <h3>Google Calendar Connection</h3>
-            <div id="statusMessage" class="status disconnected">
-                Initializing...
-            </div>
-            <button id="authorizeButton" style="display: none;">Connect Google Calendar</button>
-            <button id="signoutButton" style="display: none;">Disconnect</button>
-        </div>
-        
-        <div class="museum-filters">
-            <h3>Select Museums to Show Events From:</h3>
-            <div class="museum-checkbox">
-                <input type="checkbox" id="moma" checked>
-                <label for="moma">MoMA</label>
-            </div>
-            <div class="museum-checkbox">
-                <input type="checkbox" id="met" checked>
-                <label for="met">The Met</label>
-            </div>
-            <div class="museum-checkbox">
-                <input type="checkbox" id="nyu" checked>
-                <label for="nyu">NYU Institute of Fine Arts</label>
-            </div>
-            <div class="museum-checkbox">
-                <input type="checkbox" id="arts" checked>
-                <label for="arts">National Arts Club</label>
-            </div>
-            <div class="museum-checkbox">
-                <input type="checkbox" id="explorers" checked>
-                <label for="explorers">The Explorers Club</label>
-            </div>
-            <div class="museum-checkbox">
-                <input type="checkbox" id="womens" checked>
-                <label for="womens">Center for Women's History</label>
-            </div>
-            <div class="museum-checkbox">
-                <input type="checkbox" id="asia" checked>
-                <label for="asia">Asia Society</label>
-            </div>
-        </div>
-        
-        <div id="eventsContainer" class="events-container">
-            <div class="loading">Loading events...</div>
-        </div>
-        
-        <div class="action-buttons">
-            <span class="selected-count">
-                <span id="selectedCount">0</span> events selected
-            </span>
-            <button class="btn-add-to-calendar" id="addToCalendarBtn" disabled>
-                Add Selected Events to Calendar
-            </button>
-        </div>
-    </div>
-    
-    <!-- Google API and Identity Services - Load only once -->
-    <script src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
-    <script src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
     
     <script>
         // Configuration
@@ -714,6 +637,24 @@
             return `${hours.toString().padStart(2, '0')}:${minutes}`;
         }
         
+        // Check for API availability on load
+        function initializeApp() {
+            // Check if gapi is loaded
+            if (typeof gapi !== 'undefined') {
+                gapiLoaded();
+            } else {
+                setTimeout(initializeApp, 100);
+                return;
+            }
+            
+            // Check if google identity services is loaded
+            if (typeof google !== 'undefined') {
+                gisLoaded();
+            } else {
+                setTimeout(initializeApp, 100);
+            }
+        }
+        
         // Initialize when page loads
         document.addEventListener('DOMContentLoaded', () => {
             // Set button event listeners
@@ -731,7 +672,87 @@
             
             // Initial display
             displayEvents();
+            
+            // Start initialization
+            setTimeout(initializeApp, 1000);
         });
     </script>
+</head>
+<body>
+    <div class="container">
+        <h1>NYC Museum Events Calendar</h1>
+        <p class="subtitle">Select events from top NYC museums and add them to your Google Calendar</p>
+        
+        <div class="instructions">
+            <h3>📝 Quick Instructions:</h3>
+            <ol>
+                <li>Click "Connect Google Calendar" button below</li>
+                <li>Sign in with your Google account and authorize calendar access</li>
+                <li>Select museums you're interested in</li>
+                <li>Click on events you want to add (they'll turn green)</li>
+                <li>Click "Add Selected Events to Calendar" at the bottom</li>
+            </ol>
+        </div>
+
+        <div class="error-message" id="errorMessage"></div>
+        
+        <div class="auth-section">
+            <h3>Google Calendar Connection</h3>
+            <div id="statusMessage" class="status disconnected">
+                Initializing...
+            </div>
+            <button id="authorizeButton" style="display: none;">Connect Google Calendar</button>
+            <button id="signoutButton" style="display: none;">Disconnect</button>
+        </div>
+        
+        <div class="museum-filters">
+            <h3>Select Museums to Show Events From:</h3>
+            <div class="museum-checkbox">
+                <input type="checkbox" id="moma" checked>
+                <label for="moma">MoMA</label>
+            </div>
+            <div class="museum-checkbox">
+                <input type="checkbox" id="met" checked>
+                <label for="met">The Met</label>
+            </div>
+            <div class="museum-checkbox">
+                <input type="checkbox" id="nyu" checked>
+                <label for="nyu">NYU Institute of Fine Arts</label>
+            </div>
+            <div class="museum-checkbox">
+                <input type="checkbox" id="arts" checked>
+                <label for="arts">National Arts Club</label>
+            </div>
+            <div class="museum-checkbox">
+                <input type="checkbox" id="explorers" checked>
+                <label for="explorers">The Explorers Club</label>
+            </div>
+            <div class="museum-checkbox">
+                <input type="checkbox" id="womens" checked>
+                <label for="womens">Center for Women's History</label>
+            </div>
+            <div class="museum-checkbox">
+                <input type="checkbox" id="asia" checked>
+                <label for="asia">Asia Society</label>
+            </div>
+        </div>
+        
+        <div id="eventsContainer" class="events-container">
+            <div class="loading">Loading events...</div>
+        </div>
+        
+        <div class="action-buttons">
+            <span class="selected-count">
+                <span id="selectedCount">0</span> events selected
+            </span>
+            <button class="btn-add-to-calendar" id="addToCalendarBtn" disabled>
+                Add Selected Events to Calendar
+            </button>
+        </div>
+    </div>
+    
+    <!-- Google API and Identity Services - Load without onload handlers -->
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://accounts.google.com/gsi/client"></script>
 </body>
 </html>
