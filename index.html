@@ -1,0 +1,683 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYC Museum Events Calendar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        
+        .auth-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        #authorizeButton, #signoutButton {
+            background: #4285f4;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            transition: background 0.3s;
+        }
+        
+        #authorizeButton:hover, #signoutButton:hover {
+            background: #357ae8;
+        }
+        
+        .status {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .status.connected {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status.disconnected {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .museum-filters {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .museum-filters h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .museum-checkbox {
+            display: inline-block;
+            margin: 5px 10px;
+        }
+        
+        .museum-checkbox input {
+            margin-right: 5px;
+        }
+        
+        .museum-checkbox label {
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 20px;
+            background: #ecf0f1;
+            transition: all 0.3s;
+        }
+        
+        .museum-checkbox input:checked + label {
+            background: #3498db;
+            color: white;
+        }
+        
+        .events-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .event-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        .event-card.selected {
+            border: 3px solid #27ae60;
+            background: #e8f8f5;
+        }
+        
+        .event-card.selected::after {
+            content: '✓ Selected';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #27ae60;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .museum-tag {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .museum-moma { background: #FF6B6B; color: white; }
+        .museum-met { background: #4ECDC4; color: white; }
+        .museum-nyu { background: #5D3FD3; color: white; }
+        .museum-arts { background: #FFB84D; color: white; }
+        .museum-explorers { background: #2ECC71; color: white; }
+        .museum-womens { background: #E74C3C; color: white; }
+        .museum-asia { background: #3498DB; color: white; }
+        
+        .event-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .event-date {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .event-time {
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+        
+        .event-description {
+            color: #555;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        
+        .action-buttons {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            position: sticky;
+            bottom: 20px;
+            z-index: 100;
+        }
+        
+        .btn-add-to-calendar {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn-add-to-calendar:hover {
+            background: #229954;
+        }
+        
+        .btn-add-to-calendar:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+        }
+        
+        .selected-count {
+            margin-right: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 20px;
+            color: #7f8c8d;
+        }
+        
+        .instructions {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .instructions h3 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        
+        .instructions ol {
+            margin-left: 20px;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>NYC Museum Events Calendar</h1>
+        <p class="subtitle">Select events from top NYC museums and add them to your Google Calendar</p>
+        
+        <div class="instructions">
+            <h3>📝 Quick Instructions:</h3>
+            <ol>
+                <li>Click "Connect Google Calendar" button below</li>
+                <li>Sign in with your Google account</li>
+                <li>Select museums you're interested in</li>
+                <li>Click on events you want to add (they'll turn green)</li>
+                <li>Click "Add Selected Events to Calendar" at the bottom</li>
+            </ol>
+        </div>
+        
+        <div class="auth-section">
+            <h3>Google Calendar Connection</h3>
+            <div id="statusMessage" class="status disconnected">
+                Error connecting to Google API
+            </div>
+            <button id="authorizeButton" style="display: block;">Connect Google Calendar</button>
+            <button id="signoutButton" style="display: none;">Disconnect</button>
+        </div>
+        
+        <div class="museum-filters">
+            <h3>Select Museums to Show Events From:</h3>
+            <div class="museum-checkbox">
+                <input type="checkbox" id="moma" checked>
+                <label for="moma">MoMA</label>
+            </div>
+            <div class="museum-checkbox">
+                <input type="checkbox" id="met" checked>
+                <label for="met">The Met</label>
+            </div>
+            <div class="museum-checkbox">
+                <input type="checkbox" id="nyu" checked>
+                <label for="nyu">NYU Institute of Fine Arts</label>
+            </div>
+            <div class="museum-checkbox">
+                <input type="checkbox" id="arts" checked>
+                <label for="arts">National Arts Club</label>
+            </div>
+            <div class="museum-checkbox">
+                <input type="checkbox" id="explorers" checked>
+                <label for="explorers">The Explorers Club</label>
+            </div>
+            <div class="museum-checkbox">
+                <input type="checkbox" id="womens" checked>
+                <label for="womens">Center for Women's History</label>
+            </div>
+            <div class="museum-checkbox">
+                <input type="checkbox" id="asia" checked>
+                <label for="asia">Asia Society</label>
+            </div>
+        </div>
+        
+        <div id="eventsContainer" class="events-container">
+            <div class="loading">Loading events...</div>
+        </div>
+        
+        <div class="action-buttons">
+            <span class="selected-count">
+                <span id="selectedCount">0</span> events selected
+            </span>
+            <button class="btn-add-to-calendar" id="addToCalendarBtn" disabled>
+                Add Selected Events to Calendar
+            </button>
+        </div>
+    </div>
+    
+    <!-- Google API -->
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script>
+        // Configuration
+        const CLIENT_ID = '830577253465-ujnennan301ioa0ero48f6fi8ql72ksa.apps.googleusercontent.com';
+        const API_KEY = 'AIzaSyCMKp0u0fOLTwyjH_7WHu5hZfi7QlyNnuY';
+        const DISCOVERY_DOCS = ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'];
+        const SCOPES = 'https://www.googleapis.com/auth/calendar.events';
+        
+        let authorizeButton = document.getElementById('authorizeButton');
+        let signoutButton = document.getElementById('signoutButton');
+        let selectedEvents = new Set();
+        
+        // Sample museum events data (in real implementation, this would come from APIs)
+        const museumEvents = [
+            {
+                id: 'moma-1',
+                museum: 'moma',
+                museumName: 'MoMA',
+                title: 'Picasso in Fontainebleau',
+                date: '2025-06-15',
+                time: '10:00 AM - 6:00 PM',
+                description: 'Explore Pablo Picasso\'s summer sojourns in Fontainebleau, featuring rarely seen works from this creative period.',
+                location: 'MoMA, 11 West 53rd Street, New York, NY'
+            },
+            {
+                id: 'met-1',
+                museum: 'met',
+                museumName: 'The Met',
+                title: 'The Harlem Renaissance and Transatlantic Modernism',
+                date: '2025-06-18',
+                time: '10:00 AM - 5:00 PM',
+                description: 'A groundbreaking exhibition exploring the comprehensive and far-reaching ways in which Black artists portrayed everyday modern life.',
+                location: 'The Met Fifth Avenue, 1000 Fifth Avenue, New York, NY'
+            },
+            {
+                id: 'nyu-1',
+                museum: 'nyu',
+                museumName: 'NYU Institute of Fine Arts',
+                title: 'Conservation in the Digital Age',
+                date: '2025-06-20',
+                time: '6:00 PM - 8:00 PM',
+                description: 'Lecture on new technologies in art conservation and restoration, featuring case studies from recent projects.',
+                location: 'NYU Institute of Fine Arts, 1 East 78th Street, New York, NY'
+            },
+            {
+                id: 'arts-1',
+                museum: 'arts',
+                museumName: 'National Arts Club',
+                title: 'Contemporary Voices: Emerging Artists Showcase',
+                date: '2025-06-22',
+                time: '5:00 PM - 8:00 PM',
+                description: 'Opening reception for exhibition featuring works by emerging artists from the NYC area.',
+                location: 'National Arts Club, 15 Gramercy Park South, New York, NY'
+            },
+            {
+                id: 'explorers-1',
+                museum: 'explorers',
+                museumName: 'The Explorers Club',
+                title: 'Documenting Climate Change Through Art',
+                date: '2025-06-25',
+                time: '7:00 PM - 9:00 PM',
+                description: 'Panel discussion on how artists and explorers collaborate to document environmental changes.',
+                location: 'The Explorers Club, 46 East 70th Street, New York, NY'
+            },
+            {
+                id: 'womens-1',
+                museum: 'womens',
+                museumName: 'Center for Women\'s History',
+                title: 'Women Artists of the Abstract Expressionist Movement',
+                date: '2025-06-28',
+                time: '2:00 PM - 4:00 PM',
+                description: 'Gallery talk exploring the often-overlooked contributions of women to Abstract Expressionism.',
+                location: 'New-York Historical Society, 170 Central Park West, New York, NY'
+            },
+            {
+                id: 'asia-1',
+                museum: 'asia',
+                museumName: 'Asia Society',
+                title: 'Contemporary Korean Art: Beyond Boundaries',
+                date: '2025-06-30',
+                time: '6:00 PM - 8:00 PM',
+                description: 'Opening of exhibition showcasing contemporary Korean artists pushing artistic boundaries.',
+                location: 'Asia Society Museum, 725 Park Avenue, New York, NY'
+            },
+            {
+                id: 'moma-2',
+                museum: 'moma',
+                museumName: 'MoMA',
+                title: 'Film Screening: Experimental Cinema of the 1960s',
+                date: '2025-07-05',
+                time: '7:00 PM - 9:00 PM',
+                description: 'Rare screening of experimental films from the 1960s avant-garde movement.',
+                location: 'MoMA, 11 West 53rd Street, New York, NY'
+            },
+            {
+                id: 'met-2',
+                museum: 'met',
+                museumName: 'The Met',
+                title: 'Ancient Egypt: New Discoveries',
+                date: '2025-07-10',
+                time: '10:00 AM - 5:00 PM',
+                description: 'Special exhibition featuring recent archaeological discoveries from Egypt.',
+                location: 'The Met Fifth Avenue, 1000 Fifth Avenue, New York, NY'
+            }
+        ];
+        
+        // Initialize Google API
+        function handleClientLoad() {
+            console.log('Loading Google API client...');
+            gapi.load('client:auth2', initClient);
+        }
+        
+        function initClient() {
+            console.log('Initializing Google API client...');
+            document.getElementById('statusMessage').textContent = 'Initializing...';
+            
+            gapi.client.init({
+                apiKey: API_KEY,
+                clientId: CLIENT_ID,
+                discoveryDocs: DISCOVERY_DOCS,
+                scope: SCOPES
+            }).then(function () {
+                console.log('Google API initialized successfully!');
+                // Listen for sign-in state changes
+                gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+                
+                // Handle initial sign-in state
+                updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+                authorizeButton.onclick = handleAuthClick;
+                signoutButton.onclick = handleSignoutClick;
+            }, function(error) {
+                console.error('Error initializing Google API:', error);
+                document.getElementById('statusMessage').textContent = 'Error: ' + (error.details || error.error || 'Failed to initialize');
+                document.getElementById('statusMessage').className = 'status disconnected';
+            });
+        }
+        
+        function updateSigninStatus(isSignedIn) {
+            if (isSignedIn) {
+                authorizeButton.style.display = 'none';
+                signoutButton.style.display = 'inline-block';
+                document.getElementById('statusMessage').className = 'status connected';
+                document.getElementById('statusMessage').textContent = 'Connected to Google Calendar';
+            } else {
+                authorizeButton.style.display = 'inline-block';
+                signoutButton.style.display = 'none';
+                document.getElementById('statusMessage').className = 'status disconnected';
+                document.getElementById('statusMessage').textContent = 'Not connected to Google Calendar';
+            }
+        }
+        
+        function handleAuthClick(event) {
+            gapi.auth2.getAuthInstance().signIn();
+        }
+        
+        function handleSignoutClick(event) {
+            gapi.auth2.getAuthInstance().signOut();
+        }
+        
+        // Display events
+        function displayEvents() {
+            const container = document.getElementById('eventsContainer');
+            container.innerHTML = '';
+            
+            const activeMuseums = getActiveMuseums();
+            const filteredEvents = museumEvents.filter(event => activeMuseums.includes(event.museum));
+            
+            if (filteredEvents.length === 0) {
+                container.innerHTML = '<div class="loading">No events found. Please select at least one museum.</div>';
+                return;
+            }
+            
+            filteredEvents.forEach(event => {
+                const eventCard = createEventCard(event);
+                container.appendChild(eventCard);
+            });
+        }
+        
+        function getActiveMuseums() {
+            const museums = ['moma', 'met', 'nyu', 'arts', 'explorers', 'womens', 'asia'];
+            return museums.filter(museum => document.getElementById(museum).checked);
+        }
+        
+        function createEventCard(event) {
+            const card = document.createElement('div');
+            card.className = 'event-card';
+            card.dataset.eventId = event.id;
+            
+            if (selectedEvents.has(event.id)) {
+                card.classList.add('selected');
+            }
+            
+            card.innerHTML = `
+                <span class="museum-tag museum-${event.museum}">${event.museumName}</span>
+                <div class="event-title">${event.title}</div>
+                <div class="event-date">${formatDate(event.date)}</div>
+                <div class="event-time">${event.time}</div>
+                <div class="event-description">${event.description}</div>
+                <div class="event-location" style="color: #7f8c8d; font-size: 0.9em; margin-top: 10px;">
+                    📍 ${event.location}
+                </div>
+            `;
+            
+            card.addEventListener('click', () => toggleEventSelection(event));
+            
+            return card;
+        }
+        
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            return date.toLocaleDateString('en-US', options);
+        }
+        
+        function toggleEventSelection(event) {
+            const card = document.querySelector(`[data-event-id="${event.id}"]`);
+            
+            if (selectedEvents.has(event.id)) {
+                selectedEvents.delete(event.id);
+                card.classList.remove('selected');
+            } else {
+                selectedEvents.add(event.id);
+                card.classList.add('selected');
+            }
+            
+            updateSelectedCount();
+        }
+        
+        function updateSelectedCount() {
+            document.getElementById('selectedCount').textContent = selectedEvents.size;
+            document.getElementById('addToCalendarBtn').disabled = selectedEvents.size === 0;
+        }
+        
+        // Add events to Google Calendar
+        async function addEventsToCalendar() {
+            if (!gapi.auth2.getAuthInstance().isSignedIn.get()) {
+                alert('Please connect to Google Calendar first!');
+                return;
+            }
+            
+            const button = document.getElementById('addToCalendarBtn');
+            button.disabled = true;
+            button.textContent = 'Adding events...';
+            
+            let successCount = 0;
+            let errorCount = 0;
+            
+            for (const eventId of selectedEvents) {
+                const event = museumEvents.find(e => e.id === eventId);
+                if (event) {
+                    try {
+                        await addSingleEvent(event);
+                        successCount++;
+                    } catch (error) {
+                        console.error('Error adding event:', error);
+                        errorCount++;
+                    }
+                }
+            }
+            
+            button.disabled = false;
+            button.textContent = 'Add Selected Events to Calendar';
+            
+            if (successCount > 0) {
+                alert(`Successfully added ${successCount} events to your Google Calendar!${errorCount > 0 ? ` (${errorCount} failed)` : ''}`);
+                selectedEvents.clear();
+                displayEvents();
+                updateSelectedCount();
+            } else {
+                alert('Failed to add events. Please try again.');
+            }
+        }
+        
+        function addSingleEvent(museumEvent) {
+            const [startTime, endTime] = parseTimeRange(museumEvent.time);
+            
+            const event = {
+                'summary': `${museumEvent.museumName}: ${museumEvent.title}`,
+                'location': museumEvent.location,
+                'description': museumEvent.description,
+                'start': {
+                    'dateTime': `${museumEvent.date}T${convertTo24Hour(startTime)}:00`,
+                    'timeZone': 'America/New_York'
+                },
+                'end': {
+                    'dateTime': `${museumEvent.date}T${convertTo24Hour(endTime)}:00`,
+                    'timeZone': 'America/New_York'
+                },
+                'reminders': {
+                    'useDefault': false,
+                    'overrides': [
+                        {'method': 'email', 'minutes': 24 * 60},
+                        {'method': 'popup', 'minutes': 60}
+                    ]
+                }
+            };
+            
+            return gapi.client.calendar.events.insert({
+                'calendarId': 'primary',
+                'resource': event
+            });
+        }
+        
+        function parseTimeRange(timeString) {
+            // Parse time ranges like "10:00 AM - 6:00 PM"
+            const parts = timeString.split(' - ');
+            return [parts[0], parts[1]];
+        }
+        
+        function convertTo24Hour(time12h) {
+            const [time, modifier] = time12h.split(' ');
+            let [hours, minutes] = time.split(':');
+            
+            if (hours === '12') {
+                hours = '00';
+            }
+            
+            if (modifier === 'PM') {
+                hours = parseInt(hours, 10) + 12;
+            }
+            
+            return `${hours.toString().padStart(2, '0')}:${minutes}`;
+        }
+        
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            // Museum filter checkboxes
+            const checkboxes = document.querySelectorAll('.museum-checkbox input');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', displayEvents);
+            });
+            
+            // Add to calendar button
+            document.getElementById('addToCalendarBtn').addEventListener('click', addEventsToCalendar);
+            
+            // Initial display
+            displayEvents();
+            
+            // Load Google API
+            if (typeof gapi !== 'undefined') {
+                handleClientLoad();
+            } else {
+                console.error('Google API script failed to load');
+                document.getElementById('statusMessage').textContent = 'Failed to load Google API';
+            }
+        });
+    </script>
+</body>
+</html>
