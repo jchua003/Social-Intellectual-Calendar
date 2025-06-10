@@ -79,7 +79,7 @@
             color: #721c24;
         }
         
-        .museum-filters {
+        .filters-section {
             background: white;
             padding: 20px;
             border-radius: 10px;
@@ -87,53 +87,99 @@
             margin-bottom: 30px;
         }
         
-        .museum-filters h3 {
+        .filters-section h3 {
             margin-bottom: 15px;
             color: #2c3e50;
         }
         
-        .museum-checkbox {
+        .filter-group {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .filter-group:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .filter-group h4 {
+            color: #34495e;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .museum-checkbox, .type-checkbox {
             display: inline-block;
-            margin: 5px 10px;
+            margin: 5px 10px 5px 0;
         }
         
-        .museum-checkbox input {
-            margin-right: 5px;
+        .museum-checkbox input, .type-checkbox input {
+            display: none;
         }
         
-        .museum-checkbox label {
+        .museum-checkbox label, .type-checkbox label {
             cursor: pointer;
-            padding: 5px 10px;
+            padding: 5px 15px;
             border-radius: 20px;
             background: #ecf0f1;
             transition: all 0.3s;
+            display: inline-block;
+            font-size: 14px;
         }
         
-        .museum-checkbox input:checked + label {
+        .museum-checkbox input:checked + label,
+        .type-checkbox input:checked + label {
             background: #3498db;
             color: white;
         }
         
-        .date-filter {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-            text-align: center;
+        .date-filters {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
         }
         
-        .date-filter h3 {
-            margin-bottom: 15px;
-            color: #2c3e50;
-        }
-        
-        .date-filter select {
-            padding: 10px 20px;
-            font-size: 16px;
+        .date-filters select {
+            padding: 8px 15px;
+            font-size: 14px;
             border-radius: 5px;
             border: 1px solid #ddd;
-            margin: 0 10px;
+        }
+        
+        .filter-actions {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .filter-actions button {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        
+        .btn-select-all {
+            background: #27ae60;
+            color: white;
+        }
+        
+        .btn-select-all:hover {
+            background: #229954;
+        }
+        
+        .btn-clear-all {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .btn-clear-all:hover {
+            background: #c0392b;
         }
         
         .events-summary {
@@ -310,6 +356,18 @@
             margin-bottom: 20px;
             display: none;
         }
+        
+        /* Event Type Colors */
+        .type-exhibition { background: #e74c3c !important; }
+        .type-workshop { background: #f39c12 !important; }
+        .type-lecture { background: #9b59b6 !important; }
+        .type-performance { background: #1abc9c !important; }
+        .type-film { background: #34495e !important; }
+        .type-family { background: #e67e22 !important; }
+        .type-tour { background: #16a085 !important; }
+        .type-symposium { background: #8e44ad !important; }
+        .type-opening { background: #c0392b !important; }
+        .type-social { background: #d35400 !important; }
     </style>
     
     <script>
@@ -324,638 +382,326 @@
         let gisInited = false;
         let selectedEvents = new Set();
         
-        // Comprehensive museum events data - June and July 2025
-        const museumEvents = [
-            // MoMA Events
-            {
-                id: 'moma-1',
-                museum: 'moma',
-                museumName: 'MoMA',
-                title: 'Picasso in Fontainebleau',
-                type: 'Exhibition',
-                date: '2025-06-11',
-                time: '10:00 AM - 6:00 PM',
-                description: 'Explore Pablo Picasso\'s summer sojourns in Fontainebleau, featuring rarely seen works from this creative period.',
-                location: 'MoMA, 11 West 53rd Street, New York, NY'
-            },
-            {
-                id: 'moma-2',
-                museum: 'moma',
-                museumName: 'MoMA',
-                title: 'Abstract Expressionism Workshop',
-                type: 'Workshop',
-                date: '2025-06-13',
-                time: '2:00 PM - 4:00 PM',
-                description: 'Hands-on workshop exploring techniques of Abstract Expressionist masters. Materials provided.',
-                location: 'MoMA Education Center, 11 West 53rd Street, New York, NY'
-            },
-            {
-                id: 'moma-3',
-                museum: 'moma',
-                museumName: 'MoMA',
-                title: 'Film Screening: Experimental Cinema of the 1960s',
-                type: 'Film',
-                date: '2025-06-15',
-                time: '7:00 PM - 9:00 PM',
-                description: 'Rare screening of experimental films from the 1960s avant-garde movement.',
-                location: 'MoMA Theater, 11 West 53rd Street, New York, NY'
-            },
-            {
-                id: 'moma-4',
-                museum: 'moma',
-                museumName: 'MoMA',
-                title: 'Curator Talk: Contemporary Installation Art',
-                type: 'Talk',
-                date: '2025-06-18',
-                time: '6:00 PM - 7:30 PM',
-                description: 'Join senior curator Ann Temkin for insights into MoMA\'s latest installation acquisitions.',
-                location: 'MoMA, 11 West 53rd Street, New York, NY'
-            },
-            {
-                id: 'moma-5',
-                museum: 'moma',
-                museumName: 'MoMA',
-                title: 'Family Art Lab: Sculpture Sunday',
-                type: 'Family Program',
-                date: '2025-06-22',
-                time: '10:00 AM - 12:00 PM',
-                description: 'Create sculptures inspired by works in the collection. For families with children ages 4-14.',
-                location: 'MoMA Education Center, 11 West 53rd Street, New York, NY'
-            },
-            {
-                id: 'moma-6',
-                museum: 'moma',
-                museumName: 'MoMA',
-                title: 'Modern Mondays: Artist Talk Series',
-                type: 'Artist Talk',
-                date: '2025-06-23',
-                time: '7:00 PM - 8:30 PM',
-                description: 'Contemporary artist Kara Walker discusses her recent work and influences.',
-                location: 'MoMA Theater, 11 West 53rd Street, New York, NY'
-            },
-            {
-                id: 'moma-7',
-                museum: 'moma',
-                museumName: 'MoMA',
-                title: 'Photography Workshop: Light and Shadow',
-                type: 'Workshop',
-                date: '2025-06-27',
-                time: '1:00 PM - 4:00 PM',
-                description: 'Explore photographic techniques focusing on dramatic lighting. Bring your camera.',
-                location: 'MoMA, 11 West 53rd Street, New York, NY'
-            },
-            {
-                id: 'moma-8',
-                museum: 'moma',
-                museumName: 'MoMA',
-                title: 'MoMA Nights: Summer Jazz Series',
-                type: 'Performance',
-                date: '2025-07-03',
-                time: '5:00 PM - 9:00 PM',
-                description: 'Extended hours with live jazz performances in the sculpture garden.',
-                location: 'MoMA Sculpture Garden, 11 West 53rd Street, New York, NY'
-            },
-            {
-                id: 'moma-9',
-                museum: 'moma',
-                museumName: 'MoMA',
-                title: 'Digital Art and NFTs Panel',
-                type: 'Panel Discussion',
-                date: '2025-07-08',
-                time: '6:00 PM - 8:00 PM',
-                description: 'Experts discuss the intersection of digital art, blockchain, and museum collections.',
-                location: 'MoMA Theater, 11 West 53rd Street, New York, NY'
-            },
-            {
-                id: 'moma-10',
-                museum: 'moma',
-                museumName: 'MoMA',
-                title: 'Summer Art Camp Opening',
-                type: 'Youth Program',
-                date: '2025-07-14',
-                time: '9:00 AM - 12:00 PM',
-                description: 'Week-long intensive art camp for teens begins. Registration required.',
-                location: 'MoMA Education Center, 11 West 53rd Street, New York, NY'
-            },
-
-            // Met Events
-            {
-                id: 'met-1',
-                museum: 'met',
-                museumName: 'The Met',
-                title: 'The Harlem Renaissance and Transatlantic Modernism',
-                type: 'Exhibition',
-                date: '2025-06-12',
-                time: '10:00 AM - 5:00 PM',
-                description: 'A groundbreaking exhibition exploring the comprehensive and far-reaching ways in which Black artists portrayed everyday modern life.',
-                location: 'The Met Fifth Avenue, 1000 Fifth Avenue, New York, NY'
-            },
-            {
-                id: 'met-2',
-                museum: 'met',
-                museumName: 'The Met',
-                title: 'Ancient Egypt: New Discoveries',
-                type: 'Exhibition',
-                date: '2025-06-14',
-                time: '10:00 AM - 5:00 PM',
-                description: 'Special exhibition featuring recent archaeological discoveries from Egypt.',
-                location: 'The Met Fifth Avenue, 1000 Fifth Avenue, New York, NY'
-            },
-            {
-                id: 'met-3',
-                museum: 'met',
-                museumName: 'The Met',
-                title: 'Medieval Manuscript Illumination Workshop',
-                type: 'Workshop',
-                date: '2025-06-16',
-                time: '2:00 PM - 4:30 PM',
-                description: 'Learn traditional techniques of manuscript illumination with gold leaf application.',
-                location: 'The Met Fifth Avenue, 1000 Fifth Avenue, New York, NY'
-            },
-            {
-                id: 'met-4',
-                museum: 'met',
-                museumName: 'The Met',
-                title: 'Gallery Talk: Greek and Roman Sculptures',
-                type: 'Gallery Talk',
-                date: '2025-06-19',
-                time: '11:00 AM - 12:00 PM',
-                description: 'Expert-led tour focusing on the restoration and preservation of ancient sculptures.',
-                location: 'The Met Fifth Avenue, 1000 Fifth Avenue, New York, NY'
-            },
-            {
-                id: 'met-5',
-                museum: 'met',
-                museumName: 'The Met',
-                title: 'Fashion and Costume: Behind the Scenes',
-                type: 'Special Tour',
-                date: '2025-06-21',
-                time: '3:00 PM - 4:30 PM',
-                description: 'Exclusive access to the Costume Institute conservation labs.',
-                location: 'The Met Fifth Avenue, 1000 Fifth Avenue, New York, NY'
-            },
-            {
-                id: 'met-6',
-                museum: 'met',
-                museumName: 'The Met',
-                title: 'Met Kids: Art Detective Adventure',
-                type: 'Family Program',
-                date: '2025-06-24',
-                time: '10:30 AM - 12:00 PM',
-                description: 'Solve mysteries throughout the museum galleries. Ages 7-12.',
-                location: 'The Met Fifth Avenue, 1000 Fifth Avenue, New York, NY'
-            },
-            {
-                id: 'met-7',
-                museum: 'met',
-                museumName: 'The Met',
-                title: 'Asian Art Symposium',
-                type: 'Symposium',
-                date: '2025-06-26',
-                time: '9:00 AM - 5:00 PM',
-                description: 'Full-day symposium on recent scholarship in Asian art history.',
-                location: 'The Met Fifth Avenue, Grace Rainey Rogers Auditorium, New York, NY'
-            },
-            {
-                id: 'met-8',
-                museum: 'met',
-                museumName: 'The Met',
-                title: 'Rooftop Garden Commission Opening',
-                type: 'Opening Reception',
-                date: '2025-06-28',
-                time: '6:00 PM - 8:00 PM',
-                description: 'Celebrate the opening of this year\'s rooftop installation with cocktails and views.',
-                location: 'The Met Fifth Avenue, Roof Garden, New York, NY'
-            },
-            {
-                id: 'met-9',
-                museum: 'met',
-                museumName: 'The Met',
-                title: 'American Wing Architecture Tour',
-                type: 'Architecture Tour',
-                date: '2025-07-02',
-                time: '2:00 PM - 3:30 PM',
-                description: 'Explore the architectural history of the American Wing and period rooms.',
-                location: 'The Met Fifth Avenue, 1000 Fifth Avenue, New York, NY'
-            },
-            {
-                id: 'met-10',
-                museum: 'met',
-                museumName: 'The Met',
-                title: 'Summer Nights at The Met',
-                type: 'Special Event',
-                date: '2025-07-11',
-                time: '5:00 PM - 9:00 PM',
-                description: 'Extended Friday hours with live music, talks, and special gallery activities.',
-                location: 'The Met Fifth Avenue, 1000 Fifth Avenue, New York, NY'
-            },
-
-            // NYU Institute of Fine Arts Events
-            {
-                id: 'nyu-1',
-                museum: 'nyu',
-                museumName: 'NYU Institute of Fine Arts',
-                title: 'Conservation in the Digital Age',
-                type: 'Lecture',
-                date: '2025-06-11',
-                time: '6:00 PM - 8:00 PM',
-                description: 'Lecture on new technologies in art conservation and restoration.',
-                location: 'NYU Institute of Fine Arts, 1 East 78th Street, New York, NY'
-            },
-            {
-                id: 'nyu-2',
-                museum: 'nyu',
-                museumName: 'NYU Institute of Fine Arts',
-                title: 'Graduate Student Symposium',
-                type: 'Symposium',
-                date: '2025-06-13',
-                time: '9:00 AM - 5:00 PM',
-                description: 'Annual symposium featuring research by doctoral candidates in art history.',
-                location: 'NYU Institute of Fine Arts, 1 East 78th Street, New York, NY'
-            },
-            {
-                id: 'nyu-3',
-                museum: 'nyu',
-                museumName: 'NYU Institute of Fine Arts',
-                title: 'Provenance Research Workshop',
-                type: 'Workshop',
-                date: '2025-06-17',
-                time: '2:00 PM - 5:00 PM',
-                description: 'Learn methods for tracing artwork ownership and authenticity.',
-                location: 'NYU Institute of Fine Arts, 1 East 78th Street, New York, NY'
-            },
-            {
-                id: 'nyu-4',
-                museum: 'nyu',
-                museumName: 'NYU Institute of Fine Arts',
-                title: 'Islamic Art and Architecture Series',
-                type: 'Lecture Series',
-                date: '2025-06-20',
-                time: '6:00 PM - 7:30 PM',
-                description: 'Part 3 of 5: Geometric patterns in mosque architecture.',
-                location: 'NYU Institute of Fine Arts, 1 East 78th Street, New York, NY'
-            },
-            {
-                id: 'nyu-5',
-                museum: 'nyu',
-                museumName: 'NYU Institute of Fine Arts',
-                title: 'Conservation Lab Open House',
-                type: 'Open House',
-                date: '2025-06-25',
-                time: '10:00 AM - 4:00 PM',
-                description: 'Tour the conservation laboratories and see restoration work in progress.',
-                location: 'NYU Institute of Fine Arts, 1 East 78th Street, New York, NY'
-            },
-            {
-                id: 'nyu-6',
-                museum: 'nyu',
-                museumName: 'NYU Institute of Fine Arts',
-                title: 'Curatorial Studies Info Session',
-                type: 'Information Session',
-                date: '2025-07-09',
-                time: '5:00 PM - 6:30 PM',
-                description: 'Learn about the MA program in Curatorial Studies.',
-                location: 'NYU Institute of Fine Arts, 1 East 78th Street, New York, NY'
-            },
-            {
-                id: 'nyu-7',
-                museum: 'nyu',
-                museumName: 'NYU Institute of Fine Arts',
-                title: 'Summer Lecture: Renaissance Frescoes',
-                type: 'Guest Lecture',
-                date: '2025-07-15',
-                time: '6:00 PM - 7:30 PM',
-                description: 'Guest speaker from Florence discusses recent fresco restorations.',
-                location: 'NYU Institute of Fine Arts, 1 East 78th Street, New York, NY'
-            },
-
-            // National Arts Club Events
-            {
-                id: 'arts-1',
-                museum: 'arts',
-                museumName: 'National Arts Club',
-                title: 'Contemporary Voices: Emerging Artists Showcase',
-                type: 'Exhibition Opening',
-                date: '2025-06-12',
-                time: '5:00 PM - 8:00 PM',
-                description: 'Opening reception for exhibition featuring works by emerging NYC artists.',
-                location: 'National Arts Club, 15 Gramercy Park South, New York, NY'
-            },
-            {
-                id: 'arts-2',
-                museum: 'arts',
-                museumName: 'National Arts Club',
-                title: 'Life Drawing Session',
-                type: 'Workshop',
-                date: '2025-06-14',
-                time: '10:00 AM - 1:00 PM',
-                description: 'Open life drawing session with professional models. All skill levels welcome.',
-                location: 'National Arts Club, 15 Gramercy Park South, New York, NY'
-            },
-            {
-                id: 'arts-3',
-                museum: 'arts',
-                museumName: 'National Arts Club',
-                title: 'Poetry and Visual Arts Evening',
-                type: 'Performance',
-                date: '2025-06-17',
-                time: '7:00 PM - 9:00 PM',
-                description: 'Poets respond to visual artworks in the collection.',
-                location: 'National Arts Club, 15 Gramercy Park South, New York, NY'
-            },
-            {
-                id: 'arts-4',
-                museum: 'arts',
-                museumName: 'National Arts Club',
-                title: 'Watercolor Workshop',
-                type: 'Workshop',
-                date: '2025-06-19',
-                time: '2:00 PM - 5:00 PM',
-                description: 'Learn watercolor techniques with award-winning artist Mary Whyte.',
-                location: 'National Arts Club, 15 Gramercy Park South, New York, NY'
-            },
-            {
-                id: 'arts-5',
-                museum: 'arts',
-                museumName: 'National Arts Club',
-                title: 'Members\' Annual Exhibition',
-                type: 'Exhibition',
-                date: '2025-06-24',
-                time: '11:00 AM - 6:00 PM',
-                description: 'Annual juried exhibition of works by club members.',
-                location: 'National Arts Club, 15 Gramercy Park South, New York, NY'
-            },
-            {
-                id: 'arts-6',
-                museum: 'arts',
-                museumName: 'National Arts Club',
-                title: 'Jazz in the Gallery',
-                type: 'Concert',
-                date: '2025-06-27',
-                time: '7:30 PM - 9:30 PM',
-                description: 'Live jazz performance among the artworks.',
-                location: 'National Arts Club, 15 Gramercy Park South, New York, NY'
-            },
-            {
-                id: 'arts-7',
-                museum: 'arts',
-                museumName: 'National Arts Club',
-                title: 'Portrait Painting Demo',
-                type: 'Demonstration',
-                date: '2025-07-05',
-                time: '2:00 PM - 4:00 PM',
-                description: 'Watch master portrait artist at work and learn techniques.',
-                location: 'National Arts Club, 15 Gramercy Park South, New York, NY'
-            },
-            {
-                id: 'arts-8',
-                museum: 'arts',
-                museumName: 'National Arts Club',
-                title: 'Summer Salon',
-                type: 'Social Event',
-                date: '2025-07-10',
-                time: '6:00 PM - 9:00 PM',
-                description: 'Mingle with artists, collectors, and art lovers at our summer salon.',
-                location: 'National Arts Club, 15 Gramercy Park South, New York, NY'
-            },
-
-            // The Explorers Club Events
-            {
-                id: 'explorers-1',
-                museum: 'explorers',
-                museumName: 'The Explorers Club',
-                title: 'Documenting Climate Change Through Art',
-                type: 'Panel Discussion',
-                date: '2025-06-11',
-                time: '7:00 PM - 9:00 PM',
-                description: 'Panel discussion on how artists and explorers collaborate to document environmental changes.',
-                location: 'The Explorers Club, 46 East 70th Street, New York, NY'
-            },
-            {
-                id: 'explorers-2',
-                museum: 'explorers',
-                museumName: 'The Explorers Club',
-                title: 'Arctic Photography Exhibition',
-                type: 'Exhibition',
-                date: '2025-06-13',
-                time: '10:00 AM - 6:00 PM',
-                description: 'Stunning photographs from recent Arctic expeditions.',
-                location: 'The Explorers Club, 46 East 70th Street, New York, NY'
-            },
-            {
-                id: 'explorers-3',
-                museum: 'explorers',
-                museumName: 'The Explorers Club',
-                title: 'Exploration Film Festival',
-                type: 'Film Screening',
-                date: '2025-06-18',
-                time: '6:00 PM - 10:00 PM',
-                description: 'Documentary films featuring recent expeditions and discoveries.',
-                location: 'The Explorers Club, 46 East 70th Street, New York, NY'
-            },
-            {
-                id: 'explorers-4',
-                museum: 'explorers',
-                museumName: 'The Explorers Club',
-                title: 'Cartography Workshop',
-                type: 'Workshop',
-                date: '2025-06-21',
-                time: '2:00 PM - 5:00 PM',
-                description: 'Learn traditional and modern map-making techniques.',
-                location: 'The Explorers Club, 46 East 70th Street, New York, NY'
-            },
-            {
-                id: 'explorers-5',
-                museum: 'explorers',
-                museumName: 'The Explorers Club',
-                title: 'Deep Sea Discoveries Lecture',
-                type: 'Lecture',
-                date: '2025-06-26',
-                time: '7:00 PM - 8:30 PM',
-                description: 'Marine biologist shares recent discoveries from ocean depths.',
-                location: 'The Explorers Club, 46 East 70th Street, New York, NY'
-            },
-            {
-                id: 'explorers-6',
-                museum: 'explorers',
-                museumName: 'The Explorers Club',
-                title: 'Young Explorers Day',
-                type: 'Youth Program',
-                date: '2025-07-06',
-                time: '10:00 AM - 3:00 PM',
-                description: 'Hands-on activities for aspiring young explorers ages 8-16.',
-                location: 'The Explorers Club, 46 East 70th Street, New York, NY'
-            },
-            {
-                id: 'explorers-7',
-                museum: 'explorers',
-                museumName: 'The Explorers Club',
-                title: 'Space Exploration Update',
-                type: 'Presentation',
-                date: '2025-07-12',
-                time: '7:00 PM - 9:00 PM',
-                description: 'NASA scientist discusses latest Mars missions and findings.',
-                location: 'The Explorers Club, 46 East 70th Street, New York, NY'
-            },
-
-            // Center for Women's History Events
-            {
-                id: 'womens-1',
-                museum: 'womens',
-                museumName: 'Center for Women\'s History',
-                title: 'Women Artists of the Abstract Expressionist Movement',
-                type: 'Gallery Talk',
-                date: '2025-06-12',
-                time: '2:00 PM - 4:00 PM',
-                description: 'Gallery talk exploring the often-overlooked contributions of women to Abstract Expressionism.',
-                location: 'New-York Historical Society, 170 Central Park West, New York, NY'
-            },
-            {
-                id: 'womens-2',
-                museum: 'womens',
-                museumName: 'Center for Women\'s History',
-                title: 'Suffrage and Art Workshop',
-                type: 'Workshop',
-                date: '2025-06-15',
-                time: '11:00 AM - 1:00 PM',
-                description: 'Create artwork inspired by the suffrage movement.',
-                location: 'New-York Historical Society, 170 Central Park West, New York, NY'
-            },
-            {
-                id: 'womens-3',
-                museum: 'womens',
-                museumName: 'Center for Women\'s History',
-                title: 'Women in Photography: 1900-1950',
-                type: 'Exhibition',
-                date: '2025-06-19',
-                time: '10:00 AM - 5:00 PM',
-                description: 'Exhibition showcasing pioneering women photographers.',
-                location: 'New-York Historical Society, 170 Central Park West, New York, NY'
-            },
-            {
-                id: 'womens-4',
-                museum: 'womens',
-                museumName: 'Center for Women\'s History',
-                title: 'Feminist Art Movement Panel',
-                type: 'Panel Discussion',
-                date: '2025-06-23',
-                time: '6:00 PM - 8:00 PM',
-                description: 'Artists and scholars discuss the impact of feminist art.',
-                location: 'New-York Historical Society, 170 Central Park West, New York, NY'
-            },
-            {
-                id: 'womens-5',
-                museum: 'womens',
-                museumName: 'Center for Women\'s History',
-                title: 'Girls Write History',
-                type: 'Youth Workshop',
-                date: '2025-06-29',
-                time: '1:00 PM - 3:00 PM',
-                description: 'Creative writing workshop for girls ages 12-17.',
-                location: 'New-York Historical Society, 170 Central Park West, New York, NY'
-            },
-            {
-                id: 'womens-6',
-                museum: 'womens',
-                museumName: 'Center for Women\'s History',
-                title: 'Women Leaders in Arts Administration',
-                type: 'Career Panel',
-                date: '2025-07-08',
-                time: '5:30 PM - 7:00 PM',
-                description: 'Museum directors and curators discuss their career paths.',
-                location: 'New-York Historical Society, 170 Central Park West, New York, NY'
-            },
-
-            // Asia Society Events
-            {
-                id: 'asia-1',
-                museum: 'asia',
-                museumName: 'Asia Society',
-                title: 'Contemporary Korean Art: Beyond Boundaries',
-                type: 'Exhibition Opening',
-                date: '2025-06-11',
-                time: '6:00 PM - 8:00 PM',
-                description: 'Opening of exhibition showcasing contemporary Korean artists.',
-                location: 'Asia Society Museum, 725 Park Avenue, New York, NY'
-            },
-            {
-                id: 'asia-2',
-                museum: 'asia',
-                museumName: 'Asia Society',
-                title: 'Japanese Tea Ceremony',
-                type: 'Cultural Demonstration',
-                date: '2025-06-14',
-                time: '2:00 PM - 3:30 PM',
-                description: 'Experience the art and philosophy of Japanese tea ceremony.',
-                location: 'Asia Society Museum, 725 Park Avenue, New York, NY'
-            },
-            {
-                id: 'asia-3',
-                museum: 'asia',
-                museumName: 'Asia Society',
-                title: 'Chinese Calligraphy Workshop',
-                type: 'Workshop',
-                date: '2025-06-17',
-                time: '10:00 AM - 12:00 PM',
-                description: 'Learn basic techniques of Chinese brush calligraphy.',
-                location: 'Asia Society Museum, 725 Park Avenue, New York, NY'
-            },
-            {
-                id: 'asia-4',
-                museum: 'asia',
-                museumName: 'Asia Society',
-                title: 'Contemporary Asian Cinema',
-                type: 'Film Series',
-                date: '2025-06-20',
-                time: '7:00 PM - 9:30 PM',
-                description: 'Screening of award-winning films from across Asia.',
-                location: 'Asia Society Museum, 725 Park Avenue, New York, NY'
-            },
-            {
-                id: 'asia-5',
-                museum: 'asia',
-                museumName: 'Asia Society',
-                title: 'Buddhist Art Symposium',
-                type: 'Symposium',
-                date: '2025-06-25',
-                time: '9:00 AM - 4:00 PM',
-                description: 'Scholars discuss Buddhist art across cultures.',
-                location: 'Asia Society Museum, 725 Park Avenue, New York, NY'
-            },
-            {
-                id: 'asia-6',
-                museum: 'asia',
-                museumName: 'Asia Society',
-                title: 'Summer Family Day: Asian Arts & Crafts',
-                type: 'Family Program',
-                date: '2025-06-28',
-                time: '11:00 AM - 3:00 PM',
-                description: 'Family-friendly activities inspired by Asian art traditions.',
-                location: 'Asia Society Museum, 725 Park Avenue, New York, NY'
-            },
-            {
-                id: 'asia-7',
-                museum: 'asia',
-                museumName: 'Asia Society',
-                title: 'Contemporary Indian Art Talk',
-                type: 'Artist Talk',
-                date: '2025-07-09',
-                time: '6:00 PM - 7:30 PM',
-                description: 'Leading Indian contemporary artist discusses their work.',
-                location: 'Asia Society Museum, 725 Park Avenue, New York, NY'
-            },
-            {
-                id: 'asia-8',
-                museum: 'asia',
-                museumName: 'Asia Society',
-                title: 'Asian Art Conservation Workshop',
-                type: 'Professional Workshop',
-                date: '2025-07-13',
-                time: '10:00 AM - 5:00 PM',
-                description: 'Professional development workshop on Asian art conservation.',
-                location: 'Asia Society Museum, 725 Park Avenue, New York, NY'
-            }
+        // Event types
+        const eventTypes = [
+            'Exhibition', 'Workshop', 'Lecture', 'Performance', 
+            'Film', 'Family Program', 'Tour', 'Symposium', 
+            'Opening', 'Social Event', 'Panel Discussion', 
+            'Artist Talk', 'Gallery Talk', 'Special Event'
         ];
+        
+        // Generate comprehensive events for each museum
+        function generateMuseumEvents() {
+            const museums = [
+                { id: 'moma', name: 'MoMA', location: 'MoMA, 11 West 53rd Street, New York, NY' },
+                { id: 'met', name: 'The Met', location: 'The Met Fifth Avenue, 1000 Fifth Avenue, New York, NY' },
+                { id: 'nyu', name: 'NYU Institute of Fine Arts', location: 'NYU Institute of Fine Arts, 1 East 78th Street, New York, NY' },
+                { id: 'arts', name: 'National Arts Club', location: 'National Arts Club, 15 Gramercy Park South, New York, NY' },
+                { id: 'explorers', name: 'The Explorers Club', location: 'The Explorers Club, 46 East 70th Street, New York, NY' },
+                { id: 'womens', name: 'Center for Women\'s History', location: 'New-York Historical Society, 170 Central Park West, New York, NY' },
+                { id: 'asia', name: 'Asia Society', location: 'Asia Society Museum, 725 Park Avenue, New York, NY' }
+            ];
+            
+            const events = [];
+            let eventId = 1;
+            
+            // Generate events for each museum
+            museums.forEach(museum => {
+                // Generate events for each month (June - December 2025)
+                for (let month = 6; month <= 12; month++) {
+                    const monthStr = month.toString().padStart(2, '0');
+                    const daysInMonth = new Date(2025, month, 0).getDate();
+                    
+                    // Generate multiple events per month for each museum
+                    const eventsPerMonth = 15 + Math.floor(Math.random() * 10); // 15-25 events per month
+                    
+                    for (let i = 0; i < eventsPerMonth; i++) {
+                        const day = Math.floor(Math.random() * daysInMonth) + 1;
+                        const dayStr = day.toString().padStart(2, '0');
+                        const eventType = eventTypes[Math.floor(Math.random() * eventTypes.length)];
+                        
+                        events.push(generateSingleEvent(
+                            eventId++,
+                            museum,
+                            `2025-${monthStr}-${dayStr}`,
+                            eventType
+                        ));
+                    }
+                }
+            });
+            
+            // Sort events by date
+            events.sort((a, b) => new Date(a.date) - new Date(b.date));
+            
+            return events;
+        }
+        
+        // Generate a single event with realistic details
+        function generateSingleEvent(id, museum, date, eventType) {
+            const eventTemplates = {
+                'MoMA': {
+                    'Exhibition': [
+                        'Contemporary Voices: New Acquisitions',
+                        'Surrealism Beyond Borders',
+                        'Digital Dreams: Art in the Age of AI',
+                        'Minimalism Revisited',
+                        'Photography Now: Global Perspectives'
+                    ],
+                    'Workshop': [
+                        'Abstract Painting Techniques',
+                        'Digital Art Creation',
+                        'Printmaking Fundamentals',
+                        'Sculpture with Found Objects',
+                        'Video Art Production'
+                    ],
+                    'Lecture': [
+                        'The Future of Museums',
+                        'Conservation Challenges in Modern Art',
+                        'Art and Technology Intersection',
+                        'Decolonizing the Museum',
+                        'Climate Change and Art'
+                    ],
+                    'Performance': [
+                        'Dance in the Galleries',
+                        'Sound Art Experience',
+                        'Interactive Performance Art',
+                        'Music and Visual Art',
+                        'Theater Meets Museum'
+                    ],
+                    'Film': [
+                        'Artist Documentary Series',
+                        'Experimental Film Night',
+                        'Animation Showcase',
+                        'International Cinema',
+                        'Video Art Screening'
+                    ]
+                },
+                'The Met': {
+                    'Exhibition': [
+                        'Ancient Civilizations Revealed',
+                        'Masterpieces from the Islamic World',
+                        'European Paintings: Hidden Gems',
+                        'Fashion Through the Centuries',
+                        'Arms and Armor: Warriors\' Tales'
+                    ],
+                    'Workshop': [
+                        'Medieval Manuscript Making',
+                        'Ancient Pottery Techniques',
+                        'Textile Conservation',
+                        'Drawing in the Galleries',
+                        'Jewelry Making Inspired by Antiquity'
+                    ],
+                    'Lecture': [
+                        'Archaeological Discoveries',
+                        'Art History Symposium',
+                        'Curatorial Perspectives',
+                        'Conservation Science',
+                        'Provenance Research'
+                    ],
+                    'Tour': [
+                        'Highlights of the Collection',
+                        'Behind the Scenes Tour',
+                        'Architecture Walk',
+                        'Curator\'s Choice Tour',
+                        'Accessible Art Tour'
+                    ],
+                    'Family Program': [
+                        'Art Adventures for Kids',
+                        'Family Drawing Workshop',
+                        'Storytime in the Galleries',
+                        'Teen Studio',
+                        'Weekend Family Festival'
+                    ]
+                },
+                'NYU Institute of Fine Arts': {
+                    'Lecture': [
+                        'Graduate Research Presentations',
+                        'Conservation Science Symposium',
+                        'Art Market Studies',
+                        'Digital Humanities in Art History',
+                        'Methodology in Art History'
+                    ],
+                    'Symposium': [
+                        'Annual Graduate Symposium',
+                        'Conservation Colloquium',
+                        'Renaissance Studies Conference',
+                        'Contemporary Art Forum',
+                        'Archaeological Methods Workshop'
+                    ],
+                    'Workshop': [
+                        'Research Methods Training',
+                        'Digital Tools for Art Historians',
+                        'Grant Writing for Scholars',
+                        'Publishing Your Research',
+                        'Archive Research Techniques'
+                    ]
+                },
+                'National Arts Club': {
+                    'Exhibition': [
+                        'Member Artists Annual',
+                        'Emerging Talent Showcase',
+                        'Landscape Traditions',
+                        'Portrait Exhibition',
+                        'Abstract Expressions'
+                    ],
+                    'Workshop': [
+                        'Oil Painting Masterclass',
+                        'Watercolor Techniques',
+                        'Life Drawing Sessions',
+                        'Plein Air Painting',
+                        'Mixed Media Exploration'
+                    ],
+                    'Social Event': [
+                        'Artists\' Reception',
+                        'Collectors\' Evening',
+                        'Summer Garden Party',
+                        'Holiday Celebration',
+                        'Opening Night Gala'
+                    ]
+                },
+                'The Explorers Club': {
+                    'Lecture': [
+                        'Deep Ocean Exploration',
+                        'Climate Research Expeditions',
+                        'Space Exploration Updates',
+                        'Wildlife Conservation Projects',
+                        'Archaeological Discoveries'
+                    ],
+                    'Film': [
+                        'Expedition Documentary Night',
+                        'Nature Film Festival',
+                        'Adventure Cinema',
+                        'Scientific Discovery Films',
+                        'Explorer Profiles'
+                    ],
+                    'Special Event': [
+                        'Annual Explorers Dinner',
+                        'Flag Expedition Send-off',
+                        'Young Explorers Day',
+                        'Research Presentation Night',
+                        'Conservation Awards'
+                    ]
+                },
+                'Center for Women\'s History': {
+                    'Exhibition': [
+                        'Women in the Arts',
+                        'Suffrage Movement Artifacts',
+                        'Contemporary Women Artists',
+                        'Hidden Histories Revealed',
+                        'Women in Science and Innovation'
+                    ],
+                    'Panel Discussion': [
+                        'Women in Museum Leadership',
+                        'Gender and Art History',
+                        'Feminist Art Movements',
+                        'Women Collectors and Patrons',
+                        'Breaking Barriers in the Arts'
+                    ],
+                    'Workshop': [
+                        'Oral History Collection',
+                        'Archival Research Skills',
+                        'Creative Writing Workshop',
+                        'Documentary Making',
+                        'Activism Through Art'
+                    ]
+                },
+                'Asia Society': {
+                    'Exhibition': [
+                        'Contemporary Asian Art',
+                        'Traditional Crafts Reimagined',
+                        'Buddhist Art Across Cultures',
+                        'Modern Chinese Painting',
+                        'Southeast Asian Textiles'
+                    ],
+                    'Performance': [
+                        'Traditional Music Concert',
+                        'Contemporary Dance',
+                        'Theater Performance',
+                        'Poetry Reading',
+                        'Multi-media Performance'
+                    ],
+                    'Workshop': [
+                        'Calligraphy Class',
+                        'Tea Ceremony',
+                        'Origami Workshop',
+                        'Asian Cooking and Culture',
+                        'Meditation and Art'
+                    ]
+                }
+            };
+            
+            // Get appropriate title based on museum and event type
+            const museumTemplates = eventTemplates[museum.name] || eventTemplates['MoMA'];
+            const titles = museumTemplates[eventType] || museumTemplates['Exhibition'];
+            const title = titles[Math.floor(Math.random() * titles.length)];
+            
+            // Generate time based on event type
+            let time;
+            switch(eventType) {
+                case 'Exhibition':
+                case 'Gallery Talk':
+                    time = '10:00 AM - 5:00 PM';
+                    break;
+                case 'Workshop':
+                case 'Tour':
+                    time = Math.random() > 0.5 ? '2:00 PM - 4:00 PM' : '10:00 AM - 12:00 PM';
+                    break;
+                case 'Lecture':
+                case 'Panel Discussion':
+                case 'Artist Talk':
+                    time = '6:00 PM - 7:30 PM';
+                    break;
+                case 'Performance':
+                case 'Film':
+                    time = '7:00 PM - 9:00 PM';
+                    break;
+                case 'Opening':
+                case 'Social Event':
+                    time = '6:00 PM - 8:00 PM';
+                    break;
+                case 'Family Program':
+                    time = '11:00 AM - 1:00 PM';
+                    break;
+                case 'Symposium':
+                    time = '9:00 AM - 5:00 PM';
+                    break;
+                default:
+                    time = '2:00 PM - 4:00 PM';
+            }
+            
+            // Generate description
+            const descriptions = {
+                'Exhibition': `Experience this compelling exhibition featuring diverse works that challenge and inspire. Join us for a journey through artistic excellence.`,
+                'Workshop': `Hands-on workshop where participants will learn new techniques and create their own works. All materials provided. Prior registration required.`,
+                'Lecture': `Join distinguished speakers for an engaging presentation followed by Q&A. Free with museum admission.`,
+                'Performance': `Live performance integrating various artistic disciplines. Limited seating available.`,
+                'Film': `Special screening followed by discussion. Tickets available at the door.`,
+                'Family Program': `Engaging activities designed for families with children ages 5-12. Create, explore, and learn together.`,
+                'Tour': `Expert-led tour providing unique insights into the collection. Group size limited.`,
+                'Symposium': `Full-day program featuring multiple speakers and panel discussions. Lunch included.`,
+                'Opening': `Celebrate the opening of our newest exhibition with refreshments and special guest appearances.`,
+                'Social Event': `Join fellow art enthusiasts for an evening of culture and conversation.`,
+                'Panel Discussion': `Dynamic discussion featuring experts from various fields. Audience participation encouraged.`,
+                'Artist Talk': `Hear directly from the artist about their creative process and inspiration.`,
+                'Gallery Talk': `Informal discussion in the galleries led by curators and educators.`,
+                'Special Event': `Don't miss this unique program featuring special guests and exclusive access.`
+            };
+            
+            return {
+                id: `${museum.id}-${id}`,
+                museum: museum.id,
+                museumName: museum.name,
+                title: title + (Math.random() > 0.7 ? ' - Special Edition' : ''),
+                type: eventType,
+                date: date,
+                time: time,
+                description: descriptions[eventType] || descriptions['Exhibition'],
+                location: museum.location
+            };
+        }
+        
+        // Initialize museum events
+        const museumEvents = generateMuseumEvents();
 
         // Show error message
         function showError(message) {
@@ -1047,35 +793,70 @@
             }
         }
         
+        // Get active filters
+        function getActiveFilters() {
+            // Museums
+            const museums = ['moma', 'met', 'nyu', 'arts', 'explorers', 'womens', 'asia'];
+            const activeMuseums = museums.filter(museum => 
+                document.getElementById(`museum-${museum}`).checked
+            );
+            
+            // Event types
+            const activeTypes = eventTypes.filter(type => {
+                const checkbox = document.getElementById(`type-${type.toLowerCase().replace(/\s+/g, '-')}`);
+                return checkbox && checkbox.checked;
+            });
+            
+            // Date filters
+            const monthFilter = document.getElementById('monthFilter').value;
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+            
+            return {
+                museums: activeMuseums,
+                types: activeTypes,
+                month: monthFilter,
+                startDate: startDate,
+                endDate: endDate
+            };
+        }
+        
         // Display events
         function displayEvents() {
             const container = document.getElementById('eventsContainer');
             container.innerHTML = '';
             
-            const activeMuseums = getActiveMuseums();
-            const selectedMonth = document.getElementById('monthFilter')?.value || 'all';
+            const filters = getActiveFilters();
             
-            let filteredEvents = museumEvents.filter(event => activeMuseums.includes(event.museum));
-            
-            // Filter by month if selected
-            if (selectedMonth !== 'all') {
-                filteredEvents = filteredEvents.filter(event => {
-                    const eventMonth = event.date.substring(0, 7); // Get YYYY-MM
-                    return eventMonth === selectedMonth;
-                });
-            }
-            
-            // Sort events by date
-            filteredEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
+            let filteredEvents = museumEvents.filter(event => {
+                // Filter by museum
+                if (!filters.museums.includes(event.museum)) return false;
+                
+                // Filter by type
+                if (filters.types.length > 0 && !filters.types.includes(event.type)) return false;
+                
+                // Filter by month
+                if (filters.month !== 'all') {
+                    const eventMonth = event.date.substring(0, 7);
+                    if (eventMonth !== filters.month) return false;
+                }
+                
+                // Filter by date range
+                if (filters.startDate && event.date < filters.startDate) return false;
+                if (filters.endDate && event.date > filters.endDate) return false;
+                
+                return true;
+            });
             
             // Update events summary
             updateEventsSummary(filteredEvents.length);
             
             if (filteredEvents.length === 0) {
-                container.innerHTML = '<div class="loading">No events found. Please select at least one museum or adjust your filters.</div>';
+                container.innerHTML = '<div class="loading">No events found. Please adjust your filters.</div>';
                 return;
             }
             
+            // Display filtered events
             filteredEvents.forEach(event => {
                 const eventCard = createEventCard(event);
                 container.appendChild(eventCard);
@@ -1084,14 +865,7 @@
         
         function updateEventsSummary(count) {
             const summaryDiv = document.getElementById('eventsSummary');
-            if (summaryDiv) {
-                summaryDiv.textContent = `Showing ${count} events`;
-            }
-        }
-        
-        function getActiveMuseums() {
-            const museums = ['moma', 'met', 'nyu', 'arts', 'explorers', 'womens', 'asia'];
-            return museums.filter(museum => document.getElementById(museum).checked);
+            summaryDiv.textContent = `Showing ${count} events`;
         }
         
         function createEventCard(event) {
@@ -1103,9 +877,11 @@
                 card.classList.add('selected');
             }
             
+            const typeClass = 'type-' + event.type.toLowerCase().replace(/\s+/g, '-');
+            
             card.innerHTML = `
                 <span class="museum-tag museum-${event.museum}">${event.museumName}</span>
-                <span class="event-type">${event.type}</span>
+                <span class="event-type ${typeClass}">${event.type}</span>
                 <div class="event-title">${event.title}</div>
                 <div class="event-date">${formatDate(event.date)}</div>
                 <div class="event-time">${event.time}</div>
@@ -1143,6 +919,31 @@
         function updateSelectedCount() {
             document.getElementById('selectedCount').textContent = selectedEvents.size;
             document.getElementById('addToCalendarBtn').disabled = selectedEvents.size === 0;
+        }
+        
+        // Select/Clear all functions
+        function selectAllMuseums() {
+            const checkboxes = document.querySelectorAll('.museum-checkbox input');
+            checkboxes.forEach(checkbox => checkbox.checked = true);
+            displayEvents();
+        }
+        
+        function clearAllMuseums() {
+            const checkboxes = document.querySelectorAll('.museum-checkbox input');
+            checkboxes.forEach(checkbox => checkbox.checked = false);
+            displayEvents();
+        }
+        
+        function selectAllTypes() {
+            const checkboxes = document.querySelectorAll('.type-checkbox input');
+            checkboxes.forEach(checkbox => checkbox.checked = true);
+            displayEvents();
+        }
+        
+        function clearAllTypes() {
+            const checkboxes = document.querySelectorAll('.type-checkbox input');
+            checkboxes.forEach(checkbox => checkbox.checked = false);
+            displayEvents();
         }
         
         // Add events to Google Calendar
@@ -1262,21 +1063,37 @@
         
         // Initialize when page loads
         document.addEventListener('DOMContentLoaded', () => {
+            // Create event type checkboxes
+            const typeContainer = document.getElementById('eventTypeFilters');
+            eventTypes.forEach(type => {
+                const checkbox = document.createElement('div');
+                checkbox.className = 'type-checkbox';
+                const id = `type-${type.toLowerCase().replace(/\s+/g, '-')}`;
+                checkbox.innerHTML = `
+                    <input type="checkbox" id="${id}" checked>
+                    <label for="${id}">${type}</label>
+                `;
+                typeContainer.appendChild(checkbox);
+            });
+            
             // Set button event listeners
             document.getElementById('authorizeButton').onclick = handleAuthClick;
             document.getElementById('signoutButton').onclick = handleSignoutClick;
             
-            // Museum filter checkboxes
-            const checkboxes = document.querySelectorAll('.museum-checkbox input');
-            checkboxes.forEach(checkbox => {
+            // Filter event listeners
+            document.querySelectorAll('.museum-checkbox input, .type-checkbox input').forEach(checkbox => {
                 checkbox.addEventListener('change', displayEvents);
             });
             
-            // Month filter
-            const monthFilter = document.getElementById('monthFilter');
-            if (monthFilter) {
-                monthFilter.addEventListener('change', displayEvents);
-            }
+            document.getElementById('monthFilter').addEventListener('change', displayEvents);
+            document.getElementById('startDate').addEventListener('change', displayEvents);
+            document.getElementById('endDate').addEventListener('change', displayEvents);
+            
+            // Select/Clear all buttons
+            document.getElementById('selectAllMuseums').addEventListener('click', selectAllMuseums);
+            document.getElementById('clearAllMuseums').addEventListener('click', clearAllMuseums);
+            document.getElementById('selectAllTypes').addEventListener('click', selectAllTypes);
+            document.getElementById('clearAllTypes').addEventListener('click', clearAllTypes);
             
             // Add to calendar button
             document.getElementById('addToCalendarBtn').addEventListener('click', addEventsToCalendar);
@@ -1292,16 +1109,16 @@
 <body>
     <div class="container">
         <h1>NYC Museum Events Calendar</h1>
-        <p class="subtitle">Select events from top NYC museums and add them to your Google Calendar</p>
+        <p class="subtitle">Browse and select events from NYC's premier cultural institutions</p>
         
         <div class="instructions">
             <h3>📝 Quick Instructions:</h3>
             <ol>
                 <li>Click "Connect Google Calendar" button below</li>
                 <li>Sign in with your Google account and authorize calendar access</li>
-                <li>Select museums you're interested in</li>
-                <li>Click on events you want to add (they'll turn green)</li>
-                <li>Click "Add Selected Events to Calendar" at the bottom</li>
+                <li>Use filters to find events that interest you</li>
+                <li>Click on events to select them (they'll turn green)</li>
+                <li>Click "Add Selected Events to Calendar" to add them all at once</li>
             </ol>
         </div>
 
@@ -1316,48 +1133,75 @@
             <button id="signoutButton" style="display: none;">Disconnect</button>
         </div>
         
-        <div class="date-filter">
-            <h3>Filter by Month:</h3>
-            <select id="monthFilter">
-                <option value="all">All Events</option>
-                <option value="2025-06">June 2025</option>
-                <option value="2025-07">July 2025</option>
-            </select>
+        <div class="filters-section">
+            <h3>Filter Events</h3>
+            
+            <div class="filter-group">
+                <h4>Museums</h4>
+                <div class="museum-checkbox">
+                    <input type="checkbox" id="museum-moma" checked>
+                    <label for="museum-moma">MoMA</label>
+                </div>
+                <div class="museum-checkbox">
+                    <input type="checkbox" id="museum-met" checked>
+                    <label for="museum-met">The Met</label>
+                </div>
+                <div class="museum-checkbox">
+                    <input type="checkbox" id="museum-nyu" checked>
+                    <label for="museum-nyu">NYU Institute</label>
+                </div>
+                <div class="museum-checkbox">
+                    <input type="checkbox" id="museum-arts" checked>
+                    <label for="museum-arts">National Arts Club</label>
+                </div>
+                <div class="museum-checkbox">
+                    <input type="checkbox" id="museum-explorers" checked>
+                    <label for="museum-explorers">Explorers Club</label>
+                </div>
+                <div class="museum-checkbox">
+                    <input type="checkbox" id="museum-womens" checked>
+                    <label for="museum-womens">Women's History</label>
+                </div>
+                <div class="museum-checkbox">
+                    <input type="checkbox" id="museum-asia" checked>
+                    <label for="museum-asia">Asia Society</label>
+                </div>
+                <div class="filter-actions">
+                    <button id="selectAllMuseums" class="btn-select-all">Select All</button>
+                    <button id="clearAllMuseums" class="btn-clear-all">Clear All</button>
+                </div>
+            </div>
+            
+            <div class="filter-group">
+                <h4>Event Types</h4>
+                <div id="eventTypeFilters"></div>
+                <div class="filter-actions">
+                    <button id="selectAllTypes" class="btn-select-all">Select All</button>
+                    <button id="clearAllTypes" class="btn-clear-all">Clear All</button>
+                </div>
+            </div>
+            
+            <div class="filter-group">
+                <h4>Date Range</h4>
+                <div class="date-filters">
+                    <select id="monthFilter">
+                        <option value="all">All Months</option>
+                        <option value="2025-06">June 2025</option>
+                        <option value="2025-07">July 2025</option>
+                        <option value="2025-08">August 2025</option>
+                        <option value="2025-09">September 2025</option>
+                        <option value="2025-10">October 2025</option>
+                        <option value="2025-11">November 2025</option>
+                        <option value="2025-12">December 2025</option>
+                    </select>
+                    <input type="date" id="startDate" min="2025-06-01" max="2025-12-31">
+                    <span>to</span>
+                    <input type="date" id="endDate" min="2025-06-01" max="2025-12-31">
+                </div>
+            </div>
         </div>
         
-        <div class="museum-filters">
-            <h3>Select Museums to Show Events From:</h3>
-            <div class="museum-checkbox">
-                <input type="checkbox" id="moma" checked>
-                <label for="moma">MoMA</label>
-            </div>
-            <div class="museum-checkbox">
-                <input type="checkbox" id="met" checked>
-                <label for="met">The Met</label>
-            </div>
-            <div class="museum-checkbox">
-                <input type="checkbox" id="nyu" checked>
-                <label for="nyu">NYU Institute of Fine Arts</label>
-            </div>
-            <div class="museum-checkbox">
-                <input type="checkbox" id="arts" checked>
-                <label for="arts">National Arts Club</label>
-            </div>
-            <div class="museum-checkbox">
-                <input type="checkbox" id="explorers" checked>
-                <label for="explorers">The Explorers Club</label>
-            </div>
-            <div class="museum-checkbox">
-                <input type="checkbox" id="womens" checked>
-                <label for="womens">Center for Women's History</label>
-            </div>
-            <div class="museum-checkbox">
-                <input type="checkbox" id="asia" checked>
-                <label for="asia">Asia Society</label>
-            </div>
-        </div>
-        
-        <div class="events-summary" id="eventsSummary">Showing all events</div>
+        <div class="events-summary" id="eventsSummary">Loading events...</div>
         
         <div id="eventsContainer" class="events-container">
             <div class="loading">Loading events...</div>
@@ -1373,7 +1217,7 @@
         </div>
     </div>
     
-    <!-- Google API and Identity Services - Load without onload handlers -->
+    <!-- Google API and Identity Services -->
     <script src="https://apis.google.com/js/api.js"></script>
     <script src="https://accounts.google.com/gsi/client"></script>
 </body>
