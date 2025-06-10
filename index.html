@@ -363,11 +363,15 @@
         .type-lecture { background: #9b59b6 !important; }
         .type-performance { background: #1abc9c !important; }
         .type-film { background: #34495e !important; }
-        .type-family { background: #e67e22 !important; }
+        .type-family-program { background: #e67e22 !important; }
         .type-tour { background: #16a085 !important; }
         .type-symposium { background: #8e44ad !important; }
         .type-opening { background: #c0392b !important; }
-        .type-social { background: #d35400 !important; }
+        .type-social-event { background: #d35400 !important; }
+        .type-panel-discussion { background: #2c3e50 !important; }
+        .type-artist-talk { background: #27ae60 !important; }
+        .type-gallery-talk { background: #e74c3c !important; }
+        .type-special-event { background: #f39c12 !important; }
     </style>
     
     <script>
@@ -632,7 +636,7 @@
             
             // Get appropriate title based on museum and event type
             const museumTemplates = eventTemplates[museum.name] || eventTemplates['MoMA'];
-            const titles = museumTemplates[eventType] || museumTemplates['Exhibition'];
+            const titles = museumTemplates[eventType] || museumTemplates['Exhibition'] || ['Special Event'];
             const title = titles[Math.floor(Math.random() * titles.length)];
             
             // Generate time based on event type
@@ -1063,25 +1067,32 @@
         
         // Initialize when page loads
         document.addEventListener('DOMContentLoaded', () => {
-            // Create event type checkboxes
+            // Create event type checkboxes FIRST
             const typeContainer = document.getElementById('eventTypeFilters');
-            eventTypes.forEach(type => {
-                const checkbox = document.createElement('div');
-                checkbox.className = 'type-checkbox';
-                const id = `type-${type.toLowerCase().replace(/\s+/g, '-')}`;
-                checkbox.innerHTML = `
-                    <input type="checkbox" id="${id}" checked>
-                    <label for="${id}">${type}</label>
-                `;
-                typeContainer.appendChild(checkbox);
-            });
+            if (typeContainer) {
+                eventTypes.forEach(type => {
+                    const checkbox = document.createElement('div');
+                    checkbox.className = 'type-checkbox';
+                    const id = `type-${type.toLowerCase().replace(/\s+/g, '-')}`;
+                    checkbox.innerHTML = `
+                        <input type="checkbox" id="${id}" checked>
+                        <label for="${id}">${type}</label>
+                    `;
+                    typeContainer.appendChild(checkbox);
+                });
+            }
             
             // Set button event listeners
             document.getElementById('authorizeButton').onclick = handleAuthClick;
             document.getElementById('signoutButton').onclick = handleSignoutClick;
             
-            // Filter event listeners
-            document.querySelectorAll('.museum-checkbox input, .type-checkbox input').forEach(checkbox => {
+            // Filter event listeners - attach to all existing checkboxes
+            document.querySelectorAll('.museum-checkbox input').forEach(checkbox => {
+                checkbox.addEventListener('change', displayEvents);
+            });
+            
+            // Add event listeners to the newly created type checkboxes
+            document.querySelectorAll('.type-checkbox input').forEach(checkbox => {
                 checkbox.addEventListener('change', displayEvents);
             });
             
@@ -1174,6 +1185,7 @@
             
             <div class="filter-group">
                 <h4>Event Types</h4>
+                <!-- This div was missing and is now added! -->
                 <div id="eventTypeFilters"></div>
                 <div class="filter-actions">
                     <button id="selectAllTypes" class="btn-select-all">Select All</button>
