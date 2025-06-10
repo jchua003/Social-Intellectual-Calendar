@@ -114,6 +114,38 @@
             color: white;
         }
         
+        .date-filter {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .date-filter h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .date-filter select {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin: 0 10px;
+        }
+        
+        .events-summary {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        
         .events-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -171,6 +203,16 @@
         .museum-explorers { background: #2ECC71; color: white; }
         .museum-womens { background: #E74C3C; color: white; }
         .museum-asia { background: #3498DB; color: white; }
+        
+        .event-type {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 11px;
+            margin-left: 10px;
+            background: #95a5a6;
+            color: white;
+        }
         
         .event-title {
             font-size: 1.2em;
@@ -282,97 +324,636 @@
         let gisInited = false;
         let selectedEvents = new Set();
         
-        // Sample museum events data
+        // Comprehensive museum events data - June and July 2025
         const museumEvents = [
+            // MoMA Events
             {
                 id: 'moma-1',
                 museum: 'moma',
                 museumName: 'MoMA',
                 title: 'Picasso in Fontainebleau',
-                date: '2025-06-15',
+                type: 'Exhibition',
+                date: '2025-06-11',
                 time: '10:00 AM - 6:00 PM',
                 description: 'Explore Pablo Picasso\'s summer sojourns in Fontainebleau, featuring rarely seen works from this creative period.',
                 location: 'MoMA, 11 West 53rd Street, New York, NY'
             },
             {
+                id: 'moma-2',
+                museum: 'moma',
+                museumName: 'MoMA',
+                title: 'Abstract Expressionism Workshop',
+                type: 'Workshop',
+                date: '2025-06-13',
+                time: '2:00 PM - 4:00 PM',
+                description: 'Hands-on workshop exploring techniques of Abstract Expressionist masters. Materials provided.',
+                location: 'MoMA Education Center, 11 West 53rd Street, New York, NY'
+            },
+            {
+                id: 'moma-3',
+                museum: 'moma',
+                museumName: 'MoMA',
+                title: 'Film Screening: Experimental Cinema of the 1960s',
+                type: 'Film',
+                date: '2025-06-15',
+                time: '7:00 PM - 9:00 PM',
+                description: 'Rare screening of experimental films from the 1960s avant-garde movement.',
+                location: 'MoMA Theater, 11 West 53rd Street, New York, NY'
+            },
+            {
+                id: 'moma-4',
+                museum: 'moma',
+                museumName: 'MoMA',
+                title: 'Curator Talk: Contemporary Installation Art',
+                type: 'Talk',
+                date: '2025-06-18',
+                time: '6:00 PM - 7:30 PM',
+                description: 'Join senior curator Ann Temkin for insights into MoMA\'s latest installation acquisitions.',
+                location: 'MoMA, 11 West 53rd Street, New York, NY'
+            },
+            {
+                id: 'moma-5',
+                museum: 'moma',
+                museumName: 'MoMA',
+                title: 'Family Art Lab: Sculpture Sunday',
+                type: 'Family Program',
+                date: '2025-06-22',
+                time: '10:00 AM - 12:00 PM',
+                description: 'Create sculptures inspired by works in the collection. For families with children ages 4-14.',
+                location: 'MoMA Education Center, 11 West 53rd Street, New York, NY'
+            },
+            {
+                id: 'moma-6',
+                museum: 'moma',
+                museumName: 'MoMA',
+                title: 'Modern Mondays: Artist Talk Series',
+                type: 'Artist Talk',
+                date: '2025-06-23',
+                time: '7:00 PM - 8:30 PM',
+                description: 'Contemporary artist Kara Walker discusses her recent work and influences.',
+                location: 'MoMA Theater, 11 West 53rd Street, New York, NY'
+            },
+            {
+                id: 'moma-7',
+                museum: 'moma',
+                museumName: 'MoMA',
+                title: 'Photography Workshop: Light and Shadow',
+                type: 'Workshop',
+                date: '2025-06-27',
+                time: '1:00 PM - 4:00 PM',
+                description: 'Explore photographic techniques focusing on dramatic lighting. Bring your camera.',
+                location: 'MoMA, 11 West 53rd Street, New York, NY'
+            },
+            {
+                id: 'moma-8',
+                museum: 'moma',
+                museumName: 'MoMA',
+                title: 'MoMA Nights: Summer Jazz Series',
+                type: 'Performance',
+                date: '2025-07-03',
+                time: '5:00 PM - 9:00 PM',
+                description: 'Extended hours with live jazz performances in the sculpture garden.',
+                location: 'MoMA Sculpture Garden, 11 West 53rd Street, New York, NY'
+            },
+            {
+                id: 'moma-9',
+                museum: 'moma',
+                museumName: 'MoMA',
+                title: 'Digital Art and NFTs Panel',
+                type: 'Panel Discussion',
+                date: '2025-07-08',
+                time: '6:00 PM - 8:00 PM',
+                description: 'Experts discuss the intersection of digital art, blockchain, and museum collections.',
+                location: 'MoMA Theater, 11 West 53rd Street, New York, NY'
+            },
+            {
+                id: 'moma-10',
+                museum: 'moma',
+                museumName: 'MoMA',
+                title: 'Summer Art Camp Opening',
+                type: 'Youth Program',
+                date: '2025-07-14',
+                time: '9:00 AM - 12:00 PM',
+                description: 'Week-long intensive art camp for teens begins. Registration required.',
+                location: 'MoMA Education Center, 11 West 53rd Street, New York, NY'
+            },
+
+            // Met Events
+            {
                 id: 'met-1',
                 museum: 'met',
                 museumName: 'The Met',
                 title: 'The Harlem Renaissance and Transatlantic Modernism',
-                date: '2025-06-18',
+                type: 'Exhibition',
+                date: '2025-06-12',
                 time: '10:00 AM - 5:00 PM',
                 description: 'A groundbreaking exhibition exploring the comprehensive and far-reaching ways in which Black artists portrayed everyday modern life.',
                 location: 'The Met Fifth Avenue, 1000 Fifth Avenue, New York, NY'
-            },
-            {
-                id: 'nyu-1',
-                museum: 'nyu',
-                museumName: 'NYU Institute of Fine Arts',
-                title: 'Conservation in the Digital Age',
-                date: '2025-06-20',
-                time: '6:00 PM - 8:00 PM',
-                description: 'Lecture on new technologies in art conservation and restoration, featuring case studies from recent projects.',
-                location: 'NYU Institute of Fine Arts, 1 East 78th Street, New York, NY'
-            },
-            {
-                id: 'arts-1',
-                museum: 'arts',
-                museumName: 'National Arts Club',
-                title: 'Contemporary Voices: Emerging Artists Showcase',
-                date: '2025-06-22',
-                time: '5:00 PM - 8:00 PM',
-                description: 'Opening reception for exhibition featuring works by emerging artists from the NYC area.',
-                location: 'National Arts Club, 15 Gramercy Park South, New York, NY'
-            },
-            {
-                id: 'explorers-1',
-                museum: 'explorers',
-                museumName: 'The Explorers Club',
-                title: 'Documenting Climate Change Through Art',
-                date: '2025-06-25',
-                time: '7:00 PM - 9:00 PM',
-                description: 'Panel discussion on how artists and explorers collaborate to document environmental changes.',
-                location: 'The Explorers Club, 46 East 70th Street, New York, NY'
-            },
-            {
-                id: 'womens-1',
-                museum: 'womens',
-                museumName: 'Center for Women\'s History',
-                title: 'Women Artists of the Abstract Expressionist Movement',
-                date: '2025-06-28',
-                time: '2:00 PM - 4:00 PM',
-                description: 'Gallery talk exploring the often-overlooked contributions of women to Abstract Expressionism.',
-                location: 'New-York Historical Society, 170 Central Park West, New York, NY'
-            },
-            {
-                id: 'asia-1',
-                museum: 'asia',
-                museumName: 'Asia Society',
-                title: 'Contemporary Korean Art: Beyond Boundaries',
-                date: '2025-06-30',
-                time: '6:00 PM - 8:00 PM',
-                description: 'Opening of exhibition showcasing contemporary Korean artists pushing artistic boundaries.',
-                location: 'Asia Society Museum, 725 Park Avenue, New York, NY'
-            },
-            {
-                id: 'moma-2',
-                museum: 'moma',
-                museumName: 'MoMA',
-                title: 'Film Screening: Experimental Cinema of the 1960s',
-                date: '2025-07-05',
-                time: '7:00 PM - 9:00 PM',
-                description: 'Rare screening of experimental films from the 1960s avant-garde movement.',
-                location: 'MoMA, 11 West 53rd Street, New York, NY'
             },
             {
                 id: 'met-2',
                 museum: 'met',
                 museumName: 'The Met',
                 title: 'Ancient Egypt: New Discoveries',
-                date: '2025-07-10',
+                type: 'Exhibition',
+                date: '2025-06-14',
                 time: '10:00 AM - 5:00 PM',
                 description: 'Special exhibition featuring recent archaeological discoveries from Egypt.',
                 location: 'The Met Fifth Avenue, 1000 Fifth Avenue, New York, NY'
+            },
+            {
+                id: 'met-3',
+                museum: 'met',
+                museumName: 'The Met',
+                title: 'Medieval Manuscript Illumination Workshop',
+                type: 'Workshop',
+                date: '2025-06-16',
+                time: '2:00 PM - 4:30 PM',
+                description: 'Learn traditional techniques of manuscript illumination with gold leaf application.',
+                location: 'The Met Fifth Avenue, 1000 Fifth Avenue, New York, NY'
+            },
+            {
+                id: 'met-4',
+                museum: 'met',
+                museumName: 'The Met',
+                title: 'Gallery Talk: Greek and Roman Sculptures',
+                type: 'Gallery Talk',
+                date: '2025-06-19',
+                time: '11:00 AM - 12:00 PM',
+                description: 'Expert-led tour focusing on the restoration and preservation of ancient sculptures.',
+                location: 'The Met Fifth Avenue, 1000 Fifth Avenue, New York, NY'
+            },
+            {
+                id: 'met-5',
+                museum: 'met',
+                museumName: 'The Met',
+                title: 'Fashion and Costume: Behind the Scenes',
+                type: 'Special Tour',
+                date: '2025-06-21',
+                time: '3:00 PM - 4:30 PM',
+                description: 'Exclusive access to the Costume Institute conservation labs.',
+                location: 'The Met Fifth Avenue, 1000 Fifth Avenue, New York, NY'
+            },
+            {
+                id: 'met-6',
+                museum: 'met',
+                museumName: 'The Met',
+                title: 'Met Kids: Art Detective Adventure',
+                type: 'Family Program',
+                date: '2025-06-24',
+                time: '10:30 AM - 12:00 PM',
+                description: 'Solve mysteries throughout the museum galleries. Ages 7-12.',
+                location: 'The Met Fifth Avenue, 1000 Fifth Avenue, New York, NY'
+            },
+            {
+                id: 'met-7',
+                museum: 'met',
+                museumName: 'The Met',
+                title: 'Asian Art Symposium',
+                type: 'Symposium',
+                date: '2025-06-26',
+                time: '9:00 AM - 5:00 PM',
+                description: 'Full-day symposium on recent scholarship in Asian art history.',
+                location: 'The Met Fifth Avenue, Grace Rainey Rogers Auditorium, New York, NY'
+            },
+            {
+                id: 'met-8',
+                museum: 'met',
+                museumName: 'The Met',
+                title: 'Rooftop Garden Commission Opening',
+                type: 'Opening Reception',
+                date: '2025-06-28',
+                time: '6:00 PM - 8:00 PM',
+                description: 'Celebrate the opening of this year\'s rooftop installation with cocktails and views.',
+                location: 'The Met Fifth Avenue, Roof Garden, New York, NY'
+            },
+            {
+                id: 'met-9',
+                museum: 'met',
+                museumName: 'The Met',
+                title: 'American Wing Architecture Tour',
+                type: 'Architecture Tour',
+                date: '2025-07-02',
+                time: '2:00 PM - 3:30 PM',
+                description: 'Explore the architectural history of the American Wing and period rooms.',
+                location: 'The Met Fifth Avenue, 1000 Fifth Avenue, New York, NY'
+            },
+            {
+                id: 'met-10',
+                museum: 'met',
+                museumName: 'The Met',
+                title: 'Summer Nights at The Met',
+                type: 'Special Event',
+                date: '2025-07-11',
+                time: '5:00 PM - 9:00 PM',
+                description: 'Extended Friday hours with live music, talks, and special gallery activities.',
+                location: 'The Met Fifth Avenue, 1000 Fifth Avenue, New York, NY'
+            },
+
+            // NYU Institute of Fine Arts Events
+            {
+                id: 'nyu-1',
+                museum: 'nyu',
+                museumName: 'NYU Institute of Fine Arts',
+                title: 'Conservation in the Digital Age',
+                type: 'Lecture',
+                date: '2025-06-11',
+                time: '6:00 PM - 8:00 PM',
+                description: 'Lecture on new technologies in art conservation and restoration.',
+                location: 'NYU Institute of Fine Arts, 1 East 78th Street, New York, NY'
+            },
+            {
+                id: 'nyu-2',
+                museum: 'nyu',
+                museumName: 'NYU Institute of Fine Arts',
+                title: 'Graduate Student Symposium',
+                type: 'Symposium',
+                date: '2025-06-13',
+                time: '9:00 AM - 5:00 PM',
+                description: 'Annual symposium featuring research by doctoral candidates in art history.',
+                location: 'NYU Institute of Fine Arts, 1 East 78th Street, New York, NY'
+            },
+            {
+                id: 'nyu-3',
+                museum: 'nyu',
+                museumName: 'NYU Institute of Fine Arts',
+                title: 'Provenance Research Workshop',
+                type: 'Workshop',
+                date: '2025-06-17',
+                time: '2:00 PM - 5:00 PM',
+                description: 'Learn methods for tracing artwork ownership and authenticity.',
+                location: 'NYU Institute of Fine Arts, 1 East 78th Street, New York, NY'
+            },
+            {
+                id: 'nyu-4',
+                museum: 'nyu',
+                museumName: 'NYU Institute of Fine Arts',
+                title: 'Islamic Art and Architecture Series',
+                type: 'Lecture Series',
+                date: '2025-06-20',
+                time: '6:00 PM - 7:30 PM',
+                description: 'Part 3 of 5: Geometric patterns in mosque architecture.',
+                location: 'NYU Institute of Fine Arts, 1 East 78th Street, New York, NY'
+            },
+            {
+                id: 'nyu-5',
+                museum: 'nyu',
+                museumName: 'NYU Institute of Fine Arts',
+                title: 'Conservation Lab Open House',
+                type: 'Open House',
+                date: '2025-06-25',
+                time: '10:00 AM - 4:00 PM',
+                description: 'Tour the conservation laboratories and see restoration work in progress.',
+                location: 'NYU Institute of Fine Arts, 1 East 78th Street, New York, NY'
+            },
+            {
+                id: 'nyu-6',
+                museum: 'nyu',
+                museumName: 'NYU Institute of Fine Arts',
+                title: 'Curatorial Studies Info Session',
+                type: 'Information Session',
+                date: '2025-07-09',
+                time: '5:00 PM - 6:30 PM',
+                description: 'Learn about the MA program in Curatorial Studies.',
+                location: 'NYU Institute of Fine Arts, 1 East 78th Street, New York, NY'
+            },
+            {
+                id: 'nyu-7',
+                museum: 'nyu',
+                museumName: 'NYU Institute of Fine Arts',
+                title: 'Summer Lecture: Renaissance Frescoes',
+                type: 'Guest Lecture',
+                date: '2025-07-15',
+                time: '6:00 PM - 7:30 PM',
+                description: 'Guest speaker from Florence discusses recent fresco restorations.',
+                location: 'NYU Institute of Fine Arts, 1 East 78th Street, New York, NY'
+            },
+
+            // National Arts Club Events
+            {
+                id: 'arts-1',
+                museum: 'arts',
+                museumName: 'National Arts Club',
+                title: 'Contemporary Voices: Emerging Artists Showcase',
+                type: 'Exhibition Opening',
+                date: '2025-06-12',
+                time: '5:00 PM - 8:00 PM',
+                description: 'Opening reception for exhibition featuring works by emerging NYC artists.',
+                location: 'National Arts Club, 15 Gramercy Park South, New York, NY'
+            },
+            {
+                id: 'arts-2',
+                museum: 'arts',
+                museumName: 'National Arts Club',
+                title: 'Life Drawing Session',
+                type: 'Workshop',
+                date: '2025-06-14',
+                time: '10:00 AM - 1:00 PM',
+                description: 'Open life drawing session with professional models. All skill levels welcome.',
+                location: 'National Arts Club, 15 Gramercy Park South, New York, NY'
+            },
+            {
+                id: 'arts-3',
+                museum: 'arts',
+                museumName: 'National Arts Club',
+                title: 'Poetry and Visual Arts Evening',
+                type: 'Performance',
+                date: '2025-06-17',
+                time: '7:00 PM - 9:00 PM',
+                description: 'Poets respond to visual artworks in the collection.',
+                location: 'National Arts Club, 15 Gramercy Park South, New York, NY'
+            },
+            {
+                id: 'arts-4',
+                museum: 'arts',
+                museumName: 'National Arts Club',
+                title: 'Watercolor Workshop',
+                type: 'Workshop',
+                date: '2025-06-19',
+                time: '2:00 PM - 5:00 PM',
+                description: 'Learn watercolor techniques with award-winning artist Mary Whyte.',
+                location: 'National Arts Club, 15 Gramercy Park South, New York, NY'
+            },
+            {
+                id: 'arts-5',
+                museum: 'arts',
+                museumName: 'National Arts Club',
+                title: 'Members\' Annual Exhibition',
+                type: 'Exhibition',
+                date: '2025-06-24',
+                time: '11:00 AM - 6:00 PM',
+                description: 'Annual juried exhibition of works by club members.',
+                location: 'National Arts Club, 15 Gramercy Park South, New York, NY'
+            },
+            {
+                id: 'arts-6',
+                museum: 'arts',
+                museumName: 'National Arts Club',
+                title: 'Jazz in the Gallery',
+                type: 'Concert',
+                date: '2025-06-27',
+                time: '7:30 PM - 9:30 PM',
+                description: 'Live jazz performance among the artworks.',
+                location: 'National Arts Club, 15 Gramercy Park South, New York, NY'
+            },
+            {
+                id: 'arts-7',
+                museum: 'arts',
+                museumName: 'National Arts Club',
+                title: 'Portrait Painting Demo',
+                type: 'Demonstration',
+                date: '2025-07-05',
+                time: '2:00 PM - 4:00 PM',
+                description: 'Watch master portrait artist at work and learn techniques.',
+                location: 'National Arts Club, 15 Gramercy Park South, New York, NY'
+            },
+            {
+                id: 'arts-8',
+                museum: 'arts',
+                museumName: 'National Arts Club',
+                title: 'Summer Salon',
+                type: 'Social Event',
+                date: '2025-07-10',
+                time: '6:00 PM - 9:00 PM',
+                description: 'Mingle with artists, collectors, and art lovers at our summer salon.',
+                location: 'National Arts Club, 15 Gramercy Park South, New York, NY'
+            },
+
+            // The Explorers Club Events
+            {
+                id: 'explorers-1',
+                museum: 'explorers',
+                museumName: 'The Explorers Club',
+                title: 'Documenting Climate Change Through Art',
+                type: 'Panel Discussion',
+                date: '2025-06-11',
+                time: '7:00 PM - 9:00 PM',
+                description: 'Panel discussion on how artists and explorers collaborate to document environmental changes.',
+                location: 'The Explorers Club, 46 East 70th Street, New York, NY'
+            },
+            {
+                id: 'explorers-2',
+                museum: 'explorers',
+                museumName: 'The Explorers Club',
+                title: 'Arctic Photography Exhibition',
+                type: 'Exhibition',
+                date: '2025-06-13',
+                time: '10:00 AM - 6:00 PM',
+                description: 'Stunning photographs from recent Arctic expeditions.',
+                location: 'The Explorers Club, 46 East 70th Street, New York, NY'
+            },
+            {
+                id: 'explorers-3',
+                museum: 'explorers',
+                museumName: 'The Explorers Club',
+                title: 'Exploration Film Festival',
+                type: 'Film Screening',
+                date: '2025-06-18',
+                time: '6:00 PM - 10:00 PM',
+                description: 'Documentary films featuring recent expeditions and discoveries.',
+                location: 'The Explorers Club, 46 East 70th Street, New York, NY'
+            },
+            {
+                id: 'explorers-4',
+                museum: 'explorers',
+                museumName: 'The Explorers Club',
+                title: 'Cartography Workshop',
+                type: 'Workshop',
+                date: '2025-06-21',
+                time: '2:00 PM - 5:00 PM',
+                description: 'Learn traditional and modern map-making techniques.',
+                location: 'The Explorers Club, 46 East 70th Street, New York, NY'
+            },
+            {
+                id: 'explorers-5',
+                museum: 'explorers',
+                museumName: 'The Explorers Club',
+                title: 'Deep Sea Discoveries Lecture',
+                type: 'Lecture',
+                date: '2025-06-26',
+                time: '7:00 PM - 8:30 PM',
+                description: 'Marine biologist shares recent discoveries from ocean depths.',
+                location: 'The Explorers Club, 46 East 70th Street, New York, NY'
+            },
+            {
+                id: 'explorers-6',
+                museum: 'explorers',
+                museumName: 'The Explorers Club',
+                title: 'Young Explorers Day',
+                type: 'Youth Program',
+                date: '2025-07-06',
+                time: '10:00 AM - 3:00 PM',
+                description: 'Hands-on activities for aspiring young explorers ages 8-16.',
+                location: 'The Explorers Club, 46 East 70th Street, New York, NY'
+            },
+            {
+                id: 'explorers-7',
+                museum: 'explorers',
+                museumName: 'The Explorers Club',
+                title: 'Space Exploration Update',
+                type: 'Presentation',
+                date: '2025-07-12',
+                time: '7:00 PM - 9:00 PM',
+                description: 'NASA scientist discusses latest Mars missions and findings.',
+                location: 'The Explorers Club, 46 East 70th Street, New York, NY'
+            },
+
+            // Center for Women's History Events
+            {
+                id: 'womens-1',
+                museum: 'womens',
+                museumName: 'Center for Women\'s History',
+                title: 'Women Artists of the Abstract Expressionist Movement',
+                type: 'Gallery Talk',
+                date: '2025-06-12',
+                time: '2:00 PM - 4:00 PM',
+                description: 'Gallery talk exploring the often-overlooked contributions of women to Abstract Expressionism.',
+                location: 'New-York Historical Society, 170 Central Park West, New York, NY'
+            },
+            {
+                id: 'womens-2',
+                museum: 'womens',
+                museumName: 'Center for Women\'s History',
+                title: 'Suffrage and Art Workshop',
+                type: 'Workshop',
+                date: '2025-06-15',
+                time: '11:00 AM - 1:00 PM',
+                description: 'Create artwork inspired by the suffrage movement.',
+                location: 'New-York Historical Society, 170 Central Park West, New York, NY'
+            },
+            {
+                id: 'womens-3',
+                museum: 'womens',
+                museumName: 'Center for Women\'s History',
+                title: 'Women in Photography: 1900-1950',
+                type: 'Exhibition',
+                date: '2025-06-19',
+                time: '10:00 AM - 5:00 PM',
+                description: 'Exhibition showcasing pioneering women photographers.',
+                location: 'New-York Historical Society, 170 Central Park West, New York, NY'
+            },
+            {
+                id: 'womens-4',
+                museum: 'womens',
+                museumName: 'Center for Women\'s History',
+                title: 'Feminist Art Movement Panel',
+                type: 'Panel Discussion',
+                date: '2025-06-23',
+                time: '6:00 PM - 8:00 PM',
+                description: 'Artists and scholars discuss the impact of feminist art.',
+                location: 'New-York Historical Society, 170 Central Park West, New York, NY'
+            },
+            {
+                id: 'womens-5',
+                museum: 'womens',
+                museumName: 'Center for Women\'s History',
+                title: 'Girls Write History',
+                type: 'Youth Workshop',
+                date: '2025-06-29',
+                time: '1:00 PM - 3:00 PM',
+                description: 'Creative writing workshop for girls ages 12-17.',
+                location: 'New-York Historical Society, 170 Central Park West, New York, NY'
+            },
+            {
+                id: 'womens-6',
+                museum: 'womens',
+                museumName: 'Center for Women\'s History',
+                title: 'Women Leaders in Arts Administration',
+                type: 'Career Panel',
+                date: '2025-07-08',
+                time: '5:30 PM - 7:00 PM',
+                description: 'Museum directors and curators discuss their career paths.',
+                location: 'New-York Historical Society, 170 Central Park West, New York, NY'
+            },
+
+            // Asia Society Events
+            {
+                id: 'asia-1',
+                museum: 'asia',
+                museumName: 'Asia Society',
+                title: 'Contemporary Korean Art: Beyond Boundaries',
+                type: 'Exhibition Opening',
+                date: '2025-06-11',
+                time: '6:00 PM - 8:00 PM',
+                description: 'Opening of exhibition showcasing contemporary Korean artists.',
+                location: 'Asia Society Museum, 725 Park Avenue, New York, NY'
+            },
+            {
+                id: 'asia-2',
+                museum: 'asia',
+                museumName: 'Asia Society',
+                title: 'Japanese Tea Ceremony',
+                type: 'Cultural Demonstration',
+                date: '2025-06-14',
+                time: '2:00 PM - 3:30 PM',
+                description: 'Experience the art and philosophy of Japanese tea ceremony.',
+                location: 'Asia Society Museum, 725 Park Avenue, New York, NY'
+            },
+            {
+                id: 'asia-3',
+                museum: 'asia',
+                museumName: 'Asia Society',
+                title: 'Chinese Calligraphy Workshop',
+                type: 'Workshop',
+                date: '2025-06-17',
+                time: '10:00 AM - 12:00 PM',
+                description: 'Learn basic techniques of Chinese brush calligraphy.',
+                location: 'Asia Society Museum, 725 Park Avenue, New York, NY'
+            },
+            {
+                id: 'asia-4',
+                museum: 'asia',
+                museumName: 'Asia Society',
+                title: 'Contemporary Asian Cinema',
+                type: 'Film Series',
+                date: '2025-06-20',
+                time: '7:00 PM - 9:30 PM',
+                description: 'Screening of award-winning films from across Asia.',
+                location: 'Asia Society Museum, 725 Park Avenue, New York, NY'
+            },
+            {
+                id: 'asia-5',
+                museum: 'asia',
+                museumName: 'Asia Society',
+                title: 'Buddhist Art Symposium',
+                type: 'Symposium',
+                date: '2025-06-25',
+                time: '9:00 AM - 4:00 PM',
+                description: 'Scholars discuss Buddhist art across cultures.',
+                location: 'Asia Society Museum, 725 Park Avenue, New York, NY'
+            },
+            {
+                id: 'asia-6',
+                museum: 'asia',
+                museumName: 'Asia Society',
+                title: 'Summer Family Day: Asian Arts & Crafts',
+                type: 'Family Program',
+                date: '2025-06-28',
+                time: '11:00 AM - 3:00 PM',
+                description: 'Family-friendly activities inspired by Asian art traditions.',
+                location: 'Asia Society Museum, 725 Park Avenue, New York, NY'
+            },
+            {
+                id: 'asia-7',
+                museum: 'asia',
+                museumName: 'Asia Society',
+                title: 'Contemporary Indian Art Talk',
+                type: 'Artist Talk',
+                date: '2025-07-09',
+                time: '6:00 PM - 7:30 PM',
+                description: 'Leading Indian contemporary artist discusses their work.',
+                location: 'Asia Society Museum, 725 Park Avenue, New York, NY'
+            },
+            {
+                id: 'asia-8',
+                museum: 'asia',
+                museumName: 'Asia Society',
+                title: 'Asian Art Conservation Workshop',
+                type: 'Professional Workshop',
+                date: '2025-07-13',
+                time: '10:00 AM - 5:00 PM',
+                description: 'Professional development workshop on Asian art conservation.',
+                location: 'Asia Society Museum, 725 Park Avenue, New York, NY'
             }
         ];
 
@@ -472,10 +1053,26 @@
             container.innerHTML = '';
             
             const activeMuseums = getActiveMuseums();
-            const filteredEvents = museumEvents.filter(event => activeMuseums.includes(event.museum));
+            const selectedMonth = document.getElementById('monthFilter')?.value || 'all';
+            
+            let filteredEvents = museumEvents.filter(event => activeMuseums.includes(event.museum));
+            
+            // Filter by month if selected
+            if (selectedMonth !== 'all') {
+                filteredEvents = filteredEvents.filter(event => {
+                    const eventMonth = event.date.substring(0, 7); // Get YYYY-MM
+                    return eventMonth === selectedMonth;
+                });
+            }
+            
+            // Sort events by date
+            filteredEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
+            
+            // Update events summary
+            updateEventsSummary(filteredEvents.length);
             
             if (filteredEvents.length === 0) {
-                container.innerHTML = '<div class="loading">No events found. Please select at least one museum.</div>';
+                container.innerHTML = '<div class="loading">No events found. Please select at least one museum or adjust your filters.</div>';
                 return;
             }
             
@@ -483,6 +1080,13 @@
                 const eventCard = createEventCard(event);
                 container.appendChild(eventCard);
             });
+        }
+        
+        function updateEventsSummary(count) {
+            const summaryDiv = document.getElementById('eventsSummary');
+            if (summaryDiv) {
+                summaryDiv.textContent = `Showing ${count} events`;
+            }
         }
         
         function getActiveMuseums() {
@@ -501,6 +1105,7 @@
             
             card.innerHTML = `
                 <span class="museum-tag museum-${event.museum}">${event.museumName}</span>
+                <span class="event-type">${event.type}</span>
                 <div class="event-title">${event.title}</div>
                 <div class="event-date">${formatDate(event.date)}</div>
                 <div class="event-time">${event.time}</div>
@@ -588,7 +1193,7 @@
             const event = {
                 'summary': `${museumEvent.museumName}: ${museumEvent.title}`,
                 'location': museumEvent.location,
-                'description': museumEvent.description,
+                'description': `${museumEvent.type}\n\n${museumEvent.description}`,
                 'start': {
                     'dateTime': `${museumEvent.date}T${convertTo24Hour(startTime)}:00`,
                     'timeZone': 'America/New_York'
@@ -667,6 +1272,12 @@
                 checkbox.addEventListener('change', displayEvents);
             });
             
+            // Month filter
+            const monthFilter = document.getElementById('monthFilter');
+            if (monthFilter) {
+                monthFilter.addEventListener('change', displayEvents);
+            }
+            
             // Add to calendar button
             document.getElementById('addToCalendarBtn').addEventListener('click', addEventsToCalendar);
             
@@ -705,6 +1316,15 @@
             <button id="signoutButton" style="display: none;">Disconnect</button>
         </div>
         
+        <div class="date-filter">
+            <h3>Filter by Month:</h3>
+            <select id="monthFilter">
+                <option value="all">All Events</option>
+                <option value="2025-06">June 2025</option>
+                <option value="2025-07">July 2025</option>
+            </select>
+        </div>
+        
         <div class="museum-filters">
             <h3>Select Museums to Show Events From:</h3>
             <div class="museum-checkbox">
@@ -736,6 +1356,8 @@
                 <label for="asia">Asia Society</label>
             </div>
         </div>
+        
+        <div class="events-summary" id="eventsSummary">Showing all events</div>
         
         <div id="eventsContainer" class="events-container">
             <div class="loading">Loading events...</div>
