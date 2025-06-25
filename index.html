@@ -37,6 +37,13 @@
             margin-bottom: 30px;
         }
         
+        .last-updated {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+        
         .auth-section {
             background: white;
             padding: 20px;
@@ -284,6 +291,18 @@
             line-height: 1.5;
         }
         
+        .event-link {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 0.9em;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .event-link:hover {
+            text-decoration: underline;
+        }
+        
         .action-buttons {
             background: white;
             padding: 20px;
@@ -385,6 +404,8 @@
         let gapiInited = false;
         let gisInited = false;
         let selectedEvents = new Set();
+        let museumEvents = [];
+        let lastUpdated = null;
         
         // Event types
         const eventTypes = [
@@ -394,318 +415,56 @@
             'Artist Talk', 'Gallery Talk', 'Special Event'
         ];
         
-        // Generate comprehensive events for each museum
-        function generateMuseumEvents() {
-            const museums = [
-                { id: 'moma', name: 'MoMA', location: 'MoMA, 11 West 53rd Street, New York, NY' },
-                { id: 'met', name: 'The Met', location: 'The Met Fifth Avenue, 1000 Fifth Avenue, New York, NY' },
-                { id: 'nyu', name: 'NYU Institute of Fine Arts', location: 'NYU Institute of Fine Arts, 1 East 78th Street, New York, NY' },
-                { id: 'arts', name: 'National Arts Club', location: 'National Arts Club, 15 Gramercy Park South, New York, NY' },
-                { id: 'explorers', name: 'The Explorers Club', location: 'The Explorers Club, 46 East 70th Street, New York, NY' },
-                { id: 'womens', name: 'Center for Women\'s History', location: 'New-York Historical Society, 170 Central Park West, New York, NY' },
-                { id: 'asia', name: 'Asia Society', location: 'Asia Society Museum, 725 Park Avenue, New York, NY' }
-            ];
-            
-            const events = [];
-            let eventId = 1;
-            
-            // Generate events for each museum
-            museums.forEach(museum => {
-                // Generate events for each month (June - December 2025)
-                for (let month = 6; month <= 12; month++) {
-                    const monthStr = month.toString().padStart(2, '0');
-                    const daysInMonth = new Date(2025, month, 0).getDate();
+        // Load events from GitHub repository
+        async function loadEventsData() {
+            try {
+                // IMPORTANT: Replace jchua003 with your GitHub username and museum-events-calendar with your repository name
+                const response = await fetch('https://raw.githubusercontent.com/jchua003/Social-Intellectual-Calendar/main/data/events.json');
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    museumEvents = data.events || [];
+                    lastUpdated = data.last_updated;
                     
-                    // Generate multiple events per month for each museum
-                    const eventsPerMonth = 15 + Math.floor(Math.random() * 10); // 15-25 events per month
-                    
-                    for (let i = 0; i < eventsPerMonth; i++) {
-                        const day = Math.floor(Math.random() * daysInMonth) + 1;
-                        const dayStr = day.toString().padStart(2, '0');
-                        const eventType = eventTypes[Math.floor(Math.random() * eventTypes.length)];
-                        
-                        events.push(generateSingleEvent(
-                            eventId++,
-                            museum,
-                            `2025-${monthStr}-${dayStr}`,
-                            eventType
-                        ));
+                    // Update last updated display
+                    if (lastUpdated) {
+                        const date = new Date(lastUpdated);
+                        document.getElementById('lastUpdated').textContent = 
+                            `Last updated: ${date.toLocaleDateString()} at ${date.toLocaleTimeString()}`;
                     }
+                    
+                    console.log(`Loaded ${museumEvents.length} events`);
+                    displayEvents();
+                } else {
+                    console.error('Failed to load events data');
+                    showError('Failed to load events data. Using sample data instead.');
+                    generateSampleEvents();
                 }
-            });
-            
-            // Sort events by date
-            events.sort((a, b) => new Date(a.date) - new Date(b.date));
-            
-            return events;
-        }
-        
-        // Generate a single event with realistic details
-        function generateSingleEvent(id, museum, date, eventType) {
-            const eventTemplates = {
-                'MoMA': {
-                    'Exhibition': [
-                        'Contemporary Voices: New Acquisitions',
-                        'Surrealism Beyond Borders',
-                        'Digital Dreams: Art in the Age of AI',
-                        'Minimalism Revisited',
-                        'Photography Now: Global Perspectives'
-                    ],
-                    'Workshop': [
-                        'Abstract Painting Techniques',
-                        'Digital Art Creation',
-                        'Printmaking Fundamentals',
-                        'Sculpture with Found Objects',
-                        'Video Art Production'
-                    ],
-                    'Lecture': [
-                        'The Future of Museums',
-                        'Conservation Challenges in Modern Art',
-                        'Art and Technology Intersection',
-                        'Decolonizing the Museum',
-                        'Climate Change and Art'
-                    ],
-                    'Performance': [
-                        'Dance in the Galleries',
-                        'Sound Art Experience',
-                        'Interactive Performance Art',
-                        'Music and Visual Art',
-                        'Theater Meets Museum'
-                    ],
-                    'Film': [
-                        'Artist Documentary Series',
-                        'Experimental Film Night',
-                        'Animation Showcase',
-                        'International Cinema',
-                        'Video Art Screening'
-                    ]
-                },
-                'The Met': {
-                    'Exhibition': [
-                        'Ancient Civilizations Revealed',
-                        'Masterpieces from the Islamic World',
-                        'European Paintings: Hidden Gems',
-                        'Fashion Through the Centuries',
-                        'Arms and Armor: Warriors\' Tales'
-                    ],
-                    'Workshop': [
-                        'Medieval Manuscript Making',
-                        'Ancient Pottery Techniques',
-                        'Textile Conservation',
-                        'Drawing in the Galleries',
-                        'Jewelry Making Inspired by Antiquity'
-                    ],
-                    'Lecture': [
-                        'Archaeological Discoveries',
-                        'Art History Symposium',
-                        'Curatorial Perspectives',
-                        'Conservation Science',
-                        'Provenance Research'
-                    ],
-                    'Tour': [
-                        'Highlights of the Collection',
-                        'Behind the Scenes Tour',
-                        'Architecture Walk',
-                        'Curator\'s Choice Tour',
-                        'Accessible Art Tour'
-                    ],
-                    'Family Program': [
-                        'Art Adventures for Kids',
-                        'Family Drawing Workshop',
-                        'Storytime in the Galleries',
-                        'Teen Studio',
-                        'Weekend Family Festival'
-                    ]
-                },
-                'NYU Institute of Fine Arts': {
-                    'Lecture': [
-                        'Graduate Research Presentations',
-                        'Conservation Science Symposium',
-                        'Art Market Studies',
-                        'Digital Humanities in Art History',
-                        'Methodology in Art History'
-                    ],
-                    'Symposium': [
-                        'Annual Graduate Symposium',
-                        'Conservation Colloquium',
-                        'Renaissance Studies Conference',
-                        'Contemporary Art Forum',
-                        'Archaeological Methods Workshop'
-                    ],
-                    'Workshop': [
-                        'Research Methods Training',
-                        'Digital Tools for Art Historians',
-                        'Grant Writing for Scholars',
-                        'Publishing Your Research',
-                        'Archive Research Techniques'
-                    ]
-                },
-                'National Arts Club': {
-                    'Exhibition': [
-                        'Member Artists Annual',
-                        'Emerging Talent Showcase',
-                        'Landscape Traditions',
-                        'Portrait Exhibition',
-                        'Abstract Expressions'
-                    ],
-                    'Workshop': [
-                        'Oil Painting Masterclass',
-                        'Watercolor Techniques',
-                        'Life Drawing Sessions',
-                        'Plein Air Painting',
-                        'Mixed Media Exploration'
-                    ],
-                    'Social Event': [
-                        'Artists\' Reception',
-                        'Collectors\' Evening',
-                        'Summer Garden Party',
-                        'Holiday Celebration',
-                        'Opening Night Gala'
-                    ]
-                },
-                'The Explorers Club': {
-                    'Lecture': [
-                        'Deep Ocean Exploration',
-                        'Climate Research Expeditions',
-                        'Space Exploration Updates',
-                        'Wildlife Conservation Projects',
-                        'Archaeological Discoveries'
-                    ],
-                    'Film': [
-                        'Expedition Documentary Night',
-                        'Nature Film Festival',
-                        'Adventure Cinema',
-                        'Scientific Discovery Films',
-                        'Explorer Profiles'
-                    ],
-                    'Special Event': [
-                        'Annual Explorers Dinner',
-                        'Flag Expedition Send-off',
-                        'Young Explorers Day',
-                        'Research Presentation Night',
-                        'Conservation Awards'
-                    ]
-                },
-                'Center for Women\'s History': {
-                    'Exhibition': [
-                        'Women in the Arts',
-                        'Suffrage Movement Artifacts',
-                        'Contemporary Women Artists',
-                        'Hidden Histories Revealed',
-                        'Women in Science and Innovation'
-                    ],
-                    'Panel Discussion': [
-                        'Women in Museum Leadership',
-                        'Gender and Art History',
-                        'Feminist Art Movements',
-                        'Women Collectors and Patrons',
-                        'Breaking Barriers in the Arts'
-                    ],
-                    'Workshop': [
-                        'Oral History Collection',
-                        'Archival Research Skills',
-                        'Creative Writing Workshop',
-                        'Documentary Making',
-                        'Activism Through Art'
-                    ]
-                },
-                'Asia Society': {
-                    'Exhibition': [
-                        'Contemporary Asian Art',
-                        'Traditional Crafts Reimagined',
-                        'Buddhist Art Across Cultures',
-                        'Modern Chinese Painting',
-                        'Southeast Asian Textiles'
-                    ],
-                    'Performance': [
-                        'Traditional Music Concert',
-                        'Contemporary Dance',
-                        'Theater Performance',
-                        'Poetry Reading',
-                        'Multi-media Performance'
-                    ],
-                    'Workshop': [
-                        'Calligraphy Class',
-                        'Tea Ceremony',
-                        'Origami Workshop',
-                        'Asian Cooking and Culture',
-                        'Meditation and Art'
-                    ]
-                }
-            };
-            
-            // Get appropriate title based on museum and event type
-            const museumTemplates = eventTemplates[museum.name] || eventTemplates['MoMA'];
-            const titles = museumTemplates[eventType] || museumTemplates['Exhibition'] || ['Special Event'];
-            const title = titles[Math.floor(Math.random() * titles.length)];
-            
-            // Generate time based on event type
-            let time;
-            switch(eventType) {
-                case 'Exhibition':
-                case 'Gallery Talk':
-                    time = '10:00 AM - 5:00 PM';
-                    break;
-                case 'Workshop':
-                case 'Tour':
-                    time = Math.random() > 0.5 ? '2:00 PM - 4:00 PM' : '10:00 AM - 12:00 PM';
-                    break;
-                case 'Lecture':
-                case 'Panel Discussion':
-                case 'Artist Talk':
-                    time = '6:00 PM - 7:30 PM';
-                    break;
-                case 'Performance':
-                case 'Film':
-                    time = '7:00 PM - 9:00 PM';
-                    break;
-                case 'Opening':
-                case 'Social Event':
-                    time = '6:00 PM - 8:00 PM';
-                    break;
-                case 'Family Program':
-                    time = '11:00 AM - 1:00 PM';
-                    break;
-                case 'Symposium':
-                    time = '9:00 AM - 5:00 PM';
-                    break;
-                default:
-                    time = '2:00 PM - 4:00 PM';
+            } catch (error) {
+                console.error('Error loading events:', error);
+                showError('Error loading events data. Using sample data instead.');
+                generateSampleEvents();
             }
-            
-            // Generate description
-            const descriptions = {
-                'Exhibition': `Experience this compelling exhibition featuring diverse works that challenge and inspire. Join us for a journey through artistic excellence.`,
-                'Workshop': `Hands-on workshop where participants will learn new techniques and create their own works. All materials provided. Prior registration required.`,
-                'Lecture': `Join distinguished speakers for an engaging presentation followed by Q&A. Free with museum admission.`,
-                'Performance': `Live performance integrating various artistic disciplines. Limited seating available.`,
-                'Film': `Special screening followed by discussion. Tickets available at the door.`,
-                'Family Program': `Engaging activities designed for families with children ages 5-12. Create, explore, and learn together.`,
-                'Tour': `Expert-led tour providing unique insights into the collection. Group size limited.`,
-                'Symposium': `Full-day program featuring multiple speakers and panel discussions. Lunch included.`,
-                'Opening': `Celebrate the opening of our newest exhibition with refreshments and special guest appearances.`,
-                'Social Event': `Join fellow art enthusiasts for an evening of culture and conversation.`,
-                'Panel Discussion': `Dynamic discussion featuring experts from various fields. Audience participation encouraged.`,
-                'Artist Talk': `Hear directly from the artist about their creative process and inspiration.`,
-                'Gallery Talk': `Informal discussion in the galleries led by curators and educators.`,
-                'Special Event': `Don't miss this unique program featuring special guests and exclusive access.`
-            };
-            
-            return {
-                id: `${museum.id}-${id}`,
-                museum: museum.id,
-                museumName: museum.name,
-                title: title + (Math.random() > 0.7 ? ' - Special Edition' : ''),
-                type: eventType,
-                date: date,
-                time: time,
-                description: descriptions[eventType] || descriptions['Exhibition'],
-                location: museum.location
-            };
         }
         
-        // Initialize museum events
-        const museumEvents = generateMuseumEvents();
+        // Generate sample events as fallback
+        function generateSampleEvents() {
+            museumEvents = [
+                {
+                    id: "moma-1",
+                    museum: "moma",
+                    museumName: "MoMA",
+                    title: "Sample Exhibition: Modern Art",
+                    type: "Exhibition",
+                    date: "2025-07-15",
+                    time: "10:00 AM - 5:00 PM",
+                    description: "This is a sample event. Please set up the web scraper to get real events.",
+                    location: "MoMA, 11 West 53rd Street, New York, NY"
+                },
+                // Add more sample events as needed
+            ];
+            displayEvents();
+        }
 
         // Show error message
         function showError(message) {
@@ -776,10 +535,8 @@
             };
             
             if (gapi.client.getToken() === null) {
-                // Prompt the user to select a Google Account and ask for consent
                 tokenClient.requestAccessToken({prompt: 'consent'});
             } else {
-                // Skip display of account chooser and consent dialog
                 tokenClient.requestAccessToken({prompt: ''});
             }
         }
@@ -799,19 +556,16 @@
         
         // Get active filters
         function getActiveFilters() {
-            // Museums
             const museums = ['moma', 'met', 'nyu', 'arts', 'explorers', 'womens', 'asia'];
             const activeMuseums = museums.filter(museum => 
                 document.getElementById(`museum-${museum}`).checked
             );
             
-            // Event types
             const activeTypes = eventTypes.filter(type => {
                 const checkbox = document.getElementById(`type-${type.toLowerCase().replace(/\s+/g, '-')}`);
                 return checkbox && checkbox.checked;
             });
             
-            // Date filters
             const monthFilter = document.getElementById('monthFilter').value;
             const startDate = document.getElementById('startDate').value;
             const endDate = document.getElementById('endDate').value;
@@ -833,26 +587,20 @@
             const filters = getActiveFilters();
             
             let filteredEvents = museumEvents.filter(event => {
-                // Filter by museum
                 if (!filters.museums.includes(event.museum)) return false;
-                
-                // Filter by type
                 if (filters.types.length > 0 && !filters.types.includes(event.type)) return false;
                 
-                // Filter by month
                 if (filters.month !== 'all') {
                     const eventMonth = event.date.substring(0, 7);
                     if (eventMonth !== filters.month) return false;
                 }
                 
-                // Filter by date range
                 if (filters.startDate && event.date < filters.startDate) return false;
                 if (filters.endDate && event.date > filters.endDate) return false;
                 
                 return true;
             });
             
-            // Update events summary
             updateEventsSummary(filteredEvents.length);
             
             if (filteredEvents.length === 0) {
@@ -860,7 +608,6 @@
                 return;
             }
             
-            // Display filtered events
             filteredEvents.forEach(event => {
                 const eventCard = createEventCard(event);
                 container.appendChild(eventCard);
@@ -893,6 +640,7 @@
                 <div class="event-location" style="color: #7f8c8d; font-size: 0.9em; margin-top: 10px;">
                     📍 ${event.location}
                 </div>
+                ${event.url ? `<a href="${event.url}" target="_blank" class="event-link">View on museum website →</a>` : ''}
             `;
             
             card.addEventListener('click', () => toggleEventSelection(event));
@@ -998,7 +746,7 @@
             const event = {
                 'summary': `${museumEvent.museumName}: ${museumEvent.title}`,
                 'location': museumEvent.location,
-                'description': `${museumEvent.type}\n\n${museumEvent.description}`,
+                'description': `${museumEvent.type}\n\n${museumEvent.description}${museumEvent.url ? '\n\nMore info: ' + museumEvent.url : ''}`,
                 'start': {
                     'dateTime': `${museumEvent.date}T${convertTo24Hour(startTime)}:00`,
                     'timeZone': 'America/New_York'
@@ -1025,11 +773,20 @@
         }
         
         function parseTimeRange(timeString) {
-            const parts = timeString.split(' - ');
-            return [parts[0], parts[1]];
+            if (timeString.includes(' - ')) {
+                const parts = timeString.split(' - ');
+                return [parts[0], parts[1]];
+            } else {
+                // If single time, assume 2-hour duration
+                return [timeString, timeString];
+            }
         }
         
         function convertTo24Hour(time12h) {
+            if (!time12h || time12h === 'See website for time') {
+                return '12:00'; // Default noon
+            }
+            
             const [time, modifier] = time12h.split(' ');
             let [hours, minutes] = time.split(':');
             hours = parseInt(hours, 10);
@@ -1044,12 +801,11 @@
                 }
             }
             
-            return `${hours.toString().padStart(2, '0')}:${minutes}`;
+            return `${hours.toString().padStart(2, '0')}:${minutes || '00'}`;
         }
         
         // Check for API availability on load
         function initializeApp() {
-            // Check if gapi is loaded
             if (typeof gapi !== 'undefined') {
                 gapiLoaded();
             } else {
@@ -1057,7 +813,6 @@
                 return;
             }
             
-            // Check if google identity services is loaded
             if (typeof google !== 'undefined') {
                 gisLoaded();
             } else {
@@ -1067,7 +822,7 @@
         
         // Initialize when page loads
         document.addEventListener('DOMContentLoaded', () => {
-            // Create event type checkboxes FIRST
+            // Create event type checkboxes
             const typeContainer = document.getElementById('eventTypeFilters');
             if (typeContainer) {
                 eventTypes.forEach(type => {
@@ -1086,12 +841,11 @@
             document.getElementById('authorizeButton').onclick = handleAuthClick;
             document.getElementById('signoutButton').onclick = handleSignoutClick;
             
-            // Filter event listeners - attach to all existing checkboxes
+            // Filter event listeners
             document.querySelectorAll('.museum-checkbox input').forEach(checkbox => {
                 checkbox.addEventListener('change', displayEvents);
             });
             
-            // Add event listeners to the newly created type checkboxes
             document.querySelectorAll('.type-checkbox input').forEach(checkbox => {
                 checkbox.addEventListener('change', displayEvents);
             });
@@ -1109,8 +863,8 @@
             // Add to calendar button
             document.getElementById('addToCalendarBtn').addEventListener('click', addEventsToCalendar);
             
-            // Initial display
-            displayEvents();
+            // Load events data
+            loadEventsData();
             
             // Start initialization
             setTimeout(initializeApp, 1000);
@@ -1121,6 +875,7 @@
     <div class="container">
         <h1>NYC Museum Events Calendar</h1>
         <p class="subtitle">Browse and select events from NYC's premier cultural institutions</p>
+        <p class="last-updated" id="lastUpdated"></p>
         
         <div class="instructions">
             <h3>📝 Quick Instructions:</h3>
@@ -1185,7 +940,6 @@
             
             <div class="filter-group">
                 <h4>Event Types</h4>
-                <!-- This div was missing and is now added! -->
                 <div id="eventTypeFilters"></div>
                 <div class="filter-actions">
                     <button id="selectAllTypes" class="btn-select-all">Select All</button>
@@ -1216,7 +970,7 @@
         <div class="events-summary" id="eventsSummary">Loading events...</div>
         
         <div id="eventsContainer" class="events-container">
-            <div class="loading">Loading events...</div>
+            <div class="loading">Loading events from museums...</div>
         </div>
         
         <div class="action-buttons">
