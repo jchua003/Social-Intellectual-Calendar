@@ -2,36 +2,38 @@ name: Scrape Museum Events
 
 on:
   schedule:
-    # Run every day at 2 AM EST (7 AM UTC)
-    - cron: '0 7 * * *'
-  workflow_dispatch:  # Allow manual trigger
+    # Run every day at 9 AM EST (2 PM UTC)
+    - cron: '0 14 * * *'
+  workflow_dispatch: # Allow manual trigger
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-      
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.9'
+      - name: Checkout repository
+        uses: actions/checkout@v3
         
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r scraper/requirements.txt
-        
-    - name: Run scraper
-      run: |
-        cd scraper
-        python scraper.py
-        
-    - name: Commit and push if changes
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add data/events.json
-        git diff --quiet && git diff --staged --quiet || (git commit -m "Update events data [skip ci]" && git push)
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scraper/requirements.txt
+          
+      - name: Run scraper
+        run: |
+          mkdir -p data
+          cd scraper
+          python scraper.py
+          
+      - name: Commit and push if changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/events.json
+          git diff --staged --quiet || git commit -m "Update events data"
+          git push
