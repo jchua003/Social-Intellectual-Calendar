@@ -31,7 +31,7 @@ class MuseumEventsScraper:
             met.MetScraper(self.session),
             nyu.NYUScraper(self.session),
             arts_club.ArtsClubScraper(self.session),
-            explorers.ExplorersClubScraper(self.session),
+            explorers.ExplorersScraper(self.session),
             womens_history.WomensHistoryScraper(self.session),
             asia_society.AsiaSocietyScraper(self.session)
         ]
