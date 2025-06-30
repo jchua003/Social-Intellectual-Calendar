@@ -44,12 +44,12 @@ class HybridEventsScraper:
         # Import scrapers only if they're available
         scrapers_to_try = []
         
-        # Try simple API-based scrapers first
+        # Try targeted scrapers for your specific museums
         try:
-            from simple_scrapers import SimpleAPIScrapers
-            scrapers_to_try.append(('API Scrapers', SimpleAPIScrapers))
+            from targeted_scraper import TargetedMuseumScraper
+            scrapers_to_try.append(('Targeted Museum Scrapers', TargetedMuseumScraper))
         except ImportError:
-            print("Simple scrapers not available")
+            print("Targeted scrapers not available")
         
         # Try Selenium scrapers if available
         try:
@@ -63,7 +63,10 @@ class HybridEventsScraper:
             print(f"\nTrying {scraper_name}...")
             try:
                 scraper = scraper_class()
-                events = scraper.scrape_all()
+                if hasattr(scraper, 'scrape_all_museums'):
+                    events = scraper.scrape_all_museums()
+                else:
+                    events = scraper.scrape_all()
                 self.scraped_events.extend(events)
                 print(f"Got {len(events)} events from {scraper_name}")
             except Exception as e:
