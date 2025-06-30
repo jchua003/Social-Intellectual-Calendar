@@ -1,0 +1,105 @@
+name: Hybrid Events Processing
+
+on:
+  schedule:
+    # Run daily at 3 AM EST (8 AM UTC)
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+    inputs:
+      scrape_web:
+        description: 'Enable web scraping'
+        required: false
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+
+jobs:
+  update-events:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install python-dateutil requests beautifulsoup4
+          
+          # Install Selenium dependencies if web scraping is enabled
+          if [ "${{ github.event.inputs.scrape_web || 'true' }}" = "true" ]; then
+            pip install selenium
+            
+            # Install Chrome
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | grep -oP '\d+' | head -1)
+            wget -q https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION} -O chromedriver_version
+            CHROMEDRIVER_VERSION=$(cat chromedriver_version)
+            wget -q "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            unzip -q chromedriver_linux64.zip
+            sudo mv chromedriver /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+          fi
+      
+      - name: Process events
+        id: process
+        run: |
+          cd scraper
+          
+          # Always process CSV files first
+          echo "Processing CSV files..."
+          python csv_to_events.py
+          
+          # Run hybrid scraper if web scraping is enabled
+          if [ "${{ github.event.inputs.scrape_web || 'true' }}" = "true" ]; then
+            echo -e "\nRunning hybrid scraper with web scraping..."
+            python hybrid_scraper.py || echo "Hybrid scraping had some failures, but continuing..."
+          else
+            echo "Web scraping disabled, using CSV data only"
+          fi
+          
+          # Count events
+          if [ -f "../data/events.json" ]; then
+            EVENT_COUNT=$(python -c "import json; print(len(json.load(open('../data/events.json'))['events']))")
+            echo "event_count=$EVENT_COUNT" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Commit and push
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "GitHub Action"
+          
+          git add data/events.json
+          
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            EVENT_COUNT="${{ steps.process.outputs.event_count }}"
+            git commit -m "Update events - $EVENT_COUNT total events (CSV + Web)"
+            git push
+          fi
+      
+      - name: Summary
+        run: |
+          echo "## Events Processing Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- Total events: ${{ steps.process.outputs.event_count }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Web scraping: ${{ github.event.inputs.scrape_web || 'true' }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Run time: $(date)" >> $GITHUB_STEP_SUMMARY
