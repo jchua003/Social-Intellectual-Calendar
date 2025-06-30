@@ -2,15 +2,25 @@ name: Advanced Museum Events Scraper
 
 on:
   schedule:
-    # Run daily at 9 AM EST
+    # Run daily at 9 AM EST (2 PM UTC)
     - cron: '0 14 * * *'
   workflow_dispatch:
+    inputs:
+      debug_mode:
+        description: 'Run in debug mode'
+        required: false
+        default: 'false'
+      force_csv:
+        description: 'Force CSV import only'
+        required: false
+        default: 'false'
 
 jobs:
-  scrape-with-selenium:
+  scrape-events:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      issues: write  # For creating issues on failure
     
     steps:
       - name: Checkout repository
@@ -23,8 +33,17 @@ jobs:
         with:
           python-version: '3.9'
       
-      - name: Install Chrome
+      - name: Cache Python dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      
+      - name: Install Chrome and ChromeDriver
         run: |
+          # Install Chrome
           sudo apt-get update
           sudo apt-get install -y wget gnupg
           wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
@@ -32,35 +51,154 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable
           
+          # Install ChromeDriver
+          CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+')
+          CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION%%.*}")
+          wget -q "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+          unzip chromedriver_linux64.zip
+          sudo mv chromedriver /usr/local/bin/
+          sudo chmod +x /usr/local/bin/chromedriver
+          
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install selenium selenium-stealth undetected-chromedriver beautifulsoup4
-          pip install fake-useragent aiohttp playwright
-          pip install requests python-dateutil
           
+          # Core dependencies
+          pip install requests beautifulsoup4 aiohttp python-dateutil
+          
+          # Selenium and stealth
+          pip install selenium selenium-stealth undetected-chromedriver
+          
+          # Additional tools
+          pip install fake-useragent playwright feedparser
+          
+          # Install from requirements if exists
+          if [ -f scraper/requirements.txt ]; then
+            pip install -r scraper/requirements.txt
+          fi
+      
       - name: Install Playwright browsers
         run: |
           playwright install chromium
           playwright install-deps
-          
-      - name: Run advanced scraper
+      
+      - name: Run integrated scraper
+        id: scrape
         run: |
           cd scraper
-          # Try multiple scraping methods
-          python selenium_scraper.py || echo "Selenium scraper encountered issues"
-          python api_discovery.py || echo "API discovery encountered issues"
           
-          # Fallback to CSV processor if available
-          if [ -d "csv_data" ] && [ "$(ls -A csv_data/*.csv 2>/dev/null)" ]; then
-            echo "Processing CSV files as fallback..."
-            python csv_to_events.py
+          # Set environment variables
+          export GITHUB_ACTIONS=true
+          export DEBUG_MODE=${{ github.event.inputs.debug_mode }}
+          export FORCE_CSV=${{ github.event.inputs.force_csv }}
+          
+          # Run the integrated scraper
+          python integrated_scraper.py 2>&1 | tee scraper_output.log
+          
+          # Check if manual review is needed
+          if [ -f "manual_review_needed.txt" ]; then
+            echo "manual_review=true" >> $GITHUB_OUTPUT
+          else
+            echo "manual_review=false" >> $GITHUB_OUTPUT
           fi
           
-      - name: Commit and push if changes
+          # Check event count
+          EVENT_COUNT=$(python -c "import json; data=json.load(open('../data/events.json')); print(len(data['events']))")
+          echo "event_count=$EVENT_COUNT" >> $GITHUB_OUTPUT
+      
+      - name: Generate scraper report
+        if: always()
+        run: |
+          cd scraper
+          python -c "
+from monitoring import ScraperMonitor
+monitor = ScraperMonitor()
+report = monitor.generate_report()
+with open('scraper_report.md', 'w') as f:
+    f.write(report)
+print(report)
+"
+      
+      - name: Upload logs as artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: scraper-logs
+          path: |
+            scraper/scraper_output.log
+            scraper/scraper_logs.json
+            scraper/scraper_report.md
+      
+      - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          
+          # Add all changed files
           git add data/events.json
-          git diff --staged --quiet || git commit -m "Update events data - $(date +'%Y-%m-%d')"
-          git push
+          git add scraper/scraper_logs.json || true
+          
+          # Check if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            # Create detailed commit message
+            EVENT_COUNT=${{ steps.scrape.outputs.event_count }}
+            git commit -m "Update events data - $(date +'%Y-%m-%d') - $EVENT_COUNT events"
+            git push
+          fi
+      
+      - name: Create issue if manual review needed
+        if: steps.scrape.outputs.manual_review == 'true'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('scraper/scraper_report.md', 'utf8');
+            
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '🚨 Museum Scraper: Manual Review Needed',
+              body: `The automated scraper found very few events. Manual intervention is recommended.
+              
+              **Event Count:** ${{ steps.scrape.outputs.event_count }}
+              
+              ## Scraper Report
+              ${report}
+              
+              ## Recommended Actions
+              1. Check museum websites manually for current events
+              2. Update CSV files in \`scraper/csv_data/\`
+              3. Review scraper logs for specific errors
+              4. Consider updating scraper code if websites changed
+              
+              [View Logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+              `,
+              labels: ['scraper-issue', 'manual-review-needed']
+            });
+      
+      - name: Post summary
+        if: always()
+        run: |
+          echo "## Scraper Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- **Event Count:** ${{ steps.scrape.outputs.event_count }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Manual Review Needed:** ${{ steps.scrape.outputs.manual_review }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Run Time:** $(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f "scraper/scraper_report.md" ]; then
+            cat scraper/scraper_report.md >> $GITHUB_STEP_SUMMARY
+          fi
+
+  # Optional: Send notifications
+  notify:
+    needs: scrape-events
+    runs-on: ubuntu-latest
+    if: failure()
+    
+    steps:
+      - name: Send failure notification
+        run: |
+          echo "Scraper failed! Check the logs for details."
+          # Add your notification method here (email, Slack, etc.)
