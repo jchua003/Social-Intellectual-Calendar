@@ -1,0 +1,40 @@
+name: Process CSV Events
+
+on:
+  workflow_dispatch:  # Manual trigger
+  push:
+    paths:
+      - 'scraper/csv_data/*.csv'
+      - 'scraper/csv_to_events.py'
+
+jobs:
+  process-csv:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      
+      - name: Install dependencies
+        run: |
+          pip install python-dateutil
+      
+      - name: Process CSV files
+        run: |
+          cd scraper
+          python csv_to_events.py
+      
+      - name: Commit and push
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "GitHub Action"
+          git add data/events.json
+          git diff --staged --quiet || git commit -m "Update events from CSV files"
+          git push
