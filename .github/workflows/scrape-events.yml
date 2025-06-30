@@ -1,13 +1,13 @@
-name: Process Museum Events
+name: Advanced Museum Events Scraper
 
 on:
   schedule:
-    # Run every Monday at 9 AM EST (2 PM UTC)
-    - cron: '0 14 * * 1'
-  workflow_dispatch: # Allow manual trigger
+    # Run daily at 9 AM EST
+    - cron: '0 14 * * *'
+  workflow_dispatch:
 
 jobs:
-  process:
+  scrape-with-selenium:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -17,27 +17,44 @@ jobs:
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-        
+      
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
+      
+      - name: Install Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget gnupg
+          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+          echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
           
-      - name: Install dependencies
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install python-dateutil
+          pip install selenium selenium-stealth undetected-chromedriver beautifulsoup4
+          pip install fake-useragent aiohttp playwright
+          pip install requests python-dateutil
           
-      - name: Process CSV files
+      - name: Install Playwright browsers
+        run: |
+          playwright install chromium
+          playwright install-deps
+          
+      - name: Run advanced scraper
         run: |
           cd scraper
-          # Create the csv_to_events.py file if it doesn't exist
-          if [ -f "csv_to_events.py" ]; then
-            echo "1" | python csv_to_events.py
-          else
-            echo "csv_to_events.py not found, using scraper.py"
-            mkdir -p ../data
-            python scraper.py
+          # Try multiple scraping methods
+          python selenium_scraper.py || echo "Selenium scraper encountered issues"
+          python api_discovery.py || echo "API discovery encountered issues"
+          
+          # Fallback to CSV processor if available
+          if [ -d "csv_data" ] && [ "$(ls -A csv_data/*.csv 2>/dev/null)" ]; then
+            echo "Processing CSV files as fallback..."
+            python csv_to_events.py
           fi
           
       - name: Commit and push if changes
@@ -45,5 +62,5 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add data/events.json
-          git diff --staged --quiet || git commit -m "Update events from CSV files"
+          git diff --staged --quiet || git commit -m "Update events data - $(date +'%Y-%m-%d')"
           git push
