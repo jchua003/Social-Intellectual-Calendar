@@ -70,7 +70,7 @@ class CSVEventProcessor:
         date_string = date_string.strip()
         
         # Already in correct format
-       if re.match(r'^\d{4}-\d{2}-\d{2}$', date_string):
+        if re.match(r'^\d{4}-\d{2}-\d{2}$', date_string):
             return date_string
             
         # Try different date formats
