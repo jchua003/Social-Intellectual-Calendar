@@ -100,6 +100,23 @@ jobs:
           cd scraper
           python integrated_scraper.py
           
+      - name: Debug file locations
+        run: |
+          echo "Current directory:"
+          pwd
+          echo -e "\nLooking for events.json files:"
+          find . -name "events.json" -type f -ls
+          echo -e "\nDirectory structure:"
+          ls -la
+          ls -la data/ || echo "No data directory in root"
+          ls -la scraper/ || echo "No scraper directory"
+          echo -e "\nChecking data directory contents:"
+          ls -la data/ || echo "No data directory"
+          if [ -f data/events.json ]; then
+            echo -e "\nFirst 500 characters of data/events.json:"
+            head -c 500 data/events.json
+          fi
+          
       - name: Ensure events.json is in data directory
         run: |
           # Create data directory if it doesn't exist
