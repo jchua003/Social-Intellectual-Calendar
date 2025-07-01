@@ -636,7 +636,7 @@
                 <div class="event-title">${event.title}</div>
                 <div class="event-date">${formatDate(event.date)}</div>
                 <div class="event-time">${event.time}</div>
-                <div class="event-description">${event.description}</div>
+                <div class="event-description">${truncateDescription(event.description)}</div>
                 <div class="event-location" style="color: #7f8c8d; font-size: 0.9em; margin-top: 10px;">
                     📍 ${event.location}
                 </div>
@@ -652,6 +652,12 @@
             const date = new Date(dateString + 'T00:00:00');
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             return date.toLocaleDateString('en-US', options);
+        }
+
+        function truncateDescription(text, length = 200) {
+            if (!text) return '';
+            if (text.length <= length) return text;
+            return text.slice(0, length).trim() + '...';
         }
         
         function toggleEventSelection(event) {
