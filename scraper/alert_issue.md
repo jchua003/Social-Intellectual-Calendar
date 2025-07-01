@@ -8,8 +8,8 @@ Total events scraped: 0
 This is below the threshold of 10
 
 **Automated Alert Details:**
-- Time: 2025-07-01T07:27:41.406060
-- Total attempts today: 4
+- Time: 2025-07-01T07:39:45.406443
+- Total attempts today: 8
 - Overall success rate: 0.0%
 
 **Next Steps:**
