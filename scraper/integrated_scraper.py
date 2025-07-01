@@ -7,11 +7,8 @@ Combines multiple scraping strategies with fallbacks
 import json
 import os
 from datetime import datetime
-import asyncio
-import aiohttp
-from museum_specific_scrapers import MuseumSpecificScrapers, MUSEUM_CONFIGS
-from monitoring import ScraperMonitor, MonitoredScraper
-from csv_to_events import CSVEventProcessor
+from museum_specific_scrapers import MuseumSpecificScrapers  # Remove MUSEUM_CONFIGS
+from csv_to_events import CSVToEvents
 
 class IntegratedMuseumScraper:
     def __init__(self):
