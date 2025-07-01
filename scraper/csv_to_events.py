@@ -6,13 +6,14 @@ from datetime import datetime
 import re
 
 class CSVToEvents:
-    def __init__(self):
-        self.events = []
-        # Get the correct paths
-        self.script_dir = os.path.dirname(os.path.abspath(__file__))
-        self.root_dir = os.path.dirname(self.script_dir)
-        self.data_dir = os.path.join(self.root_dir, 'data')
-        self.csv_dir = os.path.join(self.data_dir, 'csv_data')
+  def __init__(self):
+    self.events = []
+    # Get the correct paths
+    self.script_dir = os.path.dirname(os.path.abspath(__file__))
+    self.root_dir = os.path.dirname(self.script_dir)
+    self.data_dir = os.path.join(self.root_dir, 'data')
+    # FIX: Look for CSV files in scraper/csv_data
+    self.csv_dir = os.path.join(self.script_dir, 'csv_data') 
         
     def clean_text(self, text):
         """Clean and normalize text"""
