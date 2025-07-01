@@ -99,6 +99,31 @@ jobs:
         run: |
           cd scraper
           python integrated_scraper.py
+          
+      - name: Ensure events.json is in data directory
+        run: |
+          # Create data directory if it doesn't exist
+          mkdir -p data
+          
+          # Find and copy events.json to data directory
+          if [ -f scraper/events.json ]; then
+            cp scraper/events.json data/events.json
+            echo "Copied events.json from scraper to data directory"
+          elif [ -f events.json ]; then
+            cp events.json data/events.json
+            echo "Copied events.json from root to data directory"
+          fi
+          
+          # Verify the file exists
+          if [ -f data/events.json ]; then
+            echo "Success: data/events.json exists"
+            echo "File size: $(ls -lh data/events.json)"
+            echo "First 100 characters:"
+            head -c 100 data/events.json
+          else
+            echo "ERROR: data/events.json not found!"
+            exit 1
+          fi
         
       - name: Update events.json
         run: |
@@ -129,3 +154,12 @@ jobs:
         
       - name: Setup Pages
         uses: actions/configure-pages@v4
+        
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+          
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
