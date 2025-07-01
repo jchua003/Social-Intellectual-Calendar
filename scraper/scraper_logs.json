@@ -2,36 +2,36 @@
   "museums": {
     "moma": {
       "last_success": null,
-      "last_failure": "2025-07-01T07:40:23.360457",
-      "consecutive_failures": 3,
-      "total_attempts": 3,
+      "last_failure": "2025-07-01T07:49:51.605447",
+      "consecutive_failures": 4,
+      "total_attempts": 4,
       "success_rate": 0.0,
       "last_events_count": 0,
       "last_error": "object of type 'NoneType' has no len()"
     },
     "met": {
       "last_success": null,
-      "last_failure": "2025-07-01T07:40:23.964700",
-      "consecutive_failures": 3,
-      "total_attempts": 3,
+      "last_failure": "2025-07-01T07:49:52.308590",
+      "consecutive_failures": 4,
+      "total_attempts": 4,
       "success_rate": 0.0,
       "last_events_count": 0,
       "last_error": "object of type 'NoneType' has no len()"
     },
     "asia": {
       "last_success": null,
-      "last_failure": "2025-07-01T07:40:24.218361",
-      "consecutive_failures": 3,
-      "total_attempts": 3,
+      "last_failure": "2025-07-01T07:49:52.527311",
+      "consecutive_failures": 4,
+      "total_attempts": 4,
       "success_rate": 0.0,
       "last_events_count": 0,
       "last_error": "object of type 'NoneType' has no len()"
     },
     "nyu": {
       "last_success": null,
-      "last_failure": "2025-07-01T07:40:24.540082",
-      "consecutive_failures": 3,
-      "total_attempts": 3,
+      "last_failure": "2025-07-01T07:49:53.069830",
+      "consecutive_failures": 4,
+      "total_attempts": 4,
       "success_rate": 0.0,
       "last_events_count": 0,
       "last_error": "object of type 'NoneType' has no len()"
