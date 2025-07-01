@@ -1,38 +1,6 @@
 {
-  "last_updated": "2025-07-01T17:09:54.478644",
+  "last_updated": "2025-07-01T17:15:03.166336",
   "events": [
-    {
-      "title": "OVER THE GREAT WALL, A CENTURY APART",
-      "description": "The Great Wall of Two Williams: Two Journeys, One Century Mission Explorer and author William Lindesay OBE presents the extraordinary story of William Edgar Geil, the first person to traverse and document the entire Great Wall of China. A century after Geil’s death, Lindesay retraces his steps, pairing archival and contemporary photographs to reveal the Wall’s dramatic transformation. This powerful visual lecture honors a lost American legacy and highlights the urgent need for preservation.",
-      "date": "2025-07-01",
-      "time": "6:00 PM",
-      "location": "46 E 70th Street, NY, NY 10021​",
-      "museum": "explorers",
-      "museumName": "Explorers Events",
-      "url": "https://www.explorers.org/calendar-of-events/over-the-great-wall-a-century-apart/",
-      "image_url": "",
-      "price": "Free",
-      "registration_url": "",
-      "type": "Exhibition",
-      "data_source": "csv",
-      "id": "overthegreatwallacenturyapart-2025-07-01-explorers"
-    },
-    {
-      "title": "China's Changing Religious Landscape",
-      "description": "Join us for a virtual panel discussion on how China’s religious rejuvenation is reshaping communities and refashioning the relationship between Chinese citizens and the state.",
-      "date": "2025-07-01",
-      "time": "12 - 1 p.m. New York Time",
-      "location": "Online",
-      "museum": "asia-society",
-      "museumName": "Asia Society Events",
-      "url": "https://asiasociety.org/policy-institute/events/chinas-changing-religious-landscape",
-      "image_url": "",
-      "price": "Free",
-      "registration_url": "",
-      "type": "Exhibition",
-      "data_source": "csv",
-      "id": "chinaschangingreligiouslandscape-2025-07-01-asia-society"
-    },
     {
       "title": "Crooklyn. 1994. Directed by Spike Lee",
       "description": "Crooklyn (1994), directed by Spike Lee and co-written with his siblings, is a nostalgic, heartfelt portrait of a young girl’s coming of age in 1970s Fort Greene, Brooklyn. One of Lee’s most personal films, it blends warmth, humor, and striking visuals by Arthur Jafa.",
@@ -82,20 +50,36 @@
       "id": "metexperttalkssargentandparis-2025-07-01-met"
     },
     {
-      "title": "World Oceans Week 2025",
-      "description": "World Oceans Week 2025 will begin with a celebration of ocean science being done by The Explorers Club and beyond, as well as a celebration of one of the ocean’s staunchest defenders – Her Deepness, Sylvia Earle.",
-      "date": "2025-07-02",
-      "time": "5:30 PM",
-      "location": "46 E 70th Street, NY, NY 10021​",
-      "museum": "explorers",
-      "museumName": "Explorers Events",
-      "url": "https://www.explorers.org/calendar-of-events/oceans-week-2025-monday/",
+      "title": "China's Changing Religious Landscape",
+      "description": "Join us for a virtual panel discussion on how China’s religious rejuvenation is reshaping communities and refashioning the relationship between Chinese citizens and the state.",
+      "date": "2025-07-01",
+      "time": "12 - 1 p.m. New York Time",
+      "location": "Online",
+      "museum": "asia-society",
+      "museumName": "Asia Society Events",
+      "url": "https://asiasociety.org/policy-institute/events/chinas-changing-religious-landscape",
       "image_url": "",
       "price": "Free",
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "worldoceansweek2025-2025-07-02-explorers"
+      "id": "chinaschangingreligiouslandscape-2025-07-01-asia-society"
+    },
+    {
+      "title": "OVER THE GREAT WALL, A CENTURY APART",
+      "description": "The Great Wall of Two Williams: Two Journeys, One Century Mission Explorer and author William Lindesay OBE presents the extraordinary story of William Edgar Geil, the first person to traverse and document the entire Great Wall of China. A century after Geil’s death, Lindesay retraces his steps, pairing archival and contemporary photographs to reveal the Wall’s dramatic transformation. This powerful visual lecture honors a lost American legacy and highlights the urgent need for preservation.",
+      "date": "2025-07-01",
+      "time": "6:00 PM",
+      "location": "46 E 70th Street, NY, NY 10021​",
+      "museum": "explorers",
+      "museumName": "Explorers Events",
+      "url": "https://www.explorers.org/calendar-of-events/over-the-great-wall-a-century-apart/",
+      "image_url": "",
+      "price": "Free",
+      "registration_url": "",
+      "type": "Exhibition",
+      "data_source": "csv",
+      "id": "overthegreatwallacenturyapart-2025-07-01-explorers"
     },
     {
       "title": "Guelwaar. 1992. Written and directed by Ousmane Sembene",
@@ -144,6 +128,22 @@
       "type": "Exhibition",
       "data_source": "csv",
       "id": "silentbookclubofdeathnycatthemetcloisters-2025-07-02-met"
+    },
+    {
+      "title": "World Oceans Week 2025",
+      "description": "World Oceans Week 2025 will begin with a celebration of ocean science being done by The Explorers Club and beyond, as well as a celebration of one of the ocean’s staunchest defenders – Her Deepness, Sylvia Earle.",
+      "date": "2025-07-02",
+      "time": "5:30 PM",
+      "location": "46 E 70th Street, NY, NY 10021​",
+      "museum": "explorers",
+      "museumName": "Explorers Events",
+      "url": "https://www.explorers.org/calendar-of-events/oceans-week-2025-monday/",
+      "image_url": "",
+      "price": "Free",
+      "registration_url": "",
+      "type": "Exhibition",
+      "data_source": "csv",
+      "id": "worldoceansweek2025-2025-07-02-explorers"
     },
     {
       "title": "35 Rhums (35 Shots of Rum). 2008. Directed by Claire Denis",
@@ -290,22 +290,6 @@
       "id": "taiga1992writtenanddirectedbyulrikeottinger-2025-07-06-moma"
     },
     {
-      "title": "725 Salon: Chun Wai Chan",
-      "description": "At this special salon event, Chun Wai Chan, the first Chinese principal dancer of the New York City Ballet will perform classic ballet excerpts live and share insights into the movements and emotional expression behind his work and life.",
-      "date": "2025-07-07",
-      "time": "6:30 - 8:30 p.m.",
-      "location": "725 Park Ave New York, NY 10021",
-      "museum": "asia-society",
-      "museumName": "Asia Society Events",
-      "url": "https://asiasociety.org/center-us-china-relations/events/725-salon-chun-wai-chan",
-      "image_url": "",
-      "price": "Free",
-      "registration_url": "",
-      "type": "Exhibition",
-      "data_source": "csv",
-      "id": "725salonchunwaichan-2025-07-07-asia-society"
-    },
-    {
       "title": "Permanent Vacation. 1980. Written and directed by Jim Jarmusch",
       "description": "Permanent Vacation (1980), Jim Jarmusch’s debut feature, is a moody portrait of a drifting teenager in pre-gentrification Soho. Shot in 16mm, it captures the alienation of a post-punk generation with raw, minimalist charm.",
       "date": "2025-07-07",
@@ -352,6 +336,22 @@
       "type": "Exhibition",
       "data_source": "csv",
       "id": "connectingcollectionssummerinstitute-2025-07-07-met"
+    },
+    {
+      "title": "725 Salon: Chun Wai Chan",
+      "description": "At this special salon event, Chun Wai Chan, the first Chinese principal dancer of the New York City Ballet will perform classic ballet excerpts live and share insights into the movements and emotional expression behind his work and life.",
+      "date": "2025-07-07",
+      "time": "6:30 - 8:30 p.m.",
+      "location": "725 Park Ave New York, NY 10021",
+      "museum": "asia-society",
+      "museumName": "Asia Society Events",
+      "url": "https://asiasociety.org/center-us-china-relations/events/725-salon-chun-wai-chan",
+      "image_url": "",
+      "price": "Free",
+      "registration_url": "",
+      "type": "Exhibition",
+      "data_source": "csv",
+      "id": "725salonchunwaichan-2025-07-07-asia-society"
     },
     {
       "title": "Tokyo monogatari (Tokyo Story). 1953. Directed by Yasujirō Ozu",
@@ -754,22 +754,6 @@
       "id": "tizoc1957directedbyismaelrodriguez-2025-07-15-moma"
     },
     {
-      "title": "Dispatches from the Field: Alison Criscitiello",
-      "description": "Dispatches from the Field, a new digital program designed to bring The Explorers Club community closer—wherever you are. Each session.",
-      "date": "2025-07-16",
-      "time": "12:00 PM",
-      "location": "",
-      "museum": "explorers",
-      "museumName": "Explorers Events",
-      "url": "https://www.explorers.org/calendar-of-events/dispatches-from-the-field-alison-criscitiello/",
-      "image_url": "",
-      "price": "Free",
-      "registration_url": "",
-      "type": "Exhibition",
-      "data_source": "csv",
-      "id": "dispatchesfromthefieldalisoncriscitiello-2025-07-16-explorers"
-    },
-    {
       "title": "French Cancan. 1954.Directed by Jean Renoir",
       "description": "French Cancan (1954) – Jean Renoir’s Technicolor musical set in Belle Époque Paris stars María Félix as a Spanish dancer opposite Jean Gabin and Édith Piaf. A dazzling blend of romance, performance, and Parisian spectacle.",
       "date": "2025-07-16",
@@ -832,6 +816,22 @@
       "type": "Exhibition",
       "data_source": "csv",
       "id": "illiberalamericaahistory-2025-07-16-womens-history"
+    },
+    {
+      "title": "Dispatches from the Field: Alison Criscitiello",
+      "description": "Dispatches from the Field, a new digital program designed to bring The Explorers Club community closer—wherever you are. Each session.",
+      "date": "2025-07-16",
+      "time": "12:00 PM",
+      "location": "",
+      "museum": "explorers",
+      "museumName": "Explorers Events",
+      "url": "https://www.explorers.org/calendar-of-events/dispatches-from-the-field-alison-criscitiello/",
+      "image_url": "",
+      "price": "Free",
+      "registration_url": "",
+      "type": "Exhibition",
+      "data_source": "csv",
+      "id": "dispatchesfromthefieldalisoncriscitiello-2025-07-16-explorers"
     },
     {
       "title": "La mujer sin alma (The Woman Without a Soul). 1944. Directed by Fernando de Fuentes",
@@ -1058,22 +1058,6 @@
       "id": "tizoc1957directedbyismaelrodriguez-2025-07-21-moma"
     },
     {
-      "title": "The U.S.-ROK Alliance in 2025 and Global Implications",
-      "description": "Join the Asia Society and the Korea Foundation for a two-part program assessing the current state and the future of the U.S.-ROK alliance under new leaders, and the implications for the Indo-Pacific region.",
-      "date": "2025-07-22",
-      "time": "8:45 - 11:45 a.m. New York Time",
-      "location": "725 Park Avenue New York, NY 10021",
-      "museum": "asia-society",
-      "museumName": "Asia Society Events",
-      "url": "https://asiasociety.org/policy-institute/events/us-rok-alliance-2025-and-global-implications",
-      "image_url": "",
-      "price": "Free",
-      "registration_url": "",
-      "type": "Exhibition",
-      "data_source": "csv",
-      "id": "theus-rokalliancein2025andglobalimplications-2025-07-22-asia-society"
-    },
-    {
       "title": "French Cancan. 1954. Directed by Jean Renoir",
       "description": "Jean Renoir’s Technicolor tribute to Belle Époque Paris stars María Félix as a fiery Spanish dancer entangled in love and showbiz with impresario Jean Gabin. A dazzling musical drama featuring Édith Piaf, the film showcases Félix’s international range and Renoir’s vibrant artistry.",
       "date": "2025-07-22",
@@ -1152,6 +1136,22 @@
       "type": "Exhibition",
       "data_source": "csv",
       "id": "baseballcardsfromthecollectionofjeffersonrburdick-2025-07-22-met"
+    },
+    {
+      "title": "The U.S.-ROK Alliance in 2025 and Global Implications",
+      "description": "Join the Asia Society and the Korea Foundation for a two-part program assessing the current state and the future of the U.S.-ROK alliance under new leaders, and the implications for the Indo-Pacific region.",
+      "date": "2025-07-22",
+      "time": "8:45 - 11:45 a.m. New York Time",
+      "location": "725 Park Avenue New York, NY 10021",
+      "museum": "asia-society",
+      "museumName": "Asia Society Events",
+      "url": "https://asiasociety.org/policy-institute/events/us-rok-alliance-2025-and-global-implications",
+      "image_url": "",
+      "price": "Free",
+      "registration_url": "",
+      "type": "Exhibition",
+      "data_source": "csv",
+      "id": "theus-rokalliancein2025andglobalimplications-2025-07-22-asia-society"
     },
     {
       "title": "Doña Diabla. 1950. Directed by Tito Daviso",
@@ -1330,22 +1330,6 @@
       "id": "newyorkhistoricalsummer-2025-07-25-womens-history"
     },
     {
-      "title": "Memorial – Bruce Blanchard ME’78",
-      "description": "Please join The Explorers Club, The Explorers Club Washington Group, and friends and family to celebrate and honor the life of Bruce Blanchard, medalist, former treasurer of the club, and fellow explorer. The reception will take place from 2-4:30 PM on July 26th, at Explorers Club Headquarters in New York City. Please use the form below to RSVP.",
-      "date": "2025-07-26",
-      "time": "2-4:30 PM",
-      "location": "Explorers Club Headquarters in New York City",
-      "museum": "explorers",
-      "museumName": "Explorers Events",
-      "url": "https://www.explorers.org/calendar-of-events/memorial-bruce-blanchard-me78/",
-      "image_url": "",
-      "price": "Free",
-      "registration_url": "",
-      "type": "Exhibition",
-      "data_source": "csv",
-      "id": "memorialbruceblanchardme78-2025-07-26-explorers"
-    },
-    {
       "title": "Doña Bárbara. 1943. Directed by Fernando de Fuentes",
       "description": "María Félix became “La Doña” in this landmark adaptation of Rómulo Gallegos’ novel, playing a fierce landowner shaped by trauma and vengeance. A defining role in Latin American cinema, it launched Félix as a symbol of female autonomy and power.",
       "date": "2025-07-26",
@@ -1376,6 +1360,22 @@
       "type": "Exhibition",
       "data_source": "csv",
       "id": "ladiosaarrodilladathekneelinggoddess1947directedbyrobertogavaldn-2025-07-26-moma"
+    },
+    {
+      "title": "Memorial – Bruce Blanchard ME’78",
+      "description": "Please join The Explorers Club, The Explorers Club Washington Group, and friends and family to celebrate and honor the life of Bruce Blanchard, medalist, former treasurer of the club, and fellow explorer. The reception will take place from 2-4:30 PM on July 26th, at Explorers Club Headquarters in New York City. Please use the form below to RSVP.",
+      "date": "2025-07-26",
+      "time": "2-4:30 PM",
+      "location": "Explorers Club Headquarters in New York City",
+      "museum": "explorers",
+      "museumName": "Explorers Events",
+      "url": "https://www.explorers.org/calendar-of-events/memorial-bruce-blanchard-me78/",
+      "image_url": "",
+      "price": "Free",
+      "registration_url": "",
+      "type": "Exhibition",
+      "data_source": "csv",
+      "id": "memorialbruceblanchardme78-2025-07-26-explorers"
     },
     {
       "title": "Maclovia. 1948. Directed by Emilio Fernández",
@@ -1509,6 +1509,6 @@
   "metadata": {
     "total_events": 94,
     "data_source": "csv",
-    "processing_date": "2025-07-01 17:09:54"
+    "processing_date": "2025-07-01 17:15:03"
   }
 }
