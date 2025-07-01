@@ -1,4 +1,3 @@
-
 import csv
 import json
 import os
@@ -6,14 +5,14 @@ from datetime import datetime
 import re
 
 class CSVToEvents:
-  def __init__(self):
-    self.events = []
-    # Get the correct paths
-    self.script_dir = os.path.dirname(os.path.abspath(__file__))
-    self.root_dir = os.path.dirname(self.script_dir)
-    self.data_dir = os.path.join(self.root_dir, 'data')
-    # FIX: Look for CSV files in scraper/csv_data
-    self.csv_dir = os.path.join(self.script_dir, 'csv_data') 
+    def __init__(self):
+        self.events = []
+        # Get the correct paths
+        self.script_dir = os.path.dirname(os.path.abspath(__file__))
+        self.root_dir = os.path.dirname(self.script_dir)
+        self.data_dir = os.path.join(self.root_dir, 'data')
+        # Look for CSV files in scraper/csv_data
+        self.csv_dir = os.path.join(self.script_dir, 'csv_data')
         
     def clean_text(self, text):
         """Clean and normalize text"""
@@ -70,6 +69,7 @@ class CSVToEvents:
                 delimiter = ',' if ',' in sample else '\t'
                 
                 reader = csv.DictReader(file, delimiter=delimiter)
+                event_count = 0
                 
                 for row in reader:
                     # Map CSV columns to event structure
@@ -79,11 +79,13 @@ class CSVToEvents:
                         'date': self.parse_date(row.get('date', row.get('Date', row.get('event_date', '')))),
                         'time': self.clean_text(row.get('time', row.get('Time', row.get('event_time', '')))),
                         'location': self.clean_text(row.get('location', row.get('Location', row.get('venue', '')))),
-                        'museum': museum_name,
+                        'museum': museum_name.lower().replace(' ', '-'),
+                        'museumName': museum_name,
                         'url': self.clean_text(row.get('url', row.get('URL', row.get('link', '')))),
                         'image_url': self.clean_text(row.get('image_url', row.get('image', row.get('Image', '')))),
                         'price': self.clean_text(row.get('price', row.get('Price', row.get('cost', 'Free')))),
                         'registration_url': self.clean_text(row.get('registration_url', row.get('registration', row.get('Registration', '')))),
+                        'type': self.clean_text(row.get('type', row.get('Type', row.get('event_type', 'Exhibition')))),
                         'data_source': 'csv'
                     }
                     
@@ -91,33 +93,47 @@ class CSVToEvents:
                     if event['title'] and event['date']:
                         event['id'] = self.generate_event_id(event)
                         self.events.append(event)
+                        event_count += 1
                         
-            print(f"✅ Processed {filepath}: {len(self.events)} events")
+            print(f"✅ Processed {filepath}: {event_count} events")
             
         except Exception as e:
             print(f"❌ Error processing {filepath}: {str(e)}")
     
     def process_all_csv_files(self):
-        """Process all CSV files in the data directory"""
-        # Ensure directories exist
+        """Process all CSV files in the scraper/csv_data directory"""
+        # Ensure output directory exists
         os.makedirs(self.data_dir, exist_ok=True)
-        os.makedirs(self.csv_dir, exist_ok=True)
+        
+        print(f"📁 Looking for CSV files in: {self.csv_dir}")
         
         # Look for CSV files
         csv_files = []
         
-        # Check in csv_data directory
+        # Check in scraper/csv_data directory
         if os.path.exists(self.csv_dir):
-            for file in os.listdir(self.csv_dir):
-                if file.endswith('.csv'):
-                    csv_files.append(os.path.join(self.csv_dir, file))
+            csv_data_files = [f for f in os.listdir(self.csv_dir) if f.endswith('.csv')]
+            print(f"Found {len(csv_data_files)} CSV files: {csv_data_files}")
+            for file in csv_data_files:
+                csv_files.append(os.path.join(self.csv_dir, file))
+        else:
+            print(f"❌ Directory not found: {self.csv_dir}")
+            # Try alternative locations
+            alt_csv_dir = os.path.join(self.root_dir, 'data', 'csv_data')
+            if os.path.exists(alt_csv_dir):
+                print(f"📁 Found alternative CSV directory: {alt_csv_dir}")
+                csv_data_files = [f for f in os.listdir(alt_csv_dir) if f.endswith('.csv')]
+                print(f"Found {len(csv_data_files)} CSV files: {csv_data_files}")
+                for file in csv_data_files:
+                    csv_files.append(os.path.join(alt_csv_dir, file))
         
-        # Also check in data directory
-        for file in os.listdir(self.data_dir):
-            if file.endswith('.csv'):
-                csv_files.append(os.path.join(self.data_dir, file))
+        if len(csv_files) == 0:
+            print("❌ No CSV files found! Please add CSV files to scraper/csv_data/ directory")
+            # Create empty events.json anyway
+            self.save_events()
+            return
         
-        print(f"Found {len(csv_files)} CSV files to process")
+        print(f"📊 Total CSV files to process: {len(csv_files)}")
         
         # Process each CSV file
         for csv_file in csv_files:
@@ -125,6 +141,7 @@ class CSVToEvents:
             filename = os.path.basename(csv_file)
             museum_name = filename.replace('.csv', '').replace('_', ' ').title()
             
+            print(f"\n📄 Processing: {csv_file}")
             self.process_csv_file(csv_file, museum_name)
     
     def save_events(self):
