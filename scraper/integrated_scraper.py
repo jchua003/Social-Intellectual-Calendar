@@ -160,50 +160,50 @@ class IntegratedMuseumScraper:
         if health['critical']:
             print(f"\nCritical issues with: {', '.join(health['critical'])}")
     
-    def save_events(self):
-    """Save all events to JSON file"""
-    # Get the correct path to data directory
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    root_dir = os.path.dirname(script_dir)
-    data_dir = os.path.join(root_dir, 'data')
-    
-    # Ensure data directory exists
-    os.makedirs(data_dir, exist_ok=True)
-    
-    # Remove duplicates
-    unique_events = []
-    seen_ids = set()
-    
-    for event in self.events:
-        event_id = event.get('id')
-        if event_id and event_id not in seen_ids:
-            seen_ids.add(event_id)
-            unique_events.append(event)
-    
-    # Sort by date
-    unique_events.sort(key=lambda x: x.get('date', ''))
-    
-    # Save to file
-    output = {
-        'last_updated': datetime.now().isoformat(),
-        'events': unique_events,
-        'metadata': {
-            'total_events': len(unique_events),
-            'scraping_method': 'integrated',
-            'museums_scraped': list(set(e.get('museum', '') for e in unique_events))
+def save_events(self):
+        """Save all events to JSON file"""
+        # Get the correct path to data directory
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        root_dir = os.path.dirname(script_dir)
+        data_dir = os.path.join(root_dir, 'data')
+        
+        # Ensure data directory exists
+        os.makedirs(data_dir, exist_ok=True)
+        
+        # Remove duplicates
+        unique_events = []
+        seen_ids = set()
+        
+        for event in self.events:
+            event_id = event.get('id')
+            if event_id and event_id not in seen_ids:
+                seen_ids.add(event_id)
+                unique_events.append(event)
+        
+        # Sort by date
+        unique_events.sort(key=lambda x: x.get('date', ''))
+        
+        # Save to file
+        output = {
+            'last_updated': datetime.now().isoformat(),
+            'events': unique_events,
+            'metadata': {
+                'total_events': len(unique_events),
+                'scraping_method': 'integrated',
+                'museums_scraped': list(set(e.get('museum', '') for e in unique_events))
+            }
         }
-    }
-    
-    # Use absolute path
-    events_path = os.path.join(data_dir, 'events.json')
-    with open(events_path, 'w', encoding='utf-8') as f:
-        json.dump(output, f, indent=2, ensure_ascii=False)
-    
-    print(f"\n✅ Saved {len(unique_events)} unique events to {events_path}")
-    
-    # Also print file size for debugging
-    file_size = os.path.getsize(events_path)
-    print(f"📁 File size: {file_size:,} bytes")
+        
+        # Use absolute path
+        events_path = os.path.join(data_dir, 'events.json')
+        with open(events_path, 'w', encoding='utf-8') as f:
+            json.dump(output, f, indent=2, ensure_ascii=False)
+        
+        print(f"\n✅ Saved {len(unique_events)} unique events to {events_path}")
+        
+        # Also print file size for debugging
+        file_size = os.path.getsize(events_path)
+        print(f"📁 File size: {file_size:,} bytes")
 
 # ========== MAIN EXECUTION ==========
 async def main():
@@ -241,82 +241,3 @@ if __name__ == "__main__":
     
     # Run the scraper
     asyncio.run(main())
-merge-and-deploy:
-    runs-on: ubuntu-latest
-    needs: scrape-museum-events
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          ref: main
-          
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-          
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          
-      - name: Merge all events
-        run: |
-          cd scraper
-          python integrated_scraper.py
-          
-      # ADD THE DEBUGGING STEP HERE ↓↓↓
-      - name: Debug file locations
-        run: |
-          echo "Current directory:"
-          pwd
-          echo -e "\nLooking for events.json files:"
-          find . -name "events.json" -type f -ls
-          echo -e "\nDirectory structure:"
-          ls -la
-          ls -la data/ || echo "No data directory in root"
-          ls -la scraper/ || echo "No scraper directory"
-          echo -e "\nChecking data directory contents:"
-          ls -la data/ || echo "No data directory"
-          if [ -f data/events.json ]; then
-            echo -e "\nFirst 500 characters of data/events.json:"
-            head -c 500 data/events.json
-          fi
-          
-      - name: Ensure events.json is in data directory
-        run: |
-          # Create data directory if it doesn't exist
-          mkdir -p data
-          
-          # Find and copy events.json to data directory
-          if [ -f scraper/events.json ]; then
-            cp scraper/events.json data/events.json
-            echo "Copied events.json from scraper to data directory"
-          elif [ -f events.json ]; then
-            cp events.json data/events.json
-            echo "Copied events.json from root to data directory"
-          fi
-          
-          # Verify the file exists
-          if [ -f data/events.json ]; then
-            echo "Success: data/events.json exists"
-            echo "File size: $(ls -lh data/events.json)"
-            echo "First 100 characters:"
-            head -c 100 data/events.json
-          else
-            echo "ERROR: data/events.json not found!"
-            exit 1
-          fi
-        
-      - name: Update events.json
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add -A
-          git diff --staged --quiet || git commit -m "Update events from all sources"
-          
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
