@@ -241,3 +241,82 @@ if __name__ == "__main__":
     
     # Run the scraper
     asyncio.run(main())
+merge-and-deploy:
+    runs-on: ubuntu-latest
+    needs: scrape-museum-events
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      - name: Merge all events
+        run: |
+          cd scraper
+          python integrated_scraper.py
+          
+      # ADD THE DEBUGGING STEP HERE ↓↓↓
+      - name: Debug file locations
+        run: |
+          echo "Current directory:"
+          pwd
+          echo -e "\nLooking for events.json files:"
+          find . -name "events.json" -type f -ls
+          echo -e "\nDirectory structure:"
+          ls -la
+          ls -la data/ || echo "No data directory in root"
+          ls -la scraper/ || echo "No scraper directory"
+          echo -e "\nChecking data directory contents:"
+          ls -la data/ || echo "No data directory"
+          if [ -f data/events.json ]; then
+            echo -e "\nFirst 500 characters of data/events.json:"
+            head -c 500 data/events.json
+          fi
+          
+      - name: Ensure events.json is in data directory
+        run: |
+          # Create data directory if it doesn't exist
+          mkdir -p data
+          
+          # Find and copy events.json to data directory
+          if [ -f scraper/events.json ]; then
+            cp scraper/events.json data/events.json
+            echo "Copied events.json from scraper to data directory"
+          elif [ -f events.json ]; then
+            cp events.json data/events.json
+            echo "Copied events.json from root to data directory"
+          fi
+          
+          # Verify the file exists
+          if [ -f data/events.json ]; then
+            echo "Success: data/events.json exists"
+            echo "File size: $(ls -lh data/events.json)"
+            echo "First 100 characters:"
+            head -c 100 data/events.json
+          else
+            echo "ERROR: data/events.json not found!"
+            exit 1
+          fi
+        
+      - name: Update events.json
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git diff --staged --quiet || git commit -m "Update events from all sources"
+          
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
