@@ -161,53 +161,49 @@ class IntegratedMuseumScraper:
             print(f"\nCritical issues with: {', '.join(health['critical'])}")
     
     def save_events(self):
-        """Save all events to JSON file"""
-        # Ensure data directory exists
-        os.makedirs('../data', exist_ok=True)
-        
-        # Remove duplicates
-        unique_events = []
-        seen_ids = set()
-        
-        for event in self.events:
-            event_id = event.get('id')
-            if event_id and event_id not in seen_ids:
-                seen_ids.add(event_id)
-                unique_events.append(event)
-        
-        # Sort by date
-        unique_events.sort(key=lambda x: x.get('date', ''))
-        
-        # Save to file
-        output = {
-            'last_updated': datetime.now().isoformat(),
-            'events': unique_events,
-            'metadata': {
-                'total_events': len(unique_events),
-                'scraping_method': 'integrated',
-                'museums_scraped': list(set(e.get('museum', '') for e in unique_events))
-            }
-        }
-        
-        with open('../data/events.json', 'w', encoding='utf-8') as f:
-            json.dump(output, f, indent=2, ensure_ascii=False)
-        
-        print(f"\n✅ Saved {len(unique_events)} unique events to data/events.json")
+    """Save all events to JSON file"""
+    # Get the correct path to data directory
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    root_dir = os.path.dirname(script_dir)
+    data_dir = os.path.join(root_dir, 'data')
     
-    def check_manual_intervention_needed(self):
-        """Check if manual intervention is needed"""
-        if len(self.events) < 10:
-            print("\n⚠️  WARNING: Very few events found!")
-            print("Manual intervention recommended:")
-            print("1. Check museum websites manually")
-            print("2. Update CSV files with current events")
-            print("3. Review scraper logs for errors")
-            
-            # Create a file to trigger manual review
-            with open('manual_review_needed.txt', 'w') as f:
-                f.write(f"Manual review needed - {datetime.now()}\n")
-                f.write(f"Total events: {len(self.events)}\n")
-                f.write("Check scraper_logs.json for details\n")
+    # Ensure data directory exists
+    os.makedirs(data_dir, exist_ok=True)
+    
+    # Remove duplicates
+    unique_events = []
+    seen_ids = set()
+    
+    for event in self.events:
+        event_id = event.get('id')
+        if event_id and event_id not in seen_ids:
+            seen_ids.add(event_id)
+            unique_events.append(event)
+    
+    # Sort by date
+    unique_events.sort(key=lambda x: x.get('date', ''))
+    
+    # Save to file
+    output = {
+        'last_updated': datetime.now().isoformat(),
+        'events': unique_events,
+        'metadata': {
+            'total_events': len(unique_events),
+            'scraping_method': 'integrated',
+            'museums_scraped': list(set(e.get('museum', '') for e in unique_events))
+        }
+    }
+    
+    # Use absolute path
+    events_path = os.path.join(data_dir, 'events.json')
+    with open(events_path, 'w', encoding='utf-8') as f:
+        json.dump(output, f, indent=2, ensure_ascii=False)
+    
+    print(f"\n✅ Saved {len(unique_events)} unique events to {events_path}")
+    
+    # Also print file size for debugging
+    file_size = os.path.getsize(events_path)
+    print(f"📁 File size: {file_size:,} bytes")
 
 # ========== MAIN EXECUTION ==========
 async def main():
