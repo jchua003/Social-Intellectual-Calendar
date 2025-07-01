@@ -1,0 +1,35 @@
+# Web scraping
+selenium==4.15.2
+beautifulsoup4==4.12.2
+requests==2.31.0
+webdriver-manager==4.0.1
+
+# Data processing
+pandas==2.1.3
+numpy==1.26.2
+
+# Date and time handling
+python-dateutil==2.8.2
+pytz==2023.3
+
+# Web driver and browser automation
+undetected-chromedriver==3.5.4
+selenium-wire==5.1.0
+
+# HTTP and networking
+urllib3==2.1.0
+certifi==2023.11.17
+
+# Parsing and data extraction
+lxml==4.9.3
+html5lib==1.1
+
+# Optional: for better performance
+aiohttp==3.9.1
+asyncio==3.4.3
+
+# Monitoring and logging
+python-dotenv==1.0.0
+
+# JSON handling
+jsonschema==4.20.0
