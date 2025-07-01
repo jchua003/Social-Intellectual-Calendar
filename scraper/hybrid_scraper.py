@@ -15,22 +15,34 @@ class HybridEventsScraper:
         self.csv_events = []
         self.scraped_events = []
         self.all_events = []
+           # Directory where this script resides
+        self.script_dir = os.path.dirname(os.path.abspath(__file__))
         
     def load_csv_events(self):
         """Load events from CSV processor"""
         print("Loading CSV events...")
         
-        # Run the CSV processor
-        result = subprocess.run([sys.executable, 'csv_to_events.py'], 
-                              capture_output=True, text=True)
+        # Determine absolute path to csv_to_events.py so it works from any cwd
+        csv_script = os.path.join(self.script_dir, 'csv_to_events.py')
+        
+     # Run the CSV processor
+        result = subprocess.run([sys.executable, csv_script],
+                                capture_output=True, text=True)
+
+        # Show output from the CSV processor for easier debugging
+        if result.stdout:
+            print(result.stdout)
+        if result.stderr:
+            print(result.stderr)
         
         if result.returncode != 0:
             print(f"CSV processor failed: {result.stderr}")
             return False
             
         # Load the generated events
-        if os.path.exists('../data/events.json'):
-            with open('../data/events.json', 'r') as f:
+      events_file = os.path.join(self.script_dir, '..', 'data', 'events.json')
+        if os.path.exists(events_file):
+            with open(events_file, 'r') as f:
                 data = json.load(f)
                 self.csv_events = data.get('events', [])
                 print(f"Loaded {len(self.csv_events)} events from CSV")
@@ -113,11 +125,12 @@ class HybridEventsScraper:
         }
         
         # Save to file
-        os.makedirs('../data', exist_ok=True)
-        with open('../data/events.json', 'w') as f:
-            json.dump(output, f, indent=2)
-            
-        print(f"\nSaved {len(self.all_events)} events to data/events.json")
+        data_dir = os.path.join(self.script_dir, '..', 'data')
+        os.makedirs(data_dir, exist_ok=True)
+        events_file = os.path.join(data_dir, 'events.json')
+        with open(events_file, 'w') as f:
+             json.dump(output, f, indent=2)
+        print(f"\nSaved {len(self.all_events)} events to {events_file}")
         
 def main():
     scraper = HybridEventsScraper()
