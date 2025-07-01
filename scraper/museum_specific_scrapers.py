@@ -1,407 +1,269 @@
-"""
-Museum-Specific Scraping Solutions
-Each museum requires a different approach based on their technology stack
-"""
-
-import requests
 import json
+import os
+import sys
+import argparse
 from datetime import datetime
-from bs4 import BeautifulSoup
-import re
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import undetected_chromedriver as uc
+from selenium.common.exceptions import TimeoutException, NoSuchElementException
+import time
+import re
 
 class MuseumSpecificScrapers:
     def __init__(self):
         self.events = []
-        self.session = requests.Session()
-        self.session.headers.update({
-            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
-            'Accept': 'application/json, text/html, */*',
-            'Accept-Language': 'en-US,en;q=0.9',
-        })
-    
-    # ========== MOMA ==========
-    def scrape_moma_api(self):
-        """MoMA uses a WordPress backend with REST API"""
-        print("Scraping MoMA via API...")
+        # Get the correct paths
+        self.script_dir = os.path.dirname(os.path.abspath(__file__))
+        self.root_dir = os.path.dirname(self.script_dir)
+        self.data_dir = os.path.join(self.root_dir, 'data')
+        self.setup_driver()
         
-        # MoMA potential endpoints (discovered via DevTools)
-        endpoints = [
-            # WordPress REST API endpoints
-            'https://www.moma.org/wp-json/wp/v2/events',
-            'https://www.moma.org/wp-json/tribe/events/v1/events',
-            
-            # Custom endpoints
-            'https://www.moma.org/calendar/api/events',
-            'https://www.moma.org/api/v1/calendar/events',
-            
-            # AJAX endpoints
-            'https://www.moma.org/wp-admin/admin-ajax.php'
-        ]
-        
-        # Try WordPress Events Calendar API
-        params = {
-            'per_page': 50,
-            'start_date': datetime.now().strftime('%Y-%m-%d'),
-            'orderby': 'date',
-            'order': 'asc',
-            'status': 'publish'
-        }
-        
-        for endpoint in endpoints:
-            try:
-                if 'admin-ajax' in endpoint:
-                    # WordPress AJAX approach
-                    data = {
-                        'action': 'tribe_events_list',
-                        'page': 1,
-                        'event_display': 'list'
-                    }
-                    response = self.session.post(endpoint, data=data)
-                else:
-                    response = self.session.get(endpoint, params=params)
-                
-                if response.status_code == 200:
-                    print(f"Success with endpoint: {endpoint}")
-                    return self.parse_moma_response(response.json())
-            except Exception as e:
-                continue
-        
-        # Fallback to GraphQL if REST fails
-        return self.scrape_moma_graphql()
-    
-    def scrape_moma_graphql(self):
-        """Some museums use GraphQL for their data"""
-        graphql_endpoint = 'https://www.moma.org/graphql'
-        
-        query = """
-        query GetEvents($first: Int!, $after: String) {
-            events(first: $first, after: $after, where: {status: "publish"}) {
-                nodes {
-                    id
-                    title
-                    date
-                    excerpt
-                    eventDetails {
-                        startDate
-                        endDate
-                        time
-                        location
-                    }
-                }
-                pageInfo {
-                    hasNextPage
-                    endCursor
-                }
-            }
-        }
-        """
-        
-        variables = {
-            'first': 50,
-            'after': None
-        }
-        
-        try:
-            response = self.session.post(
-                graphql_endpoint,
-                json={'query': query, 'variables': variables}
-            )
-            if response.status_code == 200:
-                return self.parse_graphql_events(response.json())
-        except:
-            pass
-    
-    # ========== MET MUSEUM ==========
-    def scrape_met_calendar(self):
-        """Met Museum uses a custom calendar system"""
-        print("Scraping Met Museum...")
-        
-        # The Met loads events dynamically
-        # First, get the main calendar page to find API endpoints
-        calendar_url = 'https://www.metmuseum.org/events/whats-on'
-        
-        response = self.session.get(calendar_url)
-        soup = BeautifulSoup(response.text, 'html.parser')
-        
-        # Look for data attributes or inline JSON
-        scripts = soup.find_all('script')
-        for script in scripts:
-            if script.string and 'window.__INITIAL_STATE__' in script.string:
-                # Extract the JSON data
-                match = re.search(r'window\.__INITIAL_STATE__\s*=\s*({.*?});', script.string, re.DOTALL)
-                if match:
-                    try:
-                        data = json.loads(match.group(1))
-                        return self.parse_met_initial_state(data)
-                    except:
-                        pass
-        
-        # Try API endpoints
-        api_endpoints = [
-            'https://www.metmuseum.org/api/events/upcoming',
-            'https://www.metmuseum.org/events/api/list',
-            f'https://www.metmuseum.org/events/api/calendar/{datetime.now().year}/{datetime.now().month}'
-        ]
-        
-        for endpoint in api_endpoints:
-            try:
-                response = self.session.get(endpoint)
-                if response.status_code == 200:
-                    return self.parse_met_api_response(response.json())
-            except:
-                continue
-    
-    # ========== ASIA SOCIETY ==========
-    def scrape_asia_society(self):
-        """Asia Society often uses Eventbrite or similar platforms"""
-        print("Scraping Asia Society...")
-        
-        # Check if they use Eventbrite API
-        eventbrite_org_id = 'asiasociety'  # Their Eventbrite organization ID
-        eventbrite_url = f'https://www.eventbriteapi.com/v3/organizations/{eventbrite_org_id}/events/'
-        
-        # You would need an Eventbrite API key for this
-        # headers = {'Authorization': 'Bearer YOUR_EVENTBRITE_API_KEY'}
-        
-        # Alternative: Scrape their calendar directly
-        calendar_url = 'https://asiasociety.org/new-york/events'
-        
-        response = self.session.get(calendar_url)
-        soup = BeautifulSoup(response.text, 'html.parser')
-        
-        # Look for structured data
-        json_ld = soup.find_all('script', type='application/ld+json')
-        for script in json_ld:
-            try:
-                data = json.loads(script.string)
-                if '@type' in data and data['@type'] == 'Event':
-                    self.events.append(self.parse_structured_data(data))
-            except:
-                pass
-    
-    # ========== NYU IFA ==========
-    def scrape_nyu_ifa(self):
-        """NYU Institute of Fine Arts - Academic institution approach"""
-        print("Scraping NYU IFA...")
-        
-        # Academic institutions often have simpler structures
-        urls = [
-            'https://ifa.nyu.edu/events/upcoming.json',  # Try JSON endpoint
-            'https://ifa.nyu.edu/events/feed.xml',       # Try RSS feed
-            'https://ifa.nyu.edu/apis/events/upcoming'   # Try API
-        ]
-        
-        # Also check for calendar exports
-        ical_url = 'https://ifa.nyu.edu/events/calendar.ics'
-        
-        for url in urls:
-            try:
-                response = self.session.get(url)
-                if response.status_code == 200:
-                    if url.endswith('.json'):
-                        return self.parse_json_feed(response.json())
-                    elif url.endswith('.xml'):
-                        return self.parse_rss_feed(response.text)
-            except:
-                continue
-    
-    # ========== BROWSER AUTOMATION FALLBACK ==========
-    def scrape_with_selenium_stealth(self, museum_config):
-        """Ultimate fallback using undetected Chrome"""
-        print(f"Using Selenium for {museum_config['name']}...")
-        
-        options = uc.ChromeOptions()
+    def setup_driver(self):
+        """Setup Chrome driver with options"""
+        options = Options()
+        options.add_argument('--headless')
         options.add_argument('--no-sandbox')
         options.add_argument('--disable-dev-shm-usage')
+        options.add_argument('--disable-gpu')
+        options.add_argument('--window-size=1920,1080')
+        options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36')
         
-        # Add stealth options
-        prefs = {
-            'profile.default_content_setting_values.notifications': 2,
-            'profile.default_content_settings.popups': 0,
-        }
-        options.add_experimental_option('prefs', prefs)
-        
-        # Use undetected chromedriver
-        driver = uc.Chrome(options=options, version_main=None)
-        
+        self.driver = webdriver.Chrome(options=options)
+        self.wait = WebDriverWait(self.driver, 10)
+    
+    def clean_text(self, text):
+        """Clean and normalize text"""
+        if not text:
+            return ""
+        return ' '.join(text.split()).strip()
+    
+    def generate_event_id(self, event):
+        """Generate unique ID for event"""
+        components = [
+            event.get('title', ''),
+            event.get('date', ''),
+            event.get('museum', '')
+        ]
+        id_string = '-'.join(components).lower()
+        id_string = re.sub(r'[^a-z0-9-]', '', id_string)
+        return id_string[:100]
+    
+    def scrape_moma(self):
+        """Scrape MoMA events"""
+        print("Scraping MoMA...")
         try:
-            # Visit the page
-            driver.get(museum_config['url'])
+            self.driver.get("https://www.moma.org/calendar/")
+            time.sleep(3)
             
-            # Wait for page to load
-            WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.TAG_NAME, "body"))
-            )
+            # Wait for events to load
+            self.wait.until(EC.presence_of_element_located((By.CLASS_NAME, "calendar-tile")))
             
-            # Simulate human behavior
-            driver.execute_script("window.scrollTo(0, 500);")
-            import time
-            time.sleep(2)
+            events = self.driver.find_elements(By.CLASS_NAME, "calendar-tile")
             
-            # Look for "Load More" buttons and click them
-            try:
-                load_more = driver.find_element(By.XPATH, "//button[contains(text(), 'Load More')]")
-                driver.execute_script("arguments[0].click();", load_more)
-                time.sleep(2)
-            except:
-                pass
+            for event in events[:20]:  # Limit to 20 events
+                try:
+                    title = event.find_element(By.CLASS_NAME, "calendar-tile__title").text
+                    date = event.find_element(By.CLASS_NAME, "calendar-tile__date").text
+                    
+                    event_data = {
+                        'title': self.clean_text(title),
+                        'date': date,
+                        'museum': 'MoMA',
+                        'location': 'Museum of Modern Art, New York',
+                        'data_source': 'web_scraper'
+                    }
+                    
+                    event_data['id'] = self.generate_event_id(event_data)
+                    self.events.append(event_data)
+                    
+                except Exception as e:
+                    continue
+                    
+            print(f"✅ Scraped {len(self.events)} events from MoMA")
             
-            # Get the page source
-            page_source = driver.page_source
-            
-            # Parse with BeautifulSoup
-            soup = BeautifulSoup(page_source, 'html.parser')
-            
-            # Extract events based on common patterns
-            events = self.extract_events_from_soup(soup, museum_config)
-            
-            return events
-            
-        finally:
-            driver.quit()
+        except Exception as e:
+            print(f"❌ Error scraping MoMA: {str(e)}")
     
-    # ========== PARSING HELPERS ==========
-    def parse_structured_data(self, data):
-        """Parse Schema.org Event structured data"""
-        event = {
-            'id': f"{data.get('name', '').replace(' ', '-')}-{datetime.now().timestamp()}",
-            'title': data.get('name', ''),
-            'date': self.parse_date(data.get('startDate', '')),
-            'time': self.extract_time(data.get('startDate', '')),
-            'description': data.get('description', '')[:200],
-            'location': data.get('location', {}).get('name', ''),
-            'url': data.get('url', '')
+    def scrape_met(self):
+        """Scrape The Met events"""
+        print("Scraping The Met...")
+        try:
+            self.driver.get("https://www.metmuseum.org/events/whats-on")
+            time.sleep(3)
+            
+            # Add Met-specific scraping logic here
+            # This is a placeholder - you'll need to inspect their actual page structure
+            
+            print("✅ Completed Met scraping")
+            
+        except Exception as e:
+            print(f"❌ Error scraping The Met: {str(e)}")
+    
+    def scrape_nyu_ifa(self):
+        """Scrape NYU Institute of Fine Arts events"""
+        print("Scraping NYU IFA...")
+        try:
+            self.driver.get("https://ifa.nyu.edu/events/")
+            time.sleep(3)
+            
+            # Add NYU IFA-specific scraping logic here
+            
+            print("✅ Completed NYU IFA scraping")
+            
+        except Exception as e:
+            print(f"❌ Error scraping NYU IFA: {str(e)}")
+    
+    def scrape_national_arts_club(self):
+        """Scrape National Arts Club events"""
+        print("Scraping National Arts Club...")
+        try:
+            self.driver.get("https://www.nationalartsclub.org/events")
+            time.sleep(3)
+            
+            # Add National Arts Club-specific scraping logic here
+            
+            print("✅ Completed National Arts Club scraping")
+            
+        except Exception as e:
+            print(f"❌ Error scraping National Arts Club: {str(e)}")
+    
+    def scrape_explorers_club(self):
+        """Scrape The Explorers Club events"""
+        print("Scraping The Explorers Club...")
+        try:
+            self.driver.get("https://www.explorers.org/events/")
+            time.sleep(3)
+            
+            # Add Explorers Club-specific scraping logic here
+            
+            print("✅ Completed Explorers Club scraping")
+            
+        except Exception as e:
+            print(f"❌ Error scraping Explorers Club: {str(e)}")
+    
+    def scrape_womens_history(self):
+        """Scrape Center for Women's History events"""
+        print("Scraping Center for Women's History...")
+        try:
+            self.driver.get("https://www.nyhistory.org/womens-history")
+            time.sleep(3)
+            
+            # Add Women's History-specific scraping logic here
+            
+            print("✅ Completed Women's History scraping")
+            
+        except Exception as e:
+            print(f"❌ Error scraping Women's History: {str(e)}")
+    
+    def scrape_asia_society(self):
+        """Scrape Asia Society events"""
+        print("Scraping Asia Society...")
+        try:
+            self.driver.get("https://asiasociety.org/new-york/events")
+            time.sleep(3)
+            
+            # Add Asia Society-specific scraping logic here
+            
+            print("✅ Completed Asia Society scraping")
+            
+        except Exception as e:
+            print(f"❌ Error scraping Asia Society: {str(e)}")
+    
+    def save_events(self, museum_name):
+        """Save events for specific museum"""
+        # Ensure data directory exists
+        os.makedirs(self.data_dir, exist_ok=True)
+        
+        # Create filename for this museum
+        filename = f"{museum_name.lower().replace(' ', '_')}_events.json"
+        filepath = os.path.join(self.data_dir, filename)
+        
+        output = {
+            'last_updated': datetime.now().isoformat(),
+            'museum': museum_name,
+            'events': self.events,
+            'metadata': {
+                'total_events': len(self.events),
+                'data_source': 'web_scraper',
+                'scraping_date': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            }
         }
-        return event
-    
-    def extract_events_from_soup(self, soup, museum_config):
-        """Generic event extraction from HTML"""
-        events = []
         
-        # Common event selectors
-        selectors = [
-            '.event-item', '.calendar-event', '.event-listing',
-            'article.event', 'div.event-card', '.program-item',
-            '[class*="event"]', '[class*="calendar"]'
-        ]
+        with open(filepath, 'w', encoding='utf-8') as f:
+            json.dump(output, f, indent=2, ensure_ascii=False)
         
-        for selector in selectors:
-            event_elements = soup.select(selector)
-            if event_elements:
-                for elem in event_elements[:20]:  # Limit to 20 events
-                    event = self.parse_event_element(elem, museum_config)
-                    if event:
-                        events.append(event)
-                break
+        print(f"✅ Saved {len(self.events)} events to {filepath}")
         
-        return events
-    
-    def parse_event_element(self, elem, museum_config):
-        """Parse individual event element"""
-        # Extract title
-        title_selectors = ['h2', 'h3', 'h4', '.title', '.event-title']
-        title = None
-        for selector in title_selectors:
-            title_elem = elem.select_one(selector)
-            if title_elem:
-                title = title_elem.get_text(strip=True)
-                break
-        
-        if not title:
-            return None
-        
-        # Extract date
-        date_selectors = ['time', '.date', '.event-date', '[datetime]']
-        date = None
-        for selector in date_selectors:
-            date_elem = elem.select_one(selector)
-            if date_elem:
-                date_text = date_elem.get('datetime', '') or date_elem.get_text(strip=True)
-                date = self.parse_date(date_text)
-                if date:
-                    break
-        
-        if not date:
-            return None
-        
-        # Extract other details
-        desc_elem = elem.select_one('p, .description, .excerpt')
-        description = desc_elem.get_text(strip=True)[:200] if desc_elem else ""
-        
-        return {
-            'id': f"{museum_config['id']}-{hash(title)}-{date.replace('-', '')}",
-            'museum': museum_config['id'],
-            'museumName': museum_config['name'],
-            'title': title,
-            'type': 'Special Event',
-            'date': date,
-            'time': 'See website for time',
-            'description': description,
-            'location': museum_config['location'],
-            'url': museum_config['url']
-        }
-    
-    def parse_date(self, date_string):
-        """Parse various date formats"""
-        if not date_string:
-            return None
+        # Also append to main events.json if it exists
+        events_path = os.path.join(self.data_dir, 'events.json')
+        if os.path.exists(events_path):
+            with open(events_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
             
-        # ISO format
-        if 'T' in date_string:
-            try:
-                dt = datetime.fromisoformat(date_string.split('T')[0])
-                return dt.strftime('%Y-%m-%d')
-            except:
-                pass
-        
-        # Try various formats
-        formats = [
-            '%Y-%m-%d', '%m/%d/%Y', '%B %d, %Y',
-            '%b %d, %Y', '%d %B %Y', '%d %b %Y'
-        ]
-        
-        for fmt in formats:
-            try:
-                dt = datetime.strptime(date_string.strip(), fmt)
-                return dt.strftime('%Y-%m-%d')
-            except:
-                continue
-        
-        return None
+            # Append new events
+            existing_events = data.get('events', [])
+            existing_events.extend(self.events)
+            
+            # Remove duplicates
+            unique_events = []
+            seen_ids = set()
+            for event in existing_events:
+                event_id = event.get('id')
+                if event_id and event_id not in seen_ids:
+                    seen_ids.add(event_id)
+                    unique_events.append(event)
+            
+            data['events'] = unique_events
+            data['last_updated'] = datetime.now().isoformat()
+            
+            with open(events_path, 'w', encoding='utf-8') as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+    
+    def close(self):
+        """Close the driver"""
+        if hasattr(self, 'driver'):
+            self.driver.quit()
 
-# Museum configurations
-MUSEUM_CONFIGS = {
-    'moma': {
-        'id': 'moma',
-        'name': 'MoMA',
-        'url': 'https://www.moma.org/calendar/',
-        'location': 'MoMA, 11 West 53rd Street, New York, NY',
-        'scraper': 'scrape_moma_api'
-    },
-    'met': {
-        'id': 'met',
-        'name': 'The Met',
-        'url': 'https://www.metmuseum.org/events/whats-on',
-        'location': 'The Met Fifth Avenue, 1000 Fifth Avenue, New York, NY',
-        'scraper': 'scrape_met_calendar'
-    },
-    'asia': {
-        'id': 'asia',
-        'name': 'Asia Society',
-        'url': 'https://asiasociety.org/new-york/events',
-        'location': 'Asia Society, 725 Park Avenue, New York, NY',
-        'scraper': 'scrape_asia_society'
-    },
-    'nyu': {
-        'id': 'nyu',
-        'name': 'NYU Institute',
-        'url': 'https://ifa.nyu.edu/events/upcoming.htm',
-        'location': 'NYU Institute of Fine Arts, 1 East 78th Street, New York, NY',
-        'scraper': 'scrape_nyu_ifa'
-    }
-}
+def main():
+    """Main function"""
+    parser = argparse.ArgumentParser(description='Scrape museum events')
+    parser.add_argument('--museum', type=str, required=True, 
+                       help='Museum to scrape (moma, met, nyu-ifa, etc.)')
+    
+    args = parser.parse_args()
+    museum = args.museum.lower()
+    
+    print(f"Starting scraper for {museum}...")
+    print(f"Working directory: {os.getcwd()}")
+    
+    scraper = MuseumSpecificScrapers()
+    
+    try:
+        # Map museum names to scraper methods
+        scrapers = {
+            'moma': scraper.scrape_moma,
+            'met': scraper.scrape_met,
+            'nyu-ifa': scraper.scrape_nyu_ifa,
+            'national-arts-club': scraper.scrape_national_arts_club,
+            'explorers-club': scraper.scrape_explorers_club,
+            'womens-history': scraper.scrape_womens_history,
+            'asia-society': scraper.scrape_asia_society
+        }
+        
+        if museum in scrapers:
+            scrapers[museum]()
+            scraper.save_events(museum)
+        else:
+            print(f"❌ Unknown museum: {museum}")
+            sys.exit(1)
+            
+    finally:
+        scraper.close()
+    
+    print(f"\nScraping complete for {museum}!")
+
+if __name__ == "__main__":
+    main()
