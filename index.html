@@ -419,7 +419,7 @@
         async function loadEventsData() {
             try {
                 // IMPORTANT: Replace jchua003 with your GitHub username and museum-events-calendar with your repository name
-                const response = await fetch('https://raw.githubusercontent.com/jchua003/Social-Intellectual-Calendar/main/data/events.json');
+                 const response = await fetch('data/events.json');
                 
                 if (response.ok) {
                     const data = await response.json();
