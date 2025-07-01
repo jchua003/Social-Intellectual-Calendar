@@ -74,7 +74,11 @@ class CSVToEvents:
                 for row in reader:
                     # Map CSV columns to event structure
                     event = {
-                        'title': self.clean_text(row.get('title', row.get('Title', row.get('event_name', '')))),
+                         'title': self.clean_text(
+                            row.get('title',
+                                    row.get('Title',
+                                            row.get('Name',
+                                                    row.get('event_name', ''))))),
                         'description': self.clean_text(row.get('description', row.get('Description', row.get('event_description', '')))),
                         'date': self.parse_date(row.get('date', row.get('Date', row.get('event_date', '')))),
                         'time': self.clean_text(row.get('time', row.get('Time', row.get('event_time', '')))),
