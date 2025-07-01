@@ -254,8 +254,8 @@
         .museum-nyu { background: #5D3FD3; color: white; }
         .museum-arts { background: #FFB84D; color: white; }
         .museum-explorers { background: #2ECC71; color: white; }
-        .museum-womens { background: #E74C3C; color: white; }
-        .museum-asia { background: #3498DB; color: white; }
+        .museum-womens-history { background: #E74C3C; color: white; }
+        .museum-asia-society { background: #3498DB; color: white; }
         
         .event-type {
             display: inline-block;
@@ -556,7 +556,7 @@
         
         // Get active filters
         function getActiveFilters() {
-            const museums = ['moma', 'met', 'nyu', 'arts', 'explorers', 'womens', 'asia'];
+            const museums = ['moma', 'met', 'nyu', 'arts', 'explorers', 'womens-history', 'asia-society'];
             const activeMuseums = museums.filter(museum => 
                 document.getElementById(`museum-${museum}`).checked
             );
@@ -931,12 +931,12 @@
                     <label for="museum-explorers">Explorers Club</label>
                 </div>
                 <div class="museum-checkbox">
-                    <input type="checkbox" id="museum-womens" checked>
-                    <label for="museum-womens">Women's History</label>
+                    <input type="checkbox" id="museum-womens-history" checked>
+                    <label for="museum-womens-history">Women's History</label>
                 </div>
                 <div class="museum-checkbox">
-                    <input type="checkbox" id="museum-asia" checked>
-                    <label for="museum-asia">Asia Society</label>
+                    <input type="checkbox" id="museum-asia-society" checked>
+                    <label for="museum-asia-society">Asia Society</label>
                 </div>
                 <div class="filter-actions">
                     <button id="selectAllMuseums" class="btn-select-all">Select All</button>
