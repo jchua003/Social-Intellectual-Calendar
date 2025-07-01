@@ -26,13 +26,15 @@ jobs:
           pip install -r requirements.txt
           
       - name: Process CSV events
-        run: python csv_to_events.py
+        run: |
+          cd scraper
+          python csv_to_events.py
         
       - name: Commit CSV results
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add events.json
+          git add -A
           git diff --staged --quiet || git commit -m "Update events from CSV files"
           
   scrape-museum-events:
@@ -66,25 +68,11 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install selenium webdriver-manager
           
       - name: Run museum scraper
         run: |
-          if [ "${{ matrix.museum }}" = "moma" ]; then
-            python museum_specific_scrapers.py --museum moma
-          elif [ "${{ matrix.museum }}" = "met" ]; then
-            python museum_specific_scrapers.py --museum met
-          elif [ "${{ matrix.museum }}" = "nyu-ifa" ]; then
-            python museum_specific_scrapers.py --museum nyu-ifa
-          elif [ "${{ matrix.museum }}" = "national-arts-club" ]; then
-            python museum_specific_scrapers.py --museum national-arts-club
-          elif [ "${{ matrix.museum }}" = "explorers-club" ]; then
-            python museum_specific_scrapers.py --museum explorers-club
-          elif [ "${{ matrix.museum }}" = "womens-history" ]; then
-            python museum_specific_scrapers.py --museum womens-history
-          elif [ "${{ matrix.museum }}" = "asia-society" ]; then
-            python museum_specific_scrapers.py --museum asia-society
-          fi
+          cd scraper
+          python museum_specific_scrapers.py --museum ${{ matrix.museum }}
         env:
           MUSEUM: ${{ matrix.museum }}
           
@@ -108,13 +96,15 @@ jobs:
           pip install -r requirements.txt
           
       - name: Merge all events
-        run: python integrated_scraper.py
+        run: |
+          cd scraper
+          python integrated_scraper.py
         
       - name: Update events.json
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add events.json
+          git add -A
           git diff --staged --quiet || git commit -m "Update events from all sources"
           
       - name: Push changes
