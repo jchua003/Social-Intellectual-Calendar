@@ -1,9 +1,9 @@
 {
-  "last_updated": "2025-07-01T13:39:59.899075",
+  "last_updated": "2025-07-01T13:47:50.828231",
   "events": [],
   "metadata": {
     "total_events": 0,
-    "data_source": "csv",
-    "processing_date": "2025-07-01 13:39:59"
+    "scraping_method": "integrated",
+    "museums_scraped": []
   }
 }
