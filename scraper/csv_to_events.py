@@ -79,13 +79,26 @@ class CSVToEvents:
                                     row.get('Title',
                                             row.get('Name',
                                                     row.get('event_name', ''))))),
-                        'description': self.clean_text(row.get('description', row.get('Description', row.get('event_description', '')))),
+                        'description': self.clean_text(
+                            row.get('Short Description') or
+                            row.get('short_description') or
+                            row.get('Short_Description') or
+                            row.get('description') or
+                            row.get('Description') or
+                            row.get('event_description') or
+                            ''),
                         'date': self.parse_date(row.get('date', row.get('Date', row.get('event_date', '')))),
                         'time': self.clean_text(row.get('time', row.get('Time', row.get('event_time', '')))),
                         'location': self.clean_text(row.get('location', row.get('Location', row.get('venue', '')))),
                         'museum': museum_name.lower().replace(' ', '-'),
                         'museumName': museum_name,
-                        'url': self.clean_text(row.get('url', row.get('URL', row.get('link', '')))),
+                        'url': self.clean_text(
+                            row.get('url') or
+                            row.get('URL') or
+                            row.get('link') or
+                            row.get('More Info:') or
+                            row.get('More Info') or
+                            ''),
                         'image_url': self.clean_text(row.get('image_url', row.get('image', row.get('Image', '')))),
                         'price': self.clean_text(row.get('price', row.get('Price', row.get('cost', 'Free')))),
                         'registration_url': self.clean_text(row.get('registration_url', row.get('registration', row.get('Registration', '')))),
