@@ -59,7 +59,7 @@ class CSVToEvents:
         id_string = re.sub(r'[^a-z0-9-]', '', id_string)
         return id_string[:100]  # Limit length
     
-    def process_csv_file(self, filepath, museum_name):
+    def process_csv_file(self, filepath, museum_name, museum_id):
         """Process a single CSV file"""
         try:
             with open(filepath, 'r', encoding='utf-8-sig') as file:
@@ -90,7 +90,7 @@ class CSVToEvents:
                         'date': self.parse_date(row.get('date', row.get('Date', row.get('event_date', '')))),
                         'time': self.clean_text(row.get('time', row.get('Time', row.get('event_time', '')))),
                         'location': self.clean_text(row.get('location', row.get('Location', row.get('venue', '')))),
-                        'museum': museum_name.lower().replace(' ', '-'),
+                        'museum': museum_id,
                         'museumName': museum_name,
                         'url': self.clean_text(
                             row.get('url') or
@@ -157,9 +157,14 @@ class CSVToEvents:
             # Extract museum name from filename
             filename = os.path.basename(csv_file)
             museum_name = filename.replace('.csv', '').replace('_', ' ').title()
-            
+
+            # Generate a clean museum_id without trailing '-events' or '_events'
+            museum_id = filename.replace('.csv', '').lower()
+            museum_id = re.sub(r'[_-]events$', '', museum_id)
+            museum_id = museum_id.replace(' ', '-')
+
             print(f"\n📄 Processing: {csv_file}")
-            self.process_csv_file(csv_file, museum_name)
+            self.process_csv_file(csv_file, museum_name, museum_id)
     
     def save_events(self):
         """Save all events to JSON file"""

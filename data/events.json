@@ -1,5 +1,5 @@
 {
-  "last_updated": "2025-07-01T17:05:42.879028",
+  "last_updated": "2025-07-01T17:15:03.166336",
   "events": [
     {
       "title": "Crooklyn. 1994. Directed by Spike Lee",
@@ -7,7 +7,7 @@
       "date": "2025-07-01",
       "time": "4:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 2 The Roy and Niuta Titus Theater 2",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10650",
       "image_url": "",
@@ -15,7 +15,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "crooklyn1994directedbyspikelee-2025-07-01-moma-events"
+      "id": "crooklyn1994directedbyspikelee-2025-07-01-moma"
     },
     {
       "title": "La Folie Almayer (Almayer's Folly). 2011. Directed by Chantal Akerman",
@@ -23,7 +23,7 @@
       "date": "2025-07-01",
       "time": "7:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 2 The Roy and Niuta Titus Theater 2",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10645",
       "image_url": "",
@@ -31,7 +31,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "lafoliealmayeralmayersfolly2011directedbychantalakerman-2025-07-01-moma-events"
+      "id": "lafoliealmayeralmayersfolly2011directedbychantalakerman-2025-07-01-moma"
     },
     {
       "title": "Met Expert Talks—Sargent and Paris",
@@ -39,7 +39,7 @@
       "date": "2025-07-01",
       "time": "3–3:30 pm",
       "location": "The Met Fifth Avenue",
-      "museum": "met-events",
+      "museum": "met",
       "museumName": "Met Events",
       "url": "https://engage.metmuseum.org/events/education/talks/public-programs/met-expert-talks/fy26/met-expert-talks-sargent-and-paris/?_gl=1*w5nps6*_gcl_au*MTQxMDkxNzMyMy4xNzUwMzQxMTI3*_ga*NDc5NDQ2NDc1LjE3NTAzNDExMjg.*_ga_Y0W8DGNBTB*czE3NTA4NjM0MTckbzMkZzEkdDE3NTA4NjM3MDckajE3JGwwJGgw",
       "image_url": "",
@@ -47,7 +47,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "metexperttalkssargentandparis-2025-07-01-met-events"
+      "id": "metexperttalkssargentandparis-2025-07-01-met"
     },
     {
       "title": "China's Changing Religious Landscape",
@@ -55,7 +55,7 @@
       "date": "2025-07-01",
       "time": "12 - 1 p.m. New York Time",
       "location": "Online",
-      "museum": "asia-society-events",
+      "museum": "asia-society",
       "museumName": "Asia Society Events",
       "url": "https://asiasociety.org/policy-institute/events/chinas-changing-religious-landscape",
       "image_url": "",
@@ -63,7 +63,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "chinaschangingreligiouslandscape-2025-07-01-asia-society-events"
+      "id": "chinaschangingreligiouslandscape-2025-07-01-asia-society"
     },
     {
       "title": "OVER THE GREAT WALL, A CENTURY APART",
@@ -71,7 +71,7 @@
       "date": "2025-07-01",
       "time": "6:00 PM",
       "location": "46 E 70th Street, NY, NY 10021​",
-      "museum": "explorers-events",
+      "museum": "explorers",
       "museumName": "Explorers Events",
       "url": "https://www.explorers.org/calendar-of-events/over-the-great-wall-a-century-apart/",
       "image_url": "",
@@ -79,7 +79,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "overthegreatwallacenturyapart-2025-07-01-explorers-events"
+      "id": "overthegreatwallacenturyapart-2025-07-01-explorers"
     },
     {
       "title": "Guelwaar. 1992. Written and directed by Ousmane Sembene",
@@ -87,7 +87,7 @@
       "date": "2025-07-02",
       "time": "4:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 2 The Roy and Niuta Titus Theater 2",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10646",
       "image_url": "",
@@ -95,7 +95,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "guelwaar1992writtenanddirectedbyousmanesembene-2025-07-02-moma-events"
+      "id": "guelwaar1992writtenanddirectedbyousmanesembene-2025-07-02-moma"
     },
     {
       "title": "Adieu Philippine. 1962. Directed by Jacques Rozier",
@@ -103,7 +103,7 @@
       "date": "2025-07-02",
       "time": "7:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 2 The Roy and Niuta Titus Theater 2",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10647",
       "image_url": "",
@@ -111,7 +111,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "adieuphilippine1962directedbyjacquesrozier-2025-07-02-moma-events"
+      "id": "adieuphilippine1962directedbyjacquesrozier-2025-07-02-moma"
     },
     {
       "title": "Silent Book Club of Death NYC at The Met Cloisters",
@@ -119,7 +119,7 @@
       "date": "2025-07-02",
       "time": "2–5 pm",
       "location": "The Met Cloisters Gallery 7, Cuxa Cloister",
-      "museum": "met-events",
+      "museum": "met",
       "museumName": "Met Events",
       "url": "https://engage.metmuseum.org/events/education/talks/cloisters/free-talks/fy26/silent-book-club-cloisters/?_gl=1*16mzmbp*_gcl_au*MTQxMDkxNzMyMy4xNzUwMzQxMTI3*_ga*NDc5NDQ2NDc1LjE3NTAzNDExMjg.*_ga_Y0W8DGNBTB*czE3NTA4NjM0MTckbzMkZzEkdDE3NTA4NjQ1MTkkajM2JGwwJGgw",
       "image_url": "",
@@ -127,7 +127,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "silentbookclubofdeathnycatthemetcloisters-2025-07-02-met-events"
+      "id": "silentbookclubofdeathnycatthemetcloisters-2025-07-02-met"
     },
     {
       "title": "World Oceans Week 2025",
@@ -135,7 +135,7 @@
       "date": "2025-07-02",
       "time": "5:30 PM",
       "location": "46 E 70th Street, NY, NY 10021​",
-      "museum": "explorers-events",
+      "museum": "explorers",
       "museumName": "Explorers Events",
       "url": "https://www.explorers.org/calendar-of-events/oceans-week-2025-monday/",
       "image_url": "",
@@ -143,7 +143,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "worldoceansweek2025-2025-07-02-explorers-events"
+      "id": "worldoceansweek2025-2025-07-02-explorers"
     },
     {
       "title": "35 Rhums (35 Shots of Rum). 2008. Directed by Claire Denis",
@@ -151,7 +151,7 @@
       "date": "2025-07-03",
       "time": "4:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 2 The Roy and Niuta Titus Theater 2",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10651",
       "image_url": "",
@@ -159,7 +159,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "35rhums35shotsofrum2008directedbyclairedenis-2025-07-03-moma-events"
+      "id": "35rhums35shotsofrum2008directedbyclairedenis-2025-07-03-moma"
     },
     {
       "title": "The Harder They Come. 1972. Directed by Perry Henzell",
@@ -167,7 +167,7 @@
       "date": "2025-07-03",
       "time": "6:30 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 2 The Roy and Niuta Titus Theater 2",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10652",
       "image_url": "",
@@ -175,7 +175,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "thehardertheycome1972directedbyperryhenzell-2025-07-03-moma-events"
+      "id": "thehardertheycome1972directedbyperryhenzell-2025-07-03-moma"
     },
     {
       "title": "The Big Trail. 1930. Directed by Raoul Walsh",
@@ -183,7 +183,7 @@
       "date": "2025-07-04",
       "time": "1:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10622",
       "image_url": "",
@@ -191,7 +191,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "thebigtrail1930directedbyraoulwalsh-2025-07-04-moma-events"
+      "id": "thebigtrail1930directedbyraoulwalsh-2025-07-04-moma"
     },
     {
       "title": "I Am Not Your Negro. 2016. Directed by Raoul Peck",
@@ -199,7 +199,7 @@
       "date": "2025-07-04",
       "time": "4:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 2 The Roy and Niuta Titus Theater 2",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10648",
       "image_url": "",
@@ -207,7 +207,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "iamnotyournegro2016directedbyraoulpeck-2025-07-04-moma-events"
+      "id": "iamnotyournegro2016directedbyraoulpeck-2025-07-04-moma"
     },
     {
       "title": "Met Expert Talks at The Met Cloisters—A History of The Met Cloisters",
@@ -215,7 +215,7 @@
       "date": "2025-07-04",
       "time": "3–3:30 pm",
       "location": "The Met Cloisters Main Hall",
-      "museum": "met-events",
+      "museum": "met",
       "museumName": "Met Events",
       "url": "https://engage.metmuseum.org/events/education/talks/cloisters/met-expert-talks-at-the-met-cloisters/fy26/met-expert-talks-cloisters-history/?_gl=1*dfpqpa*_gcl_au*MTQxMDkxNzMyMy4xNzUwMzQxMTI3*_ga*NDc5NDQ2NDc1LjE3NTAzNDExMjg.*_ga_Y0W8DGNBTB*czE3NTA4NjM0MTckbzMkZzEkdDE3NTA4NjQ3NjAkajQ5JGwwJGgw",
       "image_url": "",
@@ -223,7 +223,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "metexperttalksatthemetcloistersahistoryofthemetcloisters-2025-07-04-met-events"
+      "id": "metexperttalksatthemetcloistersahistoryofthemetcloisters-2025-07-04-met"
     },
     {
       "title": "Numéro Deux. 1975. Directed by Jean-Luc Godard",
@@ -231,7 +231,7 @@
       "date": "2025-07-05",
       "time": "1:30 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 2 The Roy and Niuta Titus Theater 2",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10653",
       "image_url": "",
@@ -239,7 +239,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "numrodeux1975directedbyjean-lucgodard-2025-07-05-moma-events"
+      "id": "numrodeux1975directedbyjean-lucgodard-2025-07-05-moma"
     },
     {
       "title": "Taiyō no Hakaba (The Sun’s Burial).1960. Directed by Nagisa Ōshima",
@@ -247,7 +247,7 @@
       "date": "2025-07-05",
       "time": "4:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 2 The Roy and Niuta Titus Theater 2",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10654",
       "image_url": "",
@@ -255,7 +255,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "taiynohakabathesunsburial1960directedbynagisashima-2025-07-05-moma-events"
+      "id": "taiynohakabathesunsburial1960directedbynagisashima-2025-07-05-moma"
     },
     {
       "title": "The Harder They Come. 1972. Directed by Perry Henzell",
@@ -263,7 +263,7 @@
       "date": "2025-07-05",
       "time": "6:30 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 2 The Roy and Niuta Titus Theater 2",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10652",
       "image_url": "",
@@ -271,7 +271,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "thehardertheycome1972directedbyperryhenzell-2025-07-05-moma-events"
+      "id": "thehardertheycome1972directedbyperryhenzell-2025-07-05-moma"
     },
     {
       "title": "Taiga. 1992. Written and directed by Ulrike Ottinger",
@@ -279,7 +279,7 @@
       "date": "2025-07-06",
       "time": "12:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 2 The Roy and Niuta Titus Theater 2",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10655",
       "image_url": "",
@@ -287,7 +287,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "taiga1992writtenanddirectedbyulrikeottinger-2025-07-06-moma-events"
+      "id": "taiga1992writtenanddirectedbyulrikeottinger-2025-07-06-moma"
     },
     {
       "title": "Permanent Vacation. 1980. Written and directed by Jim Jarmusch",
@@ -295,7 +295,7 @@
       "date": "2025-07-07",
       "time": "5:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 2 The Roy and Niuta Titus Theater 2",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10649",
       "image_url": "",
@@ -303,7 +303,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "permanentvacation1980writtenanddirectedbyjimjarmusch-2025-07-07-moma-events"
+      "id": "permanentvacation1980writtenanddirectedbyjimjarmusch-2025-07-07-moma"
     },
     {
       "title": "Senseless. 1961. Directed by Ron Rice The Flower Thief. 1960. Written and directed by Ron Rice",
@@ -311,7 +311,7 @@
       "date": "2025-07-07",
       "time": "7:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 2 The Roy and Niuta Titus Theater 2",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10656",
       "image_url": "",
@@ -319,7 +319,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "senseless1961directedbyronricetheflowerthief1960writtenanddirectedbyronrice-2025-07-07-moma-events"
+      "id": "senseless1961directedbyronricetheflowerthief1960writtenanddirectedbyronrice-2025-07-07-moma"
     },
     {
       "title": "Connecting Collections Summer Institute",
@@ -327,7 +327,7 @@
       "date": "2025-07-07",
       "time": "10 am–4 pm",
       "location": "The Met Fifth Avenue Bonnie J. Sacerdote Lecture Hall, Ruth and Harold D. Uris Center for Education",
-      "museum": "met-events",
+      "museum": "met",
       "museumName": "Met Events",
       "url": "https://engage.metmuseum.org/events/education/workshops-and-classes/educator-programs/fy26/connecting-collections/?_gl=1*dwvdjx*_gcl_au*MTQxMDkxNzMyMy4xNzUwMzQxMTI3*_ga*NDc5NDQ2NDc1LjE3NTAzNDExMjg.*_ga_Y0W8DGNBTB*czE3NTA4NjM0MTckbzMkZzEkdDE3NTA4NjUwMjIkajIxJGwwJGgw",
       "image_url": "",
@@ -335,7 +335,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "connectingcollectionssummerinstitute-2025-07-07-met-events"
+      "id": "connectingcollectionssummerinstitute-2025-07-07-met"
     },
     {
       "title": "725 Salon: Chun Wai Chan",
@@ -343,7 +343,7 @@
       "date": "2025-07-07",
       "time": "6:30 - 8:30 p.m.",
       "location": "725 Park Ave New York, NY 10021",
-      "museum": "asia-society-events",
+      "museum": "asia-society",
       "museumName": "Asia Society Events",
       "url": "https://asiasociety.org/center-us-china-relations/events/725-salon-chun-wai-chan",
       "image_url": "",
@@ -351,7 +351,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "725salonchunwaichan-2025-07-07-asia-society-events"
+      "id": "725salonchunwaichan-2025-07-07-asia-society"
     },
     {
       "title": "Tokyo monogatari (Tokyo Story). 1953. Directed by Yasujirō Ozu",
@@ -359,7 +359,7 @@
       "date": "2025-07-08",
       "time": "4:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 2 The Roy and Niuta Titus Theater 2",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10639",
       "image_url": "",
@@ -367,7 +367,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "tokyomonogataritokyostory1953directedbyyasujirozu-2025-07-08-moma-events"
+      "id": "tokyomonogataritokyostory1953directedbyyasujirozu-2025-07-08-moma"
     },
     {
       "title": "Numéro Deux. 1975. Directed by Jean-Luc Godard",
@@ -375,7 +375,7 @@
       "date": "2025-07-08",
       "time": "7:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 2 The Roy and Niuta Titus Theater 2",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10653",
       "image_url": "",
@@ -383,7 +383,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "numrodeux1975directedbyjean-lucgodard-2025-07-08-moma-events"
+      "id": "numrodeux1975directedbyjean-lucgodard-2025-07-08-moma"
     },
     {
       "title": "Senseless. 1961. Directed by Ron Rice The Flower Thief. 1960. Written and directed by Ron Rice",
@@ -391,7 +391,7 @@
       "date": "2025-07-09",
       "time": "7:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 2 The Roy and Niuta Titus Theater 2",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10656",
       "image_url": "",
@@ -399,7 +399,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "senseless1961directedbyronricetheflowerthief1960writtenanddirectedbyronrice-2025-07-09-moma-events"
+      "id": "senseless1961directedbyronricetheflowerthief1960writtenanddirectedbyronrice-2025-07-09-moma"
     },
     {
       "title": "A Bad Son and Two Short Films",
@@ -407,7 +407,7 @@
       "date": "2025-07-09",
       "time": "6:30 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 2 The Roy and Niuta Titus Theater 2",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10666",
       "image_url": "",
@@ -415,7 +415,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "abadsonandtwoshortfilms-2025-07-09-moma-events"
+      "id": "abadsonandtwoshortfilms-2025-07-09-moma"
     },
     {
       "title": "Charles Sumner: Conscience of a Nation",
@@ -423,7 +423,7 @@
       "date": "2025-07-09",
       "time": "7 – 8 pm",
       "location": "This program will be held at the outdoor Reading Room in Bryant Park. The Reading Room is located on the 42nd Street side of the park between 5th and 6th Avenues. Look for the yellow and white umbrellas.",
-      "museum": "women's-history-events",
+      "museum": "women's-history",
       "museumName": "Women'S History Events",
       "url": "https://www.nyhistory.org/programs/charles-sumner-conscience-of-a-nation?date=2025-07-09",
       "image_url": "",
@@ -431,7 +431,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "charlessumnerconscienceofanation-2025-07-09-womens-history-events"
+      "id": "charlessumnerconscienceofanation-2025-07-09-womens-history"
     },
     {
       "title": "Taiyō no Hakaba (The Sun’s Burial). 1960. Directed by Nagisa Ōshima",
@@ -439,7 +439,7 @@
       "date": "2025-07-10",
       "time": "4:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 2 The Roy and Niuta Titus Theater 2",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10654",
       "image_url": "",
@@ -447,7 +447,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "taiynohakabathesunsburial1960directedbynagisashima-2025-07-10-moma-events"
+      "id": "taiynohakabathesunsburial1960directedbynagisashima-2025-07-10-moma"
     },
     {
       "title": "American Hunter. 1988. Directed by Arizal",
@@ -455,7 +455,7 @@
       "date": "2025-07-10",
       "time": "6:30 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 2 The Roy and Niuta Titus Theater 2",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10628",
       "image_url": "",
@@ -463,7 +463,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "americanhunter1988directedbyarizal-2025-07-10-moma-events"
+      "id": "americanhunter1988directedbyarizal-2025-07-10-moma"
     },
     {
       "title": "America at 250: The Battle of Brooklyn",
@@ -471,7 +471,7 @@
       "date": "2025-07-10",
       "time": "6-7 pm",
       "location": "Zoom",
-      "museum": "women's-history-events",
+      "museum": "women's-history",
       "museumName": "Women'S History Events",
       "url": "https://us06web.zoom.us/meeting/register/lkXU_XYXSAGHTIVGDVhJBQ#/registration",
       "image_url": "",
@@ -479,7 +479,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "americaat250thebattleofbrooklyn-2025-07-10-womens-history-events"
+      "id": "americaat250thebattleofbrooklyn-2025-07-10-womens-history"
     },
     {
       "title": "Met Expert Talks—The New Art: American Photography, 1839–1910",
@@ -487,7 +487,7 @@
       "date": "2025-07-10",
       "time": "3–3:30 pm",
       "location": "The Met Fifth Avenue Gallery 691, The Charles Z. Offin Gallery",
-      "museum": "met-events",
+      "museum": "met",
       "museumName": "Met Events",
       "url": "https://engage.metmuseum.org/events/education/talks/public-programs/met-expert-talks/fy26/met-expert-talks-the-new-art/?_gl=1*2rzku1*_gcl_au*MTQxMDkxNzMyMy4xNzUwMzQxMTI3*_ga*NDc5NDQ2NDc1LjE3NTAzNDExMjg.*_ga_Y0W8DGNBTB*czE3NTA4NjM0MTckbzMkZzEkdDE3NTA4NjUwMzckajYkbDAkaDA.",
       "image_url": "",
@@ -495,7 +495,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "metexperttalksthenewartamericanphotography18391910-2025-07-10-met-events"
+      "id": "metexperttalksthenewartamericanphotography18391910-2025-07-10-met"
     },
     {
       "title": "American Hunter. 1988. Directed by Arizal",
@@ -503,7 +503,7 @@
       "date": "2025-07-11",
       "time": "4:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 2 The Roy and Niuta Titus Theater 2",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10628",
       "image_url": "",
@@ -511,7 +511,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "americanhunter1988directedbyarizal-2025-07-11-moma-events"
+      "id": "americanhunter1988directedbyarizal-2025-07-11-moma"
     },
     {
       "title": "Que Dios me perdone (May God Forgive Me). 1948. Directed by Tito Davison",
@@ -519,7 +519,7 @@
       "date": "2025-07-11",
       "time": "7:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10672",
       "image_url": "",
@@ -527,7 +527,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "quediosmeperdonemaygodforgiveme1948directedbytitodavison-2025-07-11-moma-events"
+      "id": "quediosmeperdonemaygodforgiveme1948directedbytitodavison-2025-07-11-moma"
     },
     {
       "title": "Artist Demos: Weaving",
@@ -535,7 +535,7 @@
       "date": "2025-07-11",
       "time": "5:30–7:30 p.m.",
       "location": "MoMA, Floor 2, Creativity Lab The Paula and James Crown Creativity Lab",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10556",
       "image_url": "",
@@ -543,7 +543,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "artistdemosweaving-2025-07-11-moma-events"
+      "id": "artistdemosweaving-2025-07-11-moma"
     },
     {
       "title": "New York Historical Summer!",
@@ -551,7 +551,7 @@
       "date": "2025-07-11",
       "time": "5:30 – 7:30 pm",
       "location": "1st floor, Robert H. and Clarice Smith New York Gallery of American History at The New York Historical, 170 Central Park West, New York, NY 10024",
-      "museum": "women's-history-events",
+      "museum": "women's-history",
       "museumName": "Women'S History Events",
       "url": "https://www.nyhistory.org/programs/new-york-historical-summer10?date=2025-07-11",
       "image_url": "",
@@ -559,7 +559,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "newyorkhistoricalsummer-2025-07-11-womens-history-events"
+      "id": "newyorkhistoricalsummer-2025-07-11-womens-history"
     },
     {
       "title": "Met Expert Talks at The Met Cloisters—A History of The Met Cloisters",
@@ -567,7 +567,7 @@
       "date": "2025-07-11",
       "time": "3–3:30 pm",
       "location": "The Met Cloisters Main Hall",
-      "museum": "met-events",
+      "museum": "met",
       "museumName": "Met Events",
       "url": "https://engage.metmuseum.org/events/education/talks/cloisters/met-expert-talks-at-the-met-cloisters/fy26/met-expert-talks-cloisters-history/?_gl=1*17uncsd*_gcl_au*MTQxMDkxNzMyMy4xNzUwMzQxMTI3*_ga*NDc5NDQ2NDc1LjE3NTAzNDExMjg.*_ga_Y0W8DGNBTB*czE3NTA4NjM0MTckbzMkZzEkdDE3NTA4NjUwOTYkajkkbDAkaDA.",
       "image_url": "",
@@ -575,7 +575,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "metexperttalksatthemetcloistersahistoryofthemetcloisters-2025-07-11-met-events"
+      "id": "metexperttalksatthemetcloistersahistoryofthemetcloisters-2025-07-11-met"
     },
     {
       "title": "Date Night—Sargent and Paris",
@@ -583,7 +583,7 @@
       "date": "2025-07-11",
       "time": "6–8 pm",
       "location": "The Met Fifth Avenue Various locations, Floors 1 and 2",
-      "museum": "met-events",
+      "museum": "met",
       "museumName": "Met Events",
       "url": "https://engage.metmuseum.org/events/education/celebrations/festivals/fy26/date-night-sargent-and-paris/?_gl=1*1eeciej*_gcl_au*MTQxMDkxNzMyMy4xNzUwMzQxMTI3*_ga*NDc5NDQ2NDc1LjE3NTAzNDExMjg.*_ga_Y0W8DGNBTB*czE3NTA4NjM0MTckbzMkZzEkdDE3NTA4NjU5MDEkajEyJGwwJGgw",
       "image_url": "",
@@ -591,7 +591,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "datenightsargentandparis-2025-07-11-met-events"
+      "id": "datenightsargentandparis-2025-07-11-met"
     },
     {
       "title": "The Observant Eye",
@@ -599,7 +599,7 @@
       "date": "2025-07-11",
       "time": "6:30–7:30 pm",
       "location": "The Met Fifth Avenue Meet in Carson Family Hall, Ruth and Harold D. Uris Center for Education",
-      "museum": "met-events",
+      "museum": "met",
       "museumName": "Met Events",
       "url": "https://engage.metmuseum.org/events/education/workshops-and-classes/academic-and-research-programs/college-and-university-programs/the-observant-eye/fy26/the-observant-eye/?_gl=1*4fzjch*_gcl_au*MTQxMDkxNzMyMy4xNzUwMzQxMTI3*_ga*NDc5NDQ2NDc1LjE3NTAzNDExMjg.*_ga_Y0W8DGNBTB*czE3NTA4NjM0MTckbzMkZzEkdDE3NTA4NjYwMTAkajU4JGwwJGgw",
       "image_url": "",
@@ -607,7 +607,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "theobservanteye-2025-07-11-met-events"
+      "id": "theobservanteye-2025-07-11-met"
     },
     {
       "title": "Enamorada (In Love). 1946. Directed by Emilio Fernández",
@@ -615,7 +615,7 @@
       "date": "2025-07-12",
       "time": "4:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10673",
       "image_url": "",
@@ -623,7 +623,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "enamoradainlove1946directedbyemiliofernndez-2025-07-12-moma-events"
+      "id": "enamoradainlove1946directedbyemiliofernndez-2025-07-12-moma"
     },
     {
       "title": "La diosa arrodillada (The Kneeling Goddess). 1947. Directed by Roberto Gavaldón",
@@ -631,7 +631,7 @@
       "date": "2025-07-12",
       "time": "6:30 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10674",
       "image_url": "",
@@ -639,7 +639,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "ladiosaarrodilladathekneelinggoddess1947directedbyrobertogavaldn-2025-07-12-moma-events"
+      "id": "ladiosaarrodilladathekneelinggoddess1947directedbyrobertogavaldn-2025-07-12-moma"
     },
     {
       "title": "El peñón de las ánimas (The Rock of Souls). 1942. Directed by Miguel Zacarías",
@@ -647,7 +647,7 @@
       "date": "2025-07-13",
       "time": "1:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10675",
       "image_url": "",
@@ -655,7 +655,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "elpendelasnimastherockofsouls1942directedbymiguelzacaras-2025-07-13-moma-events"
+      "id": "elpendelasnimastherockofsouls1942directedbymiguelzacaras-2025-07-13-moma"
     },
     {
       "title": "La mujer de todos (Everybody’s Woman). 1946. Directed by Julio Bracho",
@@ -663,7 +663,7 @@
       "date": "2025-07-13",
       "time": "4:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10676",
       "image_url": "",
@@ -671,7 +671,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "lamujerdetodoseverybodyswoman1946directedbyjuliobracho-2025-07-13-moma-events"
+      "id": "lamujerdetodoseverybodyswoman1946directedbyjuliobracho-2025-07-13-moma"
     },
     {
       "title": "Jesse Krimes: Corrections",
@@ -679,7 +679,7 @@
       "date": "2025-07-13",
       "time": "",
       "location": "The Met Fifth Avenue in Gallery 851",
-      "museum": "met-events",
+      "museum": "met",
       "museumName": "Met Events",
       "url": "https://www.metmuseum.org/exhibitions/jesse-krimes-corrections",
       "image_url": "",
@@ -687,7 +687,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "jessekrimescorrections-2025-07-13-met-events"
+      "id": "jessekrimescorrections-2025-07-13-met"
     },
     {
       "title": "Río Escondido (Hidden River). 1948. Directed by Emilio Fernández",
@@ -695,7 +695,7 @@
       "date": "2025-07-14",
       "time": "4:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10677",
       "image_url": "",
@@ -703,7 +703,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "roescondidohiddenriver1948directedbyemiliofernndez-2025-07-14-moma-events"
+      "id": "roescondidohiddenriver1948directedbyemiliofernndez-2025-07-14-moma"
     },
     {
       "title": "Doña Bárbara. 1943. Directed by Fernando de Fuentes",
@@ -711,7 +711,7 @@
       "date": "2025-07-14",
       "time": "7:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10690",
       "image_url": "",
@@ -719,7 +719,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "doabrbara1943directedbyfernandodefuentes-2025-07-14-moma-events"
+      "id": "doabrbara1943directedbyfernandodefuentes-2025-07-14-moma"
     },
     {
       "title": "Maclovia. 1948. Directed by Emilio Fernández",
@@ -727,7 +727,7 @@
       "date": "2025-07-15",
       "time": "4:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10691",
       "image_url": "",
@@ -735,7 +735,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "maclovia1948directedbyemiliofernndez-2025-07-15-moma-events"
+      "id": "maclovia1948directedbyemiliofernndez-2025-07-15-moma"
     },
     {
       "title": "Tizoc. 1957. Directed by Ismael Rodriguez",
@@ -743,7 +743,7 @@
       "date": "2025-07-15",
       "time": "7:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10692",
       "image_url": "",
@@ -751,7 +751,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "tizoc1957directedbyismaelrodriguez-2025-07-15-moma-events"
+      "id": "tizoc1957directedbyismaelrodriguez-2025-07-15-moma"
     },
     {
       "title": "French Cancan. 1954.Directed by Jean Renoir",
@@ -759,7 +759,7 @@
       "date": "2025-07-16",
       "time": "4:30 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10693",
       "image_url": "",
@@ -767,7 +767,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "frenchcancan1954directedbyjeanrenoir-2025-07-16-moma-events"
+      "id": "frenchcancan1954directedbyjeanrenoir-2025-07-16-moma"
     },
     {
       "title": "Doña Diabla. 1950. Directed by Tito Daviso",
@@ -775,7 +775,7 @@
       "date": "2025-07-16",
       "time": "7:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10694",
       "image_url": "",
@@ -783,7 +783,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "doadiabla1950directedbytitodaviso-2025-07-16-moma-events"
+      "id": "doadiabla1950directedbytitodaviso-2025-07-16-moma"
     },
     {
       "title": "Pioneering Scientific Voices: Women and STEM",
@@ -791,7 +791,7 @@
       "date": "2025-07-16",
       "time": "6-7 pm",
       "location": "Zoom",
-      "museum": "women's-history-events",
+      "museum": "women's-history",
       "museumName": "Women'S History Events",
       "url": "https://us06web.zoom.us/meeting/register/UKYEkiMrQOyBgUGB8Jomkw#/registration",
       "image_url": "",
@@ -799,7 +799,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "pioneeringscientificvoiceswomenandstem-2025-07-16-womens-history-events"
+      "id": "pioneeringscientificvoiceswomenandstem-2025-07-16-womens-history"
     },
     {
       "title": "Illiberal America: A History",
@@ -807,7 +807,7 @@
       "date": "2025-07-16",
       "time": "7 – 8 pm",
       "location": "This program will be held at the outdoor Reading Room in Bryant Park. The Reading Room is located on the 42nd Street side of the park between 5th and 6th Avenues. Look for the yellow and white umbrellas.",
-      "museum": "women's-history-events",
+      "museum": "women's-history",
       "museumName": "Women'S History Events",
       "url": "https://www.nyhistory.org/programs/illiberal-america-a-history?date=2025-07-16",
       "image_url": "",
@@ -815,7 +815,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "illiberalamericaahistory-2025-07-16-womens-history-events"
+      "id": "illiberalamericaahistory-2025-07-16-womens-history"
     },
     {
       "title": "Dispatches from the Field: Alison Criscitiello",
@@ -823,7 +823,7 @@
       "date": "2025-07-16",
       "time": "12:00 PM",
       "location": "",
-      "museum": "explorers-events",
+      "museum": "explorers",
       "museumName": "Explorers Events",
       "url": "https://www.explorers.org/calendar-of-events/dispatches-from-the-field-alison-criscitiello/",
       "image_url": "",
@@ -831,7 +831,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "dispatchesfromthefieldalisoncriscitiello-2025-07-16-explorers-events"
+      "id": "dispatchesfromthefieldalisoncriscitiello-2025-07-16-explorers"
     },
     {
       "title": "La mujer sin alma (The Woman Without a Soul). 1944. Directed by Fernando de Fuentes",
@@ -839,7 +839,7 @@
       "date": "2025-07-17",
       "time": "4:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10696",
       "image_url": "",
@@ -847,7 +847,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "lamujersinalmathewomanwithoutasoul1944directedbyfernandodefuentes-2025-07-17-moma-events"
+      "id": "lamujersinalmathewomanwithoutasoul1944directedbyfernandodefuentes-2025-07-17-moma"
     },
     {
       "title": "Amok. 1944. Directed by Antonio Momplet",
@@ -855,7 +855,7 @@
       "date": "2025-07-17",
       "time": "7:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10697",
       "image_url": "",
@@ -863,7 +863,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "amok1944directedbyantoniomomplet-2025-07-17-moma-events"
+      "id": "amok1944directedbyantoniomomplet-2025-07-17-moma"
     },
     {
       "title": "Writing Club: On Jack Whitten, with Jazzy Charles and Antoinette Cooper",
@@ -871,7 +871,7 @@
       "date": "2025-07-17",
       "time": "7:00–8:30 p.m.",
       "location": "MoMA, Floor 6",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10616",
       "image_url": "",
@@ -879,7 +879,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "writingclubonjackwhittenwithjazzycharlesandantoinettecooper-2025-07-17-moma-events"
+      "id": "writingclubonjackwhittenwithjazzycharlesandantoinettecooper-2025-07-17-moma"
     },
     {
       "title": "Río Escondido (Hidden River). 1948. Directed by Emilio Fernández",
@@ -887,7 +887,7 @@
       "date": "2025-07-18",
       "time": "4:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10677",
       "image_url": "",
@@ -895,7 +895,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "roescondidohiddenriver1948directedbyemiliofernndez-2025-07-18-moma-events"
+      "id": "roescondidohiddenriver1948directedbyemiliofernndez-2025-07-18-moma"
     },
     {
       "title": "Que Dios me perdone (May God Forgive Me). 1948. Directed by Tito Davison",
@@ -903,7 +903,7 @@
       "date": "2025-07-18",
       "time": "7:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10672",
       "image_url": "",
@@ -911,7 +911,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "quediosmeperdonemaygodforgiveme1948directedbytitodavison-2025-07-18-moma-events"
+      "id": "quediosmeperdonemaygodforgiveme1948directedbytitodavison-2025-07-18-moma"
     },
     {
       "title": "New York Historical Summer!",
@@ -919,7 +919,7 @@
       "date": "2025-07-18",
       "time": "5:30 – 7:30 pm",
       "location": "1st floor, Robert H. and Clarice Smith New York Gallery of American History at The New York Historical, 170 Central Park West, New York, NY 10024",
-      "museum": "women's-history-events",
+      "museum": "women's-history",
       "museumName": "Women'S History Events",
       "url": "https://www.nyhistory.org/programs/new-york-historical-summer10?date=2025-07-11",
       "image_url": "",
@@ -927,7 +927,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "newyorkhistoricalsummer-2025-07-18-womens-history-events"
+      "id": "newyorkhistoricalsummer-2025-07-18-womens-history"
     },
     {
       "title": "Met Expert Talks at The Met Cloisters—A History of The Met Cloisters",
@@ -935,7 +935,7 @@
       "date": "2025-07-18",
       "time": "3–3:30 pm",
       "location": "The Met Cloisters Main Hall",
-      "museum": "met-events",
+      "museum": "met",
       "museumName": "Met Events",
       "url": "https://engage.metmuseum.org/events/education/talks/cloisters/met-expert-talks-at-the-met-cloisters/fy26/met-expert-talks-cloisters-history/?_gl=1*1ellmge*_gcl_au*MTQxMDkxNzMyMy4xNzUwMzQxMTI3*_ga*NDc5NDQ2NDc1LjE3NTAzNDExMjg.*_ga_Y0W8DGNBTB*czE3NTA4NjM0MTckbzMkZzEkdDE3NTA4NjYyMjckajYwJGwwJGgw",
       "image_url": "",
@@ -943,7 +943,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "metexperttalksatthemetcloistersahistoryofthemetcloisters-2025-07-18-met-events"
+      "id": "metexperttalksatthemetcloistersahistoryofthemetcloisters-2025-07-18-met"
     },
     {
       "title": "La diosa arrodillada (The Kneeling Goddess). 1947. Directed by Roberto Gavaldón",
@@ -951,7 +951,7 @@
       "date": "2025-07-19",
       "time": "4:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10674",
       "image_url": "",
@@ -959,7 +959,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "ladiosaarrodilladathekneelinggoddess1947directedbyrobertogavaldn-2025-07-19-moma-events"
+      "id": "ladiosaarrodilladathekneelinggoddess1947directedbyrobertogavaldn-2025-07-19-moma"
     },
     {
       "title": "Enamorada (In Love). 1946. Directed by Emilio Fernández",
@@ -967,7 +967,7 @@
       "date": "2025-07-19",
       "time": "7:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10673",
       "image_url": "",
@@ -975,7 +975,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "enamoradainlove1946directedbyemiliofernndez-2025-07-19-moma-events"
+      "id": "enamoradainlove1946directedbyemiliofernndez-2025-07-19-moma"
     },
     {
       "title": "El peñón de las ánimas (The Rock of Souls). 1942. Directed by Miguel Zacarías",
@@ -983,7 +983,7 @@
       "date": "2025-07-20",
       "time": "1:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10675",
       "image_url": "",
@@ -991,7 +991,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "elpendelasnimastherockofsouls1942directedbymiguelzacaras-2025-07-20-moma-events"
+      "id": "elpendelasnimastherockofsouls1942directedbymiguelzacaras-2025-07-20-moma"
     },
     {
       "title": "Doña Bárbara. 1943. Directed by Fernando de Fuentes",
@@ -999,7 +999,7 @@
       "date": "2025-07-20",
       "time": "4:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10690",
       "image_url": "",
@@ -1007,7 +1007,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "doabrbara1943directedbyfernandodefuentes-2025-07-20-moma-events"
+      "id": "doabrbara1943directedbyfernandodefuentes-2025-07-20-moma"
     },
     {
       "title": "The New Art: American Photography, 1839–1910",
@@ -1015,7 +1015,7 @@
       "date": "2025-07-20",
       "time": "",
       "location": "The Met Fifth Avenue in Gallery 851",
-      "museum": "met-events",
+      "museum": "met",
       "museumName": "Met Events",
       "url": "https://www.metmuseum.org/exhibitions/the-new-art-american-photography-1839-1910",
       "image_url": "",
@@ -1023,7 +1023,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "thenewartamericanphotography18391910-2025-07-20-met-events"
+      "id": "thenewartamericanphotography18391910-2025-07-20-met"
     },
     {
       "title": "Maclovia. 1948. Directed by Emilio Fernández",
@@ -1031,7 +1031,7 @@
       "date": "2025-07-21",
       "time": "4:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10691",
       "image_url": "",
@@ -1039,7 +1039,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "maclovia1948directedbyemiliofernndez-2025-07-21-moma-events"
+      "id": "maclovia1948directedbyemiliofernndez-2025-07-21-moma"
     },
     {
       "title": "Tizoc. 1957. Directed by Ismael Rodriguez",
@@ -1047,7 +1047,7 @@
       "date": "2025-07-21",
       "time": "7:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10692",
       "image_url": "",
@@ -1055,7 +1055,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "tizoc1957directedbyismaelrodriguez-2025-07-21-moma-events"
+      "id": "tizoc1957directedbyismaelrodriguez-2025-07-21-moma"
     },
     {
       "title": "French Cancan. 1954. Directed by Jean Renoir",
@@ -1063,7 +1063,7 @@
       "date": "2025-07-22",
       "time": "4:30 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10693",
       "image_url": "",
@@ -1071,7 +1071,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "frenchcancan1954directedbyjeanrenoir-2025-07-22-moma-events"
+      "id": "frenchcancan1954directedbyjeanrenoir-2025-07-22-moma"
     },
     {
       "title": "La mujer de todos (Everybody’s Woman). 1946. Directed by Julio Bracho",
@@ -1079,7 +1079,7 @@
       "date": "2025-07-22",
       "time": "7:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10676",
       "image_url": "",
@@ -1087,7 +1087,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "lamujerdetodoseverybodyswoman1946directedbyjuliobracho-2025-07-22-moma-events"
+      "id": "lamujerdetodoseverybodyswoman1946directedbyjuliobracho-2025-07-22-moma"
     },
     {
       "title": "Met Expert Talks en español—La herencia cultural de la talavera poblana",
@@ -1095,7 +1095,7 @@
       "date": "2025-07-22",
       "time": "11–11:45 am",
       "location": "The Met Fifth Avenue Gallery 774, Henry R. Luce Center for the Study of American Art",
-      "museum": "met-events",
+      "museum": "met",
       "museumName": "Met Events",
       "url": "https://engage.metmuseum.org/events/education/talks/community-partnerships-and-initiatives/fy25/met-expert-talks-en-espanol/met-expert-talks-en-espanol-la-herencia-cultural-de-la-talavera-poblana/?_gl=1*jdcu1n*_gcl_au*MTQxMDkxNzMyMy4xNzUwMzQxMTI3*_ga*NDc5NDQ2NDc1LjE3NTAzNDExMjg.*_ga_Y0W8DGNBTB*czE3NTA4NjM0MTckbzMkZzEkdDE3NTA4NjYzMjUkajU4JGwwJGgw",
       "image_url": "",
@@ -1103,7 +1103,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "metexperttalksenespaollaherenciaculturaldelatalaverapoblana-2025-07-22-met-events"
+      "id": "metexperttalksenespaollaherenciaculturaldelatalaverapoblana-2025-07-22-met"
     },
     {
       "title": "Met Expert Talks—The Roof Garden Commission: Jennie C. Jones, Ensemble",
@@ -1111,7 +1111,7 @@
       "date": "2025-07-22",
       "time": "3–3:30 pm",
       "location": "The Met Fifth Avenue Gallery 926, The Iris and B. Gerald Cantor Roof Garden",
-      "museum": "met-events",
+      "museum": "met",
       "museumName": "Met Events",
       "url": "https://engage.metmuseum.org/events/education/talks/public-programs/met-expert-talks/fy25/met-expert-talks-roof-garden-commission/?_gl=1*1qscc7x*_gcl_au*MTQxMDkxNzMyMy4xNzUwMzQxMTI3*_ga*NDc5NDQ2NDc1LjE3NTAzNDExMjg.*_ga_Y0W8DGNBTB*czE3NTA4NjM0MTckbzMkZzEkdDE3NTA4NjY1MTgkajU5JGwwJGgw",
       "image_url": "",
@@ -1119,7 +1119,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "metexperttalkstheroofgardencommissionjenniecjonesensemble-2025-07-22-met-events"
+      "id": "metexperttalkstheroofgardencommissionjenniecjonesensemble-2025-07-22-met"
     },
     {
       "title": "Baseball Cards from the Collection of Jefferson R. Burdick",
@@ -1127,7 +1127,7 @@
       "date": "2025-07-22",
       "time": "",
       "location": "The Met Fifth Avenue in Gallery 774A",
-      "museum": "met-events",
+      "museum": "met",
       "museumName": "Met Events",
       "url": "https://www.metmuseum.org/exhibitions/baseball-cards-from-the-collection-of-jefferson-r-burdick",
       "image_url": "",
@@ -1135,7 +1135,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "baseballcardsfromthecollectionofjeffersonrburdick-2025-07-22-met-events"
+      "id": "baseballcardsfromthecollectionofjeffersonrburdick-2025-07-22-met"
     },
     {
       "title": "The U.S.-ROK Alliance in 2025 and Global Implications",
@@ -1143,7 +1143,7 @@
       "date": "2025-07-22",
       "time": "8:45 - 11:45 a.m. New York Time",
       "location": "725 Park Avenue New York, NY 10021",
-      "museum": "asia-society-events",
+      "museum": "asia-society",
       "museumName": "Asia Society Events",
       "url": "https://asiasociety.org/policy-institute/events/us-rok-alliance-2025-and-global-implications",
       "image_url": "",
@@ -1151,7 +1151,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "theus-rokalliancein2025andglobalimplications-2025-07-22-asia-society-events"
+      "id": "theus-rokalliancein2025andglobalimplications-2025-07-22-asia-society"
     },
     {
       "title": "Doña Diabla. 1950. Directed by Tito Daviso",
@@ -1159,7 +1159,7 @@
       "date": "2025-07-23",
       "time": "4:30 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10694",
       "image_url": "",
@@ -1167,7 +1167,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "doadiabla1950directedbytitodaviso-2025-07-23-moma-events"
+      "id": "doadiabla1950directedbytitodaviso-2025-07-23-moma"
     },
     {
       "title": "La mujer sin alma (The Woman Without a Soul). 1944. Directed by Fernando de Fuentes",
@@ -1175,7 +1175,7 @@
       "date": "2025-07-23",
       "time": "7:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10696",
       "image_url": "",
@@ -1183,7 +1183,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "lamujersinalmathewomanwithoutasoul1944directedbyfernandodefuentes-2025-07-23-moma-events"
+      "id": "lamujersinalmathewomanwithoutasoul1944directedbyfernandodefuentes-2025-07-23-moma"
     },
     {
       "title": "Teacher Workshop - Blacklisted: An American Story",
@@ -1191,7 +1191,7 @@
       "date": "2025-07-23",
       "time": "1:00pm-3:00pm",
       "location": "",
-      "museum": "women's-history-events",
+      "museum": "women's-history",
       "museumName": "Women'S History Events",
       "url": "https://buy.acmeticketing.com/events/292/detail/67ee936d7843e36aa71aab6a?date=2025-07-23T00:00:00-0400",
       "image_url": "",
@@ -1199,7 +1199,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "teacherworkshop-blacklistedanamericanstory-2025-07-23-womens-history-events"
+      "id": "teacherworkshop-blacklistedanamericanstory-2025-07-23-womens-history"
     },
     {
       "title": "Lincoln’s Lady Spymaster: The Untold Story of the Abolitionist Southern Belle Who Helped Win the Civil War",
@@ -1207,7 +1207,7 @@
       "date": "2025-07-23",
       "time": "7 – 8 pm",
       "location": "This program will be held at the outdoor Reading Room in Bryant Park. The Reading Room is located on the 42nd Street side of the park between 5th and 6th Avenues. Look for the yellow and white umbrellas.",
-      "museum": "women's-history-events",
+      "museum": "women's-history",
       "museumName": "Women'S History Events",
       "url": "https://www.nyhistory.org/programs/lincolns-lady-spymaster-untold-story-abolitionist-southern-belle-who-helped-win-civil-war?date=2025-07-23",
       "image_url": "",
@@ -1223,7 +1223,7 @@
       "date": "2025-07-24",
       "time": "4:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10673",
       "image_url": "",
@@ -1231,7 +1231,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "enamoradainlove1946directedbyemiliofernndez-2025-07-24-moma-events"
+      "id": "enamoradainlove1946directedbyemiliofernndez-2025-07-24-moma"
     },
     {
       "title": "Amok. 1944. Directed by Antonio Momplet",
@@ -1239,7 +1239,7 @@
       "date": "2025-07-24",
       "time": "7:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10697",
       "image_url": "",
@@ -1247,7 +1247,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "amok1944directedbyantoniomomplet-2025-07-24-moma-events"
+      "id": "amok1944directedbyantoniomomplet-2025-07-24-moma"
     },
     {
       "title": "Writing Club at Home: On Jack Whitten, with Jazzy Charles and Antoinette Cooper",
@@ -1255,7 +1255,7 @@
       "date": "2025-07-24",
       "time": "12:00–1:15 p.m.",
       "location": "Online",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10617",
       "image_url": "",
@@ -1263,7 +1263,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "writingclubathomeonjackwhittenwithjazzycharlesandantoinettecooper-2025-07-24-moma-events"
+      "id": "writingclubathomeonjackwhittenwithjazzycharlesandantoinettecooper-2025-07-24-moma"
     },
     {
       "title": "Gallery Tour: Robert Caro in the Museum",
@@ -1271,7 +1271,7 @@
       "date": "2025-07-24",
       "time": "11:30 am – 12:30 pm",
       "location": "The New York Historical, 170 Central Park West, New York, NY 10024",
-      "museum": "women's-history-events",
+      "museum": "women's-history",
       "museumName": "Women'S History Events",
       "url": "https://www.nyhistory.org/programs/gallery-tour-robert-caro-in-the-museum7-24?date=2025-07-24",
       "image_url": "",
@@ -1279,7 +1279,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "gallerytourrobertcarointhemuseum-2025-07-24-womens-history-events"
+      "id": "gallerytourrobertcarointhemuseum-2025-07-24-womens-history"
     },
     {
       "title": "Tizoc. 1957. Directed by Ismael Rodriguez",
@@ -1287,7 +1287,7 @@
       "date": "2025-07-25",
       "time": "4:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10692",
       "image_url": "",
@@ -1295,7 +1295,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "tizoc1957directedbyismaelrodriguez-2025-07-25-moma-events"
+      "id": "tizoc1957directedbyismaelrodriguez-2025-07-25-moma"
     },
     {
       "title": "Río Escondido (Hidden River). 1948. Directed by Emilio Fernández",
@@ -1303,7 +1303,7 @@
       "date": "2025-07-25",
       "time": "7:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10677",
       "image_url": "",
@@ -1311,7 +1311,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "roescondidohiddenriver1948directedbyemiliofernndez-2025-07-25-moma-events"
+      "id": "roescondidohiddenriver1948directedbyemiliofernndez-2025-07-25-moma"
     },
     {
       "title": "New York Historical Summer!",
@@ -1319,7 +1319,7 @@
       "date": "2025-07-25",
       "time": "5:30 – 7:30 pm",
       "location": "1st floor, Robert H. and Clarice Smith New York Gallery of American History at The New York Historical, 170 Central Park West, New York, NY 10024",
-      "museum": "women's-history-events",
+      "museum": "women's-history",
       "museumName": "Women'S History Events",
       "url": "https://www.nyhistory.org/programs/new-york-historical-summer10?date=2025-07-11",
       "image_url": "",
@@ -1327,7 +1327,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "newyorkhistoricalsummer-2025-07-25-womens-history-events"
+      "id": "newyorkhistoricalsummer-2025-07-25-womens-history"
     },
     {
       "title": "Doña Bárbara. 1943. Directed by Fernando de Fuentes",
@@ -1335,7 +1335,7 @@
       "date": "2025-07-26",
       "time": "4:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10690",
       "image_url": "",
@@ -1343,7 +1343,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "doabrbara1943directedbyfernandodefuentes-2025-07-26-moma-events"
+      "id": "doabrbara1943directedbyfernandodefuentes-2025-07-26-moma"
     },
     {
       "title": "La diosa arrodillada (The Kneeling Goddess). 1947. Directed by Roberto Gavaldón",
@@ -1351,7 +1351,7 @@
       "date": "2025-07-26",
       "time": "7:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10674",
       "image_url": "",
@@ -1359,7 +1359,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "ladiosaarrodilladathekneelinggoddess1947directedbyrobertogavaldn-2025-07-26-moma-events"
+      "id": "ladiosaarrodilladathekneelinggoddess1947directedbyrobertogavaldn-2025-07-26-moma"
     },
     {
       "title": "Memorial – Bruce Blanchard ME’78",
@@ -1367,7 +1367,7 @@
       "date": "2025-07-26",
       "time": "2-4:30 PM",
       "location": "Explorers Club Headquarters in New York City",
-      "museum": "explorers-events",
+      "museum": "explorers",
       "museumName": "Explorers Events",
       "url": "https://www.explorers.org/calendar-of-events/memorial-bruce-blanchard-me78/",
       "image_url": "",
@@ -1375,7 +1375,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "memorialbruceblanchardme78-2025-07-26-explorers-events"
+      "id": "memorialbruceblanchardme78-2025-07-26-explorers"
     },
     {
       "title": "Maclovia. 1948. Directed by Emilio Fernández",
@@ -1383,7 +1383,7 @@
       "date": "2025-07-27",
       "time": "1:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10691",
       "image_url": "",
@@ -1391,7 +1391,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "maclovia1948directedbyemiliofernndez-2025-07-27-moma-events"
+      "id": "maclovia1948directedbyemiliofernndez-2025-07-27-moma"
     },
     {
       "title": "French Cancan. 1954. Directed by Jean Renoir",
@@ -1399,7 +1399,7 @@
       "date": "2025-07-27",
       "time": "4:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 1 The Roy and Niuta Titus Theater 1",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10693",
       "image_url": "",
@@ -1407,7 +1407,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "frenchcancan1954directedbyjeanrenoir-2025-07-27-moma-events"
+      "id": "frenchcancan1954directedbyjeanrenoir-2025-07-27-moma"
     },
     {
       "title": "Berlin: Die Sinfonie der Großstadt (Berlin: Symphony of a Great City). 1927. Directed by Walter Ruttmann",
@@ -1415,7 +1415,7 @@
       "date": "2025-07-30",
       "time": "8:00 p.m.",
       "location": "MoMA, Floor 1, Sculpture Garden The Abby Aldrich Rockefeller Sculpture Garden",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10735",
       "image_url": "",
@@ -1423,7 +1423,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "berlindiesinfoniedergrostadtberlinsymphonyofagreatcity1927directedbywalterruttmann-2025-07-30-moma-e"
+      "id": "berlindiesinfoniedergrostadtberlinsymphonyofagreatcity1927directedbywalterruttmann-2025-07-30-moma"
     },
     {
       "title": "Conceptualizing the Constitution",
@@ -1431,7 +1431,7 @@
       "date": "2025-07-30",
       "time": "6-7 pm",
       "location": "Zoom",
-      "museum": "women's-history-events",
+      "museum": "women's-history",
       "museumName": "Women'S History Events",
       "url": "https://us06web.zoom.us/meeting/register/xXU51X5qR8aZAfo52-eofw#/registration",
       "image_url": "",
@@ -1439,7 +1439,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "conceptualizingtheconstitution-2025-07-30-womens-history-events"
+      "id": "conceptualizingtheconstitution-2025-07-30-womens-history"
     },
     {
       "title": "Religion in the Lands that Became America: A New History",
@@ -1447,7 +1447,7 @@
       "date": "2025-07-30",
       "time": "7 – 8 pm",
       "location": "This program will be held at the outdoor Reading Room in Bryant Park. The Reading Room is located on the 42nd Street side of the park between 5th and 6th Avenues. Look for the yellow and white umbrellas.",
-      "museum": "women's-history-events",
+      "museum": "women's-history",
       "museumName": "Women'S History Events",
       "url": "https://www.nyhistory.org/programs/religion-in-the-lands-that-became-america-a-new-history?date=2025-07-30",
       "image_url": "",
@@ -1455,7 +1455,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "religioninthelandsthatbecameamericaanewhistory-2025-07-30-womens-history-events"
+      "id": "religioninthelandsthatbecameamericaanewhistory-2025-07-30-womens-history"
     },
     {
       "title": "The Gold Rush. 1925. Written and directed by Charles Chaplin",
@@ -1463,7 +1463,7 @@
       "date": "2025-07-31",
       "time": "7:00 p.m.",
       "location": "MoMA, Floor T2/T1, Theater 2 The Roy and Niuta Titus Theater 2",
-      "museum": "moma-events",
+      "museum": "moma",
       "museumName": "Moma Events",
       "url": "https://www.moma.org/calendar/events/10736",
       "image_url": "",
@@ -1471,7 +1471,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "thegoldrush1925writtenanddirectedbycharleschaplin-2025-07-31-moma-events"
+      "id": "thegoldrush1925writtenanddirectedbycharleschaplin-2025-07-31-moma"
     },
     {
       "title": "Gallery Tour: Robert Caro in the Museum",
@@ -1479,7 +1479,7 @@
       "date": "July 8",
       "time": "3 – 4 pm",
       "location": "The New York Historical, 170 Central Park West, New York, NY 10024",
-      "museum": "women's-history-events",
+      "museum": "women's-history",
       "museumName": "Women'S History Events",
       "url": "https://www.nyhistory.org/programs/gallery-tour-robert-caro-in-the-museum7-8?date=2025-07-08",
       "image_url": "",
@@ -1487,7 +1487,7 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "gallerytourrobertcarointhemuseum-july8-womens-history-events"
+      "id": "gallerytourrobertcarointhemuseum-july8-womens-history"
     },
     {
       "title": "Gallery Tour: New York and the Art Students League",
@@ -1495,7 +1495,7 @@
       "date": "July 9",
       "time": "11:30 AM",
       "location": "The New York Historical, 170 Central Park West, New York, NY 10024",
-      "museum": "women's-history-events",
+      "museum": "women's-history",
       "museumName": "Women'S History Events",
       "url": "https://www.nyhistory.org/programs/gallery-tour-new-york-and-the-art-students-league1?date=2025-07-09",
       "image_url": "",
@@ -1503,18 +1503,12 @@
       "registration_url": "",
       "type": "Exhibition",
       "data_source": "csv",
-      "id": "gallerytournewyorkandtheartstudentsleague-july9-womens-history-events"
+      "id": "gallerytournewyorkandtheartstudentsleague-july9-womens-history"
     }
   ],
   "metadata": {
     "total_events": 94,
-    "scraping_method": "integrated",
-    "museums_scraped": [
-      "moma-events",
-      "women's-history-events",
-      "explorers-events",
-      "met-events",
-      "asia-society-events"
-    ]
+    "data_source": "csv",
+    "processing_date": "2025-07-01 17:15:03"
   }
 }
