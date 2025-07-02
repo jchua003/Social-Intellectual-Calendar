@@ -20,7 +20,7 @@ def convert_csv_to_json():
         "NYU Institute": {"code": "nyu", "name": "NYU Institute"},
         "National Arts Club": {"code": "arts", "name": "National Arts Club"},
         "Explorers Club": {"code": "explorers", "name": "Explorers Club"},
-        "Women's History": {"code": "womens", "name": "Women's History"}
+        "Women's History": {"code": "womens-history", "name": "Women's History"}
     }
     
     # Get all CSV files

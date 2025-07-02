@@ -172,6 +172,7 @@ class CSVToEvents:
             # Generate a clean museum_id without trailing '-events' or '_events'
             museum_id = filename.replace('.csv', '').lower()
             museum_id = re.sub(r'[_-]events$', '', museum_id)
+            museum_id = museum_id.replace("'", '')
             museum_id = museum_id.replace(' ', '-')
 
             print(f"\n📄 Processing: {csv_file}")
