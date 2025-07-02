@@ -1,5 +1,5 @@
 {
-  "last_updated": "2025-07-02T17:37:52.627993",
+  "last_updated": "2025-07-02T17:46:14.180761",
   "events": [
     {
       "title": "Crooklyn. 1994. Directed by Spike Lee",
@@ -610,6 +610,22 @@
       "id": "whittentalkswithnathaliejoachimandgeorgelewis-2025-07-08-moma"
     },
     {
+      "title": "Gallery Tour: Robert Caro in the Museum",
+      "description": "Discover the work and career of American journalist and author Robert A. Caro on a docent-led guided tour of Robert Caro’s The Power Broker at 50 and “Turn Every Page”: Inside the Robert A Caro.",
+      "date": "2025-07-08",
+      "time": "3 – 4 pm",
+      "location": "The New York Historical, 170 Central Park West, New York, NY 10024",
+      "museum": "womens-history",
+      "museumName": "Women'S History Events",
+      "url": "https://www.nyhistory.org/programs/gallery-tour-robert-caro-in-the-museum7-8?date=2025-07-08",
+      "image_url": "",
+      "price": "Free",
+      "registration_url": "",
+      "type": "Tours",
+      "data_source": "csv",
+      "id": "gallerytourrobertcarointhemuseum-july8-womens-history"
+    },
+    {
       "title": "Senseless. 1961. Directed by Ron Rice The Flower Thief. 1960. Written and directed by Ron Rice",
       "description": "Ron Rice’s The Flower Thief (1960) and Senseless (1961) are playful, Beat-influenced landmarks of underground cinema—freeform 16mm experiments that helped define the East Village’s avant-garde film scene in the early 1960s.",
       "date": "2025-07-09",
@@ -688,6 +704,22 @@
       "type": "Symposium",
       "data_source": "csv",
       "id": "summersummitchina-2025-07-09-asia-society"
+    },
+    {
+      "title": "Gallery Tour: New York and the Art Students League",
+      "description": "Join experienced docents and dive into the lasting impact of the Art Students League, whose alumni include Norman Rockwell, Mark Rothko, Georgia O'Keeffe, and Jacob Lawrence.",
+      "date": "2025-07-09",
+      "time": "11:30 AM",
+      "location": "The New York Historical, 170 Central Park West, New York, NY 10024",
+      "museum": "womens-history",
+      "museumName": "Women'S History Events",
+      "url": "https://www.nyhistory.org/programs/gallery-tour-new-york-and-the-art-students-league1?date=2025-07-09",
+      "image_url": "",
+      "price": "Free",
+      "registration_url": "",
+      "type": "Tours",
+      "data_source": "csv",
+      "id": "gallerytournewyorkandtheartstudentsleague-july9-womens-history"
     },
     {
       "title": "Taiyō no Hakaba (The Sun’s Burial). 1960. Directed by Nagisa Ōshima",
@@ -2720,49 +2752,17 @@
       "type": "Lecture",
       "data_source": "csv",
       "id": "metexperttalksthethreeperfectionsjapanesepoetrycalligraphyandpaintingfromthemaryandcheneycowlescolle"
-    },
-    {
-      "title": "Gallery Tour: Robert Caro in the Museum",
-      "description": "Discover the work and career of American journalist and author Robert A. Caro on a docent-led guided tour of Robert Caro’s The Power Broker at 50 and “Turn Every Page”: Inside the Robert A Caro.",
-      "date": "2025-07-08",
-      "time": "3 – 4 pm",
-      "location": "The New York Historical, 170 Central Park West, New York, NY 10024",
-      "museum": "womens-history",
-      "museumName": "Women'S History Events",
-      "url": "https://www.nyhistory.org/programs/gallery-tour-robert-caro-in-the-museum7-8?date=2025-07-08",
-      "image_url": "",
-      "price": "Free",
-      "registration_url": "",
-      "type": "Tours",
-      "data_source": "csv",
-      "id": "gallerytourrobertcarointhemuseum-july8-womens-history"
-    },
-    {
-      "title": "Gallery Tour: New York and the Art Students League",
-      "description": "Join experienced docents and dive into the lasting impact of the Art Students League, whose alumni include Norman Rockwell, Mark Rothko, Georgia O'Keeffe, and Jacob Lawrence.",
-      "date": "2025-07-09",
-      "time": "11:30 AM",
-      "location": "The New York Historical, 170 Central Park West, New York, NY 10024",
-      "museum": "womens-history",
-      "museumName": "Women'S History Events",
-      "url": "https://www.nyhistory.org/programs/gallery-tour-new-york-and-the-art-students-league1?date=2025-07-09",
-      "image_url": "",
-      "price": "Free",
-      "registration_url": "",
-      "type": "Tours",
-      "data_source": "csv",
-      "id": "gallerytournewyorkandtheartstudentsleague-july9-womens-history"
     }
   ],
   "metadata": {
     "total_events": 172,
     "scraping_method": "integrated",
     "museums_scraped": [
-      "explorers",
-      "womens-history",
-      "moma",
       "asia-society",
-      "met"
+      "met",
+      "moma",
+      "explorers",
+      "womens-history"
     ]
   }
 }
