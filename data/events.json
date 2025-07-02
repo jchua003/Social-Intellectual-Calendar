@@ -13,7 +13,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "crooklyn1994directedbyspikelee-2025-07-01-moma"
     },
@@ -29,7 +29,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "lafoliealmayeralmayersfolly2011directedbychantalakerman-2025-07-01-moma"
     },
@@ -77,7 +77,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Lecture",
       "data_source": "csv",
       "id": "overthegreatwallacenturyapart-2025-07-01-explorers"
     },
@@ -93,7 +93,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "guelwaar1992writtenanddirectedbyousmanesembene-2025-07-02-moma"
     },
@@ -109,7 +109,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "adieuphilippine1962directedbyjacquesrozier-2025-07-02-moma"
     },
@@ -157,7 +157,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "35rhums35shotsofrum2008directedbyclairedenis-2025-07-03-moma"
     },
@@ -173,7 +173,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "thehardertheycome1972directedbyperryhenzell-2025-07-03-moma"
     },
@@ -189,7 +189,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "thebigtrail1930directedbyraoulwalsh-2025-07-04-moma"
     },
@@ -205,7 +205,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "iamnotyournegro2016directedbyraoulpeck-2025-07-04-moma"
     },
@@ -237,7 +237,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "numrodeux1975directedbyjean-lucgodard-2025-07-05-moma"
     },
@@ -253,7 +253,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "taiynohakabathesunsburial1960directedbynagisashima-2025-07-05-moma"
     },
@@ -269,7 +269,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "thehardertheycome1972directedbyperryhenzell-2025-07-05-moma"
     },
@@ -285,7 +285,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "taiga1992writtenanddirectedbyulrikeottinger-2025-07-06-moma"
     },
@@ -301,7 +301,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "permanentvacation1980writtenanddirectedbyjimjarmusch-2025-07-07-moma"
     },
@@ -317,7 +317,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "senseless1961directedbyronricetheflowerthief1960writtenanddirectedbyronrice-2025-07-07-moma"
     },
@@ -333,7 +333,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Workshop",
       "data_source": "csv",
       "id": "connectingcollectionssummerinstitute-2025-07-07-met"
     },
@@ -365,7 +365,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "tokyomonogataritokyostory1953directedbyyasujirozu-2025-07-08-moma"
     },
@@ -381,7 +381,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "numrodeux1975directedbyjean-lucgodard-2025-07-08-moma"
     },
@@ -397,7 +397,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "senseless1961directedbyronricetheflowerthief1960writtenanddirectedbyronrice-2025-07-09-moma"
     },
@@ -413,7 +413,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "abadsonandtwoshortfilms-2025-07-09-moma"
     },
@@ -445,7 +445,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "taiynohakabathesunsburial1960directedbynagisashima-2025-07-10-moma"
     },
@@ -461,7 +461,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "americanhunter1988directedbyarizal-2025-07-10-moma"
     },
@@ -493,7 +493,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Lecture",
       "data_source": "csv",
       "id": "metexperttalksthenewartamericanphotography18391910-2025-07-10-met"
     },
@@ -509,7 +509,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "americanhunter1988directedbyarizal-2025-07-11-moma"
     },
@@ -525,7 +525,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "quediosmeperdonemaygodforgiveme1948directedbytitodavison-2025-07-11-moma"
     },
@@ -541,7 +541,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Workshop",
       "data_source": "csv",
       "id": "artistdemosweaving-2025-07-11-moma"
     },
@@ -573,7 +573,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Lecture",
       "data_source": "csv",
       "id": "metexperttalksatthemetcloistersahistoryofthemetcloisters-2025-07-11-met"
     },
@@ -589,7 +589,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Special Event",
       "data_source": "csv",
       "id": "datenightsargentandparis-2025-07-11-met"
     },
@@ -605,7 +605,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Talk",
       "data_source": "csv",
       "id": "theobservanteye-2025-07-11-met"
     },
@@ -621,7 +621,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "enamoradainlove1946directedbyemiliofernndez-2025-07-12-moma"
     },
@@ -637,7 +637,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "ladiosaarrodilladathekneelinggoddess1947directedbyrobertogavaldn-2025-07-12-moma"
     },
@@ -653,7 +653,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "elpendelasnimastherockofsouls1942directedbymiguelzacaras-2025-07-13-moma"
     },
@@ -669,7 +669,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "lamujerdetodoseverybodyswoman1946directedbyjuliobracho-2025-07-13-moma"
     },
@@ -701,7 +701,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "roescondidohiddenriver1948directedbyemiliofernndez-2025-07-14-moma"
     },
@@ -717,7 +717,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "doabrbara1943directedbyfernandodefuentes-2025-07-14-moma"
     },
@@ -733,7 +733,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "maclovia1948directedbyemiliofernndez-2025-07-15-moma"
     },
@@ -749,7 +749,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "tizoc1957directedbyismaelrodriguez-2025-07-15-moma"
     },
@@ -765,7 +765,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "frenchcancan1954directedbyjeanrenoir-2025-07-16-moma"
     },
@@ -781,7 +781,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "doadiabla1950directedbytitodaviso-2025-07-16-moma"
     },
@@ -829,7 +829,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Lecture",
       "data_source": "csv",
       "id": "dispatchesfromthefieldalisoncriscitiello-2025-07-16-explorers"
     },
@@ -845,7 +845,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "lamujersinalmathewomanwithoutasoul1944directedbyfernandodefuentes-2025-07-17-moma"
     },
@@ -861,7 +861,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "amok1944directedbyantoniomomplet-2025-07-17-moma"
     },
@@ -877,7 +877,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Workshop",
       "data_source": "csv",
       "id": "writingclubonjackwhittenwithjazzycharlesandantoinettecooper-2025-07-17-moma"
     },
@@ -893,7 +893,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "roescondidohiddenriver1948directedbyemiliofernndez-2025-07-18-moma"
     },
@@ -909,7 +909,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "quediosmeperdonemaygodforgiveme1948directedbytitodavison-2025-07-18-moma"
     },
@@ -941,7 +941,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Lecture",
       "data_source": "csv",
       "id": "metexperttalksatthemetcloistersahistoryofthemetcloisters-2025-07-18-met"
     },
@@ -957,7 +957,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "ladiosaarrodilladathekneelinggoddess1947directedbyrobertogavaldn-2025-07-19-moma"
     },
@@ -973,7 +973,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "enamoradainlove1946directedbyemiliofernndez-2025-07-19-moma"
     },
@@ -989,7 +989,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "elpendelasnimastherockofsouls1942directedbymiguelzacaras-2025-07-20-moma"
     },
@@ -1005,7 +1005,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "doabrbara1943directedbyfernandodefuentes-2025-07-20-moma"
     },
@@ -1037,7 +1037,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "maclovia1948directedbyemiliofernndez-2025-07-21-moma"
     },
@@ -1053,7 +1053,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "tizoc1957directedbyismaelrodriguez-2025-07-21-moma"
     },
@@ -1069,7 +1069,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "frenchcancan1954directedbyjeanrenoir-2025-07-22-moma"
     },
@@ -1085,7 +1085,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "lamujerdetodoseverybodyswoman1946directedbyjuliobracho-2025-07-22-moma"
     },
@@ -1101,7 +1101,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Lecture",
       "data_source": "csv",
       "id": "metexperttalksenespaollaherenciaculturaldelatalaverapoblana-2025-07-22-met"
     },
@@ -1117,7 +1117,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Lecture",
       "data_source": "csv",
       "id": "metexperttalkstheroofgardencommissionjenniecjonesensemble-2025-07-22-met"
     },
@@ -1165,7 +1165,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "doadiabla1950directedbytitodaviso-2025-07-23-moma"
     },
@@ -1181,7 +1181,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "lamujersinalmathewomanwithoutasoul1944directedbyfernandodefuentes-2025-07-23-moma"
     },
@@ -1229,7 +1229,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "enamoradainlove1946directedbyemiliofernndez-2025-07-24-moma"
     },
@@ -1245,7 +1245,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "amok1944directedbyantoniomomplet-2025-07-24-moma"
     },
@@ -1261,7 +1261,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Workshop",
       "data_source": "csv",
       "id": "writingclubathomeonjackwhittenwithjazzycharlesandantoinettecooper-2025-07-24-moma"
     },
@@ -1293,7 +1293,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "tizoc1957directedbyismaelrodriguez-2025-07-25-moma"
     },
@@ -1309,7 +1309,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "roescondidohiddenriver1948directedbyemiliofernndez-2025-07-25-moma"
     },
@@ -1341,7 +1341,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "doabrbara1943directedbyfernandodefuentes-2025-07-26-moma"
     },
@@ -1357,7 +1357,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "ladiosaarrodilladathekneelinggoddess1947directedbyrobertogavaldn-2025-07-26-moma"
     },
@@ -1389,7 +1389,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "maclovia1948directedbyemiliofernndez-2025-07-27-moma"
     },
@@ -1405,7 +1405,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "frenchcancan1954directedbyjeanrenoir-2025-07-27-moma"
     },
@@ -1421,7 +1421,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "berlindiesinfoniedergrostadtberlinsymphonyofagreatcity1927directedbywalterruttmann-2025-07-30-moma"
     },
@@ -1469,7 +1469,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Film",
       "data_source": "csv",
       "id": "thegoldrush1925writtenanddirectedbycharleschaplin-2025-07-31-moma"
     },
