@@ -61,7 +61,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Panel Discussion",
       "data_source": "csv",
       "id": "chinaschangingreligiouslandscape-2025-07-01-asia-society"
     },
@@ -349,7 +349,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Performance",
       "data_source": "csv",
       "id": "725salonchunwaichan-2025-07-07-asia-society"
     },
@@ -1149,7 +1149,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Panel Discussion",
       "data_source": "csv",
       "id": "theus-rokalliancein2025andglobalimplications-2025-07-22-asia-society"
     },
