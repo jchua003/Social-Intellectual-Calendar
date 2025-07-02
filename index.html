@@ -409,25 +409,31 @@
         
         // Event types
         const eventTypes = [
-            'Exhibition', 'Workshop', 'Lecture', 'Performance', 
-            'Film', 'Family Program', 'Tour', 'Symposium', 
-            'Opening', 'Social Event', 'Panel Discussion', 
-            'Artist Talk', 'Gallery Talk', 'Special Event'
+            'Exhibition', 'Exhibition/Special Event',
+            'Workshop', 'Workshops',
+            'Lecture', 'Performance',
+            'Film', 'Family Program',
+            'Tour', 'Tours',
+            'Symposium', 'Opening',
+            'Social Event', 'Panel Discussion',
+            'Artist Talk', 'Gallery Talk',
+            'Gallery Experience', 'Special Event',
+            "Member's Only", 'Music'
         ];
         
         // Load events from GitHub repository
         async function loadEventsData() {
             try {
-                // Attempt to fetch the events file from the local repository
+                // Attempt to fetch the events file from the repository. When
+                // the page is served from GitHub Pages or a local development
+                // server this relative path will resolve correctly and contain
+                // the up-to-date scraped events.
                 let response = await fetch('./data/events.json');
 
-                // If the request fails (e.g. when hosted from a different base path)
-                // fall back to fetching from the raw GitHub URL. Update the
-                // username and repository if you fork this project.
+                 // If the file cannot be loaded, throw an error so that the
+                // catch block below can fall back to sample data.
                 if (!response.ok) {
-                    const githubUrl =
-                        'https://raw.githubusercontent.com/jchua003/Social-Intellectual-Calendar/main/data/events.json';
-                    response = await fetch(githubUrl);
+                    throw new Error('Failed to load local events data');
                 }
                 
                 if (response.ok) {
