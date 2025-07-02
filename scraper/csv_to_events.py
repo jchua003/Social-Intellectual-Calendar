@@ -102,9 +102,20 @@ class CSVToEvents:
                         'image_url': self.clean_text(row.get('image_url', row.get('image', row.get('Image', '')))),
                         'price': self.clean_text(row.get('price', row.get('Price', row.get('cost', 'Free')))),
                         'registration_url': self.clean_text(row.get('registration_url', row.get('registration', row.get('Registration', '')))),
-                        'type': self.clean_text(row.get('type', row.get('Type', row.get('event_type', 'Exhibition')))),
+                        # Support various column names for the event type
+                        'type': self.clean_text(
+                            row.get('type') or
+                            row.get('Type') or
+                            row.get('Event Type') or
+                            row.get('event_type') or
+                            'Exhibition'
+                        ),
                         'data_source': 'csv'
                     }
+
+                    # Normalize specific type values
+                    if event['type'].lower() == 'films':
+                        event['type'] = 'Film'
                     
                     # Only add if we have at least a title and date
                     if event['title'] and event['date']:
