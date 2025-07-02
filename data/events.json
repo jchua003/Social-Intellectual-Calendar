@@ -1,5 +1,5 @@
 {
-  "last_updated": "2025-07-02T15:46:58.341963",
+  "last_updated": "2025-07-02T15:53:27.237239",
   "events": [
     {
       "title": "DISPATCHES FROM THE FIELD: WEST HANSEN",
@@ -1492,7 +1492,13 @@
   ],
   "metadata": {
     "total_events": 93,
-    "data_source": "csv",
-    "processing_date": "2025-07-02 15:46:58"
+    "scraping_method": "integrated",
+    "museums_scraped": [
+      "explorers",
+      "asia-society",
+      "women's-history",
+      "moma",
+      "met"
+    ]
   }
 }
