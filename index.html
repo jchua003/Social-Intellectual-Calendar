@@ -418,8 +418,17 @@
         // Load events from GitHub repository
         async function loadEventsData() {
             try {
-                // IMPORTANT: Replace jchua003 with your GitHub username and museum-events-calendar with your repository name
-                 const response = await fetch('data/events.json');
+                // Attempt to fetch the events file from the local repository
+                let response = await fetch('./data/events.json');
+
+                // If the request fails (e.g. when hosted from a different base path)
+                // fall back to fetching from the raw GitHub URL. Update the
+                // username and repository if you fork this project.
+                if (!response.ok) {
+                    const githubUrl =
+                        'https://raw.githubusercontent.com/jchua003/Social-Intellectual-Calendar/main/data/events.json';
+                    response = await fetch(githubUrl);
+                }
                 
                 if (response.ok) {
                     const data = await response.json();
