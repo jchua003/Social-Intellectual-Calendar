@@ -1,5 +1,5 @@
 {
-  "last_updated": "2025-07-02T16:27:26.550500",
+
   "events": [
     {
       "title": "Crooklyn. 1994. Directed by Spike Lee",
@@ -45,7 +45,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Gallery Talk",
       "data_source": "csv",
       "id": "metexperttalkssargentandparis-2025-07-01-met"
     },
@@ -77,7 +77,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Lecture",
       "data_source": "csv",
       "id": "overthegreatwallacenturyapart-2025-07-01-explorers"
     },
@@ -125,7 +125,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Social Event",
       "data_source": "csv",
       "id": "silentbookclubofdeathnycatthemetcloisters-2025-07-02-met"
     },
@@ -141,7 +141,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Special Event",
       "data_source": "csv",
       "id": "worldoceansweek2025-2025-07-02-explorers"
     },
@@ -221,7 +221,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Gallery Talk",
       "data_source": "csv",
       "id": "metexperttalksatthemetcloistersahistoryofthemetcloisters-2025-07-04-met"
     },
@@ -333,7 +333,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Workshop",
       "data_source": "csv",
       "id": "connectingcollectionssummerinstitute-2025-07-07-met"
     },
@@ -429,7 +429,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Lecture",
       "data_source": "csv",
       "id": "charlessumnerconscienceofanation-2025-07-09-womens-history"
     },
@@ -477,7 +477,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Workshop",
       "data_source": "csv",
       "id": "americaat250thebattleofbrooklyn-2025-07-10-womens-history"
     },
@@ -493,7 +493,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Gallery Talk",
       "data_source": "csv",
       "id": "metexperttalksthenewartamericanphotography18391910-2025-07-10-met"
     },
@@ -541,7 +541,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Workshops",
       "data_source": "csv",
       "id": "artistdemosweaving-2025-07-11-moma"
     },
@@ -557,7 +557,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Music",
       "data_source": "csv",
       "id": "newyorkhistoricalsummer-2025-07-11-womens-history"
     },
@@ -573,7 +573,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Gallery Talk",
       "data_source": "csv",
       "id": "metexperttalksatthemetcloistersahistoryofthemetcloisters-2025-07-11-met"
     },
@@ -589,7 +589,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Special Event",
       "data_source": "csv",
       "id": "datenightsargentandparis-2025-07-11-met"
     },
@@ -605,7 +605,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Gallery Talk",
       "data_source": "csv",
       "id": "theobservanteye-2025-07-11-met"
     },
@@ -797,7 +797,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Workshop",
       "data_source": "csv",
       "id": "pioneeringscientificvoiceswomenandstem-2025-07-16-womens-history"
     },
@@ -813,7 +813,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Lecture",
       "data_source": "csv",
       "id": "illiberalamericaahistory-2025-07-16-womens-history"
     },
@@ -829,7 +829,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Member's Only",
       "data_source": "csv",
       "id": "dispatchesfromthefieldalisoncriscitiello-2025-07-16-explorers"
     },
@@ -877,7 +877,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Workshops",
       "data_source": "csv",
       "id": "writingclubonjackwhittenwithjazzycharlesandantoinettecooper-2025-07-17-moma"
     },
@@ -925,7 +925,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Music",
       "data_source": "csv",
       "id": "newyorkhistoricalsummer-2025-07-18-womens-history"
     },
@@ -941,7 +941,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Gallery Talk",
       "data_source": "csv",
       "id": "metexperttalksatthemetcloistersahistoryofthemetcloisters-2025-07-18-met"
     },
@@ -1101,7 +1101,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Gallery Talk",
       "data_source": "csv",
       "id": "metexperttalksenespaollaherenciaculturaldelatalaverapoblana-2025-07-22-met"
     },
@@ -1117,7 +1117,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Gallery Talk",
       "data_source": "csv",
       "id": "metexperttalkstheroofgardencommissionjenniecjonesensemble-2025-07-22-met"
     },
@@ -1197,7 +1197,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Workshop",
       "data_source": "csv",
       "id": "teacherworkshop-blacklistedanamericanstory-2025-07-23-womens-history"
     },
@@ -1213,7 +1213,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Lecture",
       "data_source": "csv",
       "id": "lincolnsladyspymastertheuntoldstoryoftheabolitionistsouthernbellewhohelpedwinthecivilwar-2025-07-23-"
     },
@@ -1261,7 +1261,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Workshops",
       "data_source": "csv",
       "id": "writingclubathomeonjackwhittenwithjazzycharlesandantoinettecooper-2025-07-24-moma"
     },
@@ -1277,7 +1277,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Tours",
       "data_source": "csv",
       "id": "gallerytourrobertcarointhemuseum-2025-07-24-womens-history"
     },
@@ -1325,7 +1325,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Music",
       "data_source": "csv",
       "id": "newyorkhistoricalsummer-2025-07-25-womens-history"
     },
@@ -1373,7 +1373,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Member's Only",
       "data_source": "csv",
       "id": "memorialbruceblanchardme78-2025-07-26-explorers"
     },
@@ -1437,7 +1437,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Workshop",
       "data_source": "csv",
       "id": "conceptualizingtheconstitution-2025-07-30-womens-history"
     },
@@ -1453,7 +1453,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Lecture",
       "data_source": "csv",
       "id": "religioninthelandsthatbecameamericaanewhistory-2025-07-30-womens-history"
     },
@@ -1485,7 +1485,7 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Tours",
       "data_source": "csv",
       "id": "gallerytourrobertcarointhemuseum-july8-womens-history"
     },
@@ -1501,20 +1501,12 @@
       "image_url": "",
       "price": "Free",
       "registration_url": "",
-      "type": "Exhibition",
+      "type": "Tours",
       "data_source": "csv",
       "id": "gallerytournewyorkandtheartstudentsleague-july9-womens-history"
     }
   ],
   "metadata": {
     "total_events": 94,
-    "scraping_method": "integrated",
-    "museums_scraped": [
-      "explorers",
-      "met",
-      "moma",
-      "asia-society",
-      "womens-history"
-    ]
   }
 }
