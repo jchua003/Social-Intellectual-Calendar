@@ -256,6 +256,8 @@
         .museum-explorers { background: #2ECC71; color: white; }
         .museum-womens-history { background: #E74C3C; color: white; }
         .museum-asia-society { background: #3498DB; color: white; }
+        .museum-rizzoli-bookstore { background: #9b59b6; color: white; }
+        .museum-the-poetry-society-of-new-york { background: #d35400; color: white; }
         
         .event-type {
             display: inline-block;
@@ -571,7 +573,7 @@
         
         // Get active filters
         function getActiveFilters() {
-            const museums = ['moma', 'met', 'nyu', 'arts', 'explorers', 'womens-history', 'asia-society'];
+           const museums = ['moma', 'met', 'nyu', 'arts', 'explorers', 'womens-history', 'asia-society', 'rizzoli-bookstore', 'the-poetry-society-of-new-york'];
             const activeMuseums = museums.filter(museum => 
                 document.getElementById(`museum-${museum}`).checked
             );
@@ -952,6 +954,14 @@
                 <div class="museum-checkbox">
                     <input type="checkbox" id="museum-asia-society" checked>
                     <label for="museum-asia-society">Asia Society</label>
+                </div>
+                 <div class="museum-checkbox">
+                    <input type="checkbox" id="museum-rizzoli-bookstore" checked>
+                    <label for="museum-rizzoli-bookstore">Rizzoli Bookstore</label>
+                </div>
+                <div class="museum-checkbox">
+                    <input type="checkbox" id="museum-the-poetry-society-of-new-york" checked>
+                    <label for="museum-the-poetry-society-of-new-york">The Poetry Society</label>
                 </div>
                 <div class="filter-actions">
                     <button id="selectAllMuseums" class="btn-select-all">Select All</button>
