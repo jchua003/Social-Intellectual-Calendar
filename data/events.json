@@ -1,5 +1,5 @@
 {
-  "last_updated": "2025-07-10T06:24:24.064024",
+  "last_updated": "2025-07-10T08:14:49.031816",
   "events": [
     {
       "title": "Crooklyn. 1994. Directed by Spike Lee",
@@ -738,6 +738,38 @@
       "id": "psnyfreeverseworkshopnothingaboutuswithoutus-2025-07-09-the-poetry-society-of-new-york"
     },
     {
+      "title": "Gallery Tour: New York and the Art Students League",
+      "description": "Join experienced docents and dive into the lasting impact of the Art Students League, whose alumni include Normal Rockwell, Mark Rothco, Georgia O'Keeffee, and Jacob Lawrence.",
+      "date": "2025-07-09",
+      "time": "",
+      "location": "The New York Historical, 170 Central Park West, New York, NY 10024",
+      "museum": "the-new-york-historical-society",
+      "museumName": "The New York Historical Society Events",
+      "url": "https://www.nyhistory.org/programs/gallery-tour-new-york-and-the-art-students-league1?date=2025-07-09",
+      "image_url": "",
+      "price": "Free",
+      "registration_url": "",
+      "type": "Tours",
+      "data_source": "csv",
+      "id": "gallerytournewyorkandtheartstudentsleague-2025-07-09-the-new-york-historical-society"
+    },
+    {
+      "title": "Charles Sumner: Conscience of a Nation",
+      "description": "Our popular outdoor lecture series is back! The New York Historical is thrilled to once again partner with the Bryant Park Reading Room to present a series of free programs in the park.",
+      "date": "2025-07-09",
+      "time": "",
+      "location": "This program will be held at the outdoor Reading Room in Bryant Park. The Reading Room is located on the 42nd Street side of the park between 5th and 6th Avenues. Look for the yellow and white umbrellas.",
+      "museum": "the-new-york-historical-society",
+      "museumName": "The New York Historical Society Events",
+      "url": "https://www.nyhistory.org/programs/charles-sumner-conscience-of-a-nation?date=2025-07-09",
+      "image_url": "",
+      "price": "Free",
+      "registration_url": "",
+      "type": "Talk",
+      "data_source": "csv",
+      "id": "charlessumnerconscienceofanation-2025-07-09-the-new-york-historical-society"
+    },
+    {
       "title": "Taiyō no Hakaba (The Sun’s Burial). 1960. Directed by Nagisa Ōshima",
       "description": "The Sun’s Burial (1960), Nagisa Ōshima’s explosive early feature, captures postwar Tokyo’s violent underworld with raw energy and bleak humanism—a defining work of Japan’s New Wave.",
       "date": "2025-07-10",
@@ -1008,6 +1040,22 @@
       "type": "Workshop",
       "data_source": "csv",
       "id": "psnyvirtualworkshoppoeticsthroughperformanceplay-2025-07-11-the-poetry-society-of-new-york"
+    },
+    {
+      "title": "New York Historical Summer!",
+      "description": "Spend your Friday evenings with us this July! The New York Historical is celebrating the summer with live music.",
+      "date": "2025-07-11",
+      "time": "5:30 PM",
+      "location": "1st floor, Robert H. and Clarice Smith New York Gallery of American History at The New York Historical, 170 Central Park West, New York, NY 10024",
+      "museum": "the-new-york-historical-society",
+      "museumName": "The New York Historical Society Events",
+      "url": "https://www.nyhistory.org/programs/new-york-historical-summer10?date=2025-07-11",
+      "image_url": "",
+      "price": "Free",
+      "registration_url": "",
+      "type": "Music",
+      "data_source": "csv",
+      "id": "newyorkhistoricalsummer-2025-07-11-the-new-york-historical-society"
     },
     {
       "title": "Enamorada (In Love). 1946. Directed by Emilio Fernández",
@@ -1522,6 +1570,22 @@
       "id": "dispatchesfromthefieldalisoncriscitiello-2025-07-16-explorers"
     },
     {
+      "title": "Illiberal America: A History",
+      "description": "Our popular outdoor lecture series is back! The New York Historical is thrilled to once again partner with the Bryant Park Reading Room to present a series of free programs in the park.",
+      "date": "2025-07-16",
+      "time": "7 PM - 8PM",
+      "location": "This program will be held at the outdoor Reading Room in Bryant Park. The Reading Room is located on the 42nd Street side of the park between 5th and 6th Avenues. Look for the yellow and white umbrellas.",
+      "museum": "the-new-york-historical-society",
+      "museumName": "The New York Historical Society Events",
+      "url": "https://www.nyhistory.org/programs/illiberal-america-a-history?date=2025-07-16",
+      "image_url": "",
+      "price": "Free",
+      "registration_url": "",
+      "type": "Talk",
+      "data_source": "csv",
+      "id": "illiberalamericaahistory-2025-07-16-the-new-york-historical-society"
+    },
+    {
       "title": "La mujer sin alma (The Woman Without a Soul). 1944. Directed by Fernando de Fuentes",
       "description": "La mujer sin alma (1944) – María Félix plays a working-class beauty who climbs the social ladder by seducing and discarding wealthy men. A sharp melodrama about ambition, power, and class, directed by Fernando de Fuentes.",
       "date": "2025-07-17",
@@ -1744,6 +1808,38 @@
       "type": "Workshop",
       "data_source": "csv",
       "id": "psnyvirtualworkshophowtoendapoem-2025-07-18-the-poetry-society-of-new-york"
+    },
+    {
+      "title": "Meet the Curator: Blacklisted: An American Story Featuring: Anne Lessy",
+      "description": "Have you ever wanted to chat with our curators about how exhibitions at The New York Historical come together? Now's your chance! Join curator Anne Lessy in the exhibition Blacklisted: An American Story and learn what it was like to work on this exploration of politics, art, culture, and social dynamics during Hollywood’s Red Scare of the 1940s and '50s. Lessy will briefly introduce the project and highlight a few of her favorite items before opening up the conversation to your questions. Meet the Curator is a monthly program that invites visitors to engage in casual conversation with members of The New York Historical's curatorial team. Come to talk and ask questions about our current exhibitions and the objects on display. Anne Lessy is an assistant curator of history exhibitions and academic engagement at The New York Historical.",
+      "date": "2025-07-18",
+      "time": "12 PM - 1 PM",
+      "location": "1st floor, Robert H. and Clarice Smith South Gallery, The New York Historical, 170 Central Park West, New York, NY 10024",
+      "museum": "the-new-york-historical-society",
+      "museumName": "The New York Historical Society Events",
+      "url": "https://www.nyhistory.org/programs/meet-the-curator-blacklisted?date=2025-07-18",
+      "image_url": "",
+      "price": "Free",
+      "registration_url": "",
+      "type": "Tours",
+      "data_source": "csv",
+      "id": "meetthecuratorblacklistedanamericanstoryfeaturingannelessy-2025-07-18-the-new-york-historical-societ"
+    },
+    {
+      "title": "New York Historical Summer!",
+      "description": "Spend your Friday evenings with us this July! The New York Historical is celebrating the summer with live music.",
+      "date": "2025-07-18",
+      "time": "5:30 PM – 7:30 PM",
+      "location": "1st floor, Robert H. and Clarice Smith New York Gallery of American History at The New York Historical, 170 Central Park West, New York, NY 10024",
+      "museum": "the-new-york-historical-society",
+      "museumName": "The New York Historical Society Events",
+      "url": "https://www.nyhistory.org/programs/new-york-historical-summer11?date=2025-07-18",
+      "image_url": "",
+      "price": "Free",
+      "registration_url": "",
+      "type": "Music",
+      "data_source": "csv",
+      "id": "newyorkhistoricalsummer-2025-07-18-the-new-york-historical-society"
     },
     {
       "title": "La diosa arrodillada (The Kneeling Goddess). 1947. Directed by Roberto Gavaldón",
@@ -2242,6 +2338,22 @@
       "id": "lincolnsladyspymastertheuntoldstoryoftheabolitionistsouthernbellewhohelpedwinthecivilwar-2025-07-23-"
     },
     {
+      "title": "Lincoln’s Lady Spymaster: The Untold Story of the Abolitionist Southern Belle Who Helped Win the Civil War Featuring: Gerri Willis",
+      "description": "Our popular outdoor lecture series is back! The New York Historical is thrilled to once again partner with the Bryant Park Reading Room to present a series of free programs in the park.",
+      "date": "2025-07-23",
+      "time": "7 PM - 8 PM",
+      "location": "This program will be held at the outdoor Reading Room in Bryant Park. The Reading Room is located on the 42nd Street side of the park between 5th and 6th Avenues. Look for the yellow and white umbrellas.",
+      "museum": "the-new-york-historical-society",
+      "museumName": "The New York Historical Society Events",
+      "url": "https://www.nyhistory.org/programs/lincolns-lady-spymaster-untold-story-abolitionist-southern-belle-who-helped-win-civil-war?date=2025-07-23",
+      "image_url": "",
+      "price": "Free",
+      "registration_url": "",
+      "type": "Talk",
+      "data_source": "csv",
+      "id": "lincolnsladyspymastertheuntoldstoryoftheabolitionistsouthernbellewhohelpedwinthecivilwarfeaturingger"
+    },
+    {
       "title": "Enamorada (In Love). 1946.Directed by Emilio Fernández",
       "description": "In this Golden Age classic, María Félix stars as a fiery aristocrat whose world is upended by a revolutionary general (Pedro Armendáriz). Loosely inspired by The Taming of the Shrew, Emilio Fernández’s lush romance blends political ideals, national pride, and passionate conflict—shot with iconic beauty by Gabriel Figueroa.",
       "date": "2025-07-24",
@@ -2402,6 +2514,22 @@
       "id": "metexperttalksfromthegiftshoptothegallery-2025-07-24-met"
     },
     {
+      "title": "Gallery Tour: Robert Caro in the Museum",
+      "description": "Discover the work and career of American journalist and author Robert A. Caro on a docent-led guided tour of Robert Caro’s The Power Broker at 50 and “Turn Every Page”: Inside the Robert A Caro.",
+      "date": "2025-07-24",
+      "time": "11:30 am – 12:30 pm",
+      "location": "The New York Historical, 170 Central Park West, New York, NY 10024",
+      "museum": "the-new-york-historical-society",
+      "museumName": "The New York Historical Society Events",
+      "url": "https://www.nyhistory.org/programs/gallery-tour-robert-caro-in-the-museum7-24?date=2025-07-24",
+      "image_url": "",
+      "price": "Free",
+      "registration_url": "",
+      "type": "Tours",
+      "data_source": "csv",
+      "id": "gallerytourrobertcarointhemuseum-2025-07-24-the-new-york-historical-society"
+    },
+    {
       "title": "Tizoc. 1957. Directed by Ismael Rodriguez",
       "description": "The only screen pairing of María Félix and Pedro Infante, this tragic romance follows an Indigenous Mixtec man and a European-descended woman whose love is challenged by deep-rooted prejudice. A landmark of Mexican cinema, Tizoc won the Golden Globe for Best Foreign Language Film and earned Infante the Silver Bear for Best Actor at Berlin.",
       "date": "2025-07-25",
@@ -2528,6 +2656,22 @@
       "type": "Workshop",
       "data_source": "csv",
       "id": "psnyvirtualworkshopthegodscluckingbeyondthemoon-2025-07-25-the-poetry-society-of-new-york"
+    },
+    {
+      "title": "New York Historical Summer!",
+      "description": "Spend your Friday evenings with us this July! The New York Historical is celebrating the summer with live music.",
+      "date": "2025-07-25",
+      "time": "5:30 PM – 7:30 PM",
+      "location": "1st floor, Robert H. and Clarice Smith New York Gallery of American History at The New York Historical, 170 Central Park West, New York, NY 10024",
+      "museum": "the-new-york-historical-society",
+      "museumName": "The New York Historical Society Events",
+      "url": "https://www.nyhistory.org/programs/new-york-historical-summer12?date=2025-07-25",
+      "image_url": "",
+      "price": "Free",
+      "registration_url": "",
+      "type": "Music",
+      "data_source": "csv",
+      "id": "newyorkhistoricalsummer-2025-07-25-the-new-york-historical-society"
     },
     {
       "title": "Doña Bárbara. 1943. Directed by Fernando de Fuentes",
@@ -2802,6 +2946,22 @@
       "id": "religioninthelandsthatbecameamericaanewhistory-2025-07-30-womens-history"
     },
     {
+      "title": "Religion in the Lands that Became America: A New History Featuring: Thomas A. Tweed",
+      "description": "Our popular outdoor lecture series is back! The New York Historical is thrilled to once again partner with the Bryant Park Reading Room to present a series of free programs in the park.",
+      "date": "2025-07-30",
+      "time": "7PM - 8PM",
+      "location": "This program will be held at the outdoor Reading Room in Bryant Park. The Reading Room is located on the 42nd Street side of the park between 5th and 6th Avenues. Look for the yellow and white umbrellas.",
+      "museum": "the-new-york-historical-society",
+      "museumName": "The New York Historical Society Events",
+      "url": "https://www.nyhistory.org/programs/religion-in-the-lands-that-became-america-a-new-history?date=2025-07-30",
+      "image_url": "",
+      "price": "Free",
+      "registration_url": "",
+      "type": "Talk",
+      "data_source": "csv",
+      "id": "religioninthelandsthatbecameamericaanewhistoryfeaturingthomasatweed-2025-07-30-the-new-york-historic"
+    },
+    {
       "title": "The Gold Rush. 1925. Written and directed by Charles Chaplin",
       "description": "In what he called his greatest film, Charles Chaplin’s Little Tramp braves the Klondike in search of gold, love, and survival. This newly restored 1925 silent version brings fresh clarity to iconic scenes like the shoe dinner and the dance of the dinner rolls—highlighting Chaplin’s unmatched blend of comedy and pathos.",
       "date": "2025-07-31",
@@ -2931,16 +3091,8 @@
     }
   ],
   "metadata": {
-    "total_events": 183,
-    "scraping_method": "integrated",
-    "museums_scraped": [
-      "the-poetry-society-of-new-york",
-      "met",
-      "asia-society",
-      "womens-history",
-      "rizzoli-bookstore",
-      "explorers",
-      "moma"
-    ]
+    "total_events": 193,
+    "data_source": "csv",
+    "processing_date": "2025-07-10 08:14:49"
   }
 }
