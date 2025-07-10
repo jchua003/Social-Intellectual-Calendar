@@ -573,7 +573,7 @@
         
         // Get active filters
         function getActiveFilters() {
-           const museums = ['moma', 'met', 'nyu', 'arts', 'explorers', 'womens-history', 'asia-society', 'rizzoli-bookstore', 'the-poetry-society-of-new-york'];
+            const museums = ['moma', 'met', 'nyu', 'arts', 'explorers', 'womens-history', 'asia-society', 'rizzoli-bookstore', 'the-poetry-society-of-new-york', 'the-new-york-historical-society'];
             const activeMuseums = museums.filter(museum => 
                 document.getElementById(`museum-${museum}`).checked
             );
@@ -955,13 +955,17 @@
                     <input type="checkbox" id="museum-asia-society" checked>
                     <label for="museum-asia-society">Asia Society</label>
                 </div>
-                 <div class="museum-checkbox">
+                  <div class="museum-checkbox">
                     <input type="checkbox" id="museum-rizzoli-bookstore" checked>
                     <label for="museum-rizzoli-bookstore">Rizzoli Bookstore</label>
                 </div>
                 <div class="museum-checkbox">
                     <input type="checkbox" id="museum-the-poetry-society-of-new-york" checked>
                     <label for="museum-the-poetry-society-of-new-york">The Poetry Society</label>
+                </div>
+                <div class="museum-checkbox">
+                    <input type="checkbox" id="museum-the-new-york-historical-society" checked>
+                    <label for="museum-the-new-york-historical-society">New-York Historical Society</label>
                 </div>
                 <div class="filter-actions">
                     <button id="selectAllMuseums" class="btn-select-all">Select All</button>
