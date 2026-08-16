@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-16T01:01:10.564745",
+  "last_updated": "2026-08-16T06:29:46.556819",
   "events": [
     {
       "title": "Crooklyn. 1994. Directed by Spike Lee",
@@ -3094,14 +3094,14 @@
     "total_events": 193,
     "scraping_method": "integrated",
     "museums_scraped": [
-      "explorers",
-      "the-new-york-historical-society",
-      "rizzoli-bookstore",
-      "moma",
-      "womens-history",
-      "asia-society",
       "the-poetry-society-of-new-york",
-      "met"
+      "womens-history",
+      "met",
+      "rizzoli-bookstore",
+      "the-new-york-historical-society",
+      "explorers",
+      "moma",
+      "asia-society"
     ]
   }
 }
